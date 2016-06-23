@@ -96,6 +96,20 @@ Xbee joystick("/dev/ttyUSB4",9);
 	#define printf(...) printw(__VA_ARGS__)
 #endif
 */
+int new_xbee_data = 0;
+float new_sonar_data_x_pos, new_sonar_data_x_neg, new_sonar_data_y_pos, new_sonar_data_y_neg, new_sonar_data_down, new_sonar_data_up;
+
+void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg){
+	new_sonar_data_x_pos = sonarMsg->x_pos;
+	new_sonar_data_x_neg = sonarMsg->x_neg;
+	new_sonar_data_y_pos = sonarMsg->y_pos;
+	new_sonar_data_y_neg = sonarMsg->y_neg;
+	new_sonar_data_up = sonarMsg->up;
+	new_sonar_data_down = sonarMsg->down;
+	//ROS_INFO("got x_pos %f", new_sonar_data_x_pos);
+	
+}
+
 void control_stabilizer()
 {
 
@@ -104,8 +118,11 @@ void control_stabilizer()
   State imu_data;
   
   ros::NodeHandle n;
+  ros::NodeHandle nh;
   ros::Publisher cmd_pub;
-  cmd_pub = n.advertise<controller::MotorCommands>("controller/cmd_motors",1000); 
+  ros::Subscriber sonar_sub;
+  cmd_pub = n.advertise<controller::MotorCommands>("controller/cmd_motors",5); 
+  sonar_sub = nh.subscribe<controller::SonarData>("sonar/sonar_data",5,sonarCallback); 
   Distances sonar_distances;
   Distances repulsive_forces;
   //weights is used for filter: current, one value ago, 2 values ago
@@ -121,7 +138,7 @@ void control_stabilizer()
   Angles desired_angles = {0};
   uint8_t joystick_thrust , flight_mode = 0;
   int succ_read;
-  int new_xbee_data, new_imu_data, new_sonar_data_x_pos, new_sonar_data_x_neg, new_sonar_data_y_pos, new_sonar_data_y_neg, new_sonar_data_down, new_sonar_data_up;
+  
   times.delta.tv_nsec = delta_time; //500000;
 
   clock_gettime(CLOCK_REALTIME,&s);
@@ -200,6 +217,7 @@ while(SYSTEM_RUN && ros::ok())
 		    }
 	}
 
+	ros::spinOnce();
 	//calculate error from imu (in radians) between desired and measured state
 	State imu_error = error_imu(imu_data, desired_angles);
 
@@ -232,6 +250,7 @@ while(SYSTEM_RUN && ros::ok())
 	}
         
 	cmd_pub.publish(mcs);
+	
 	
 
 	//printf("BOOOOL: %i\n", (LOG_DATA && ( (new_xbee_data>0) || (new_imu_data>0) || (new_sonar_data_1>0) || (new_sonar_data_2>0) || (new_sonar_data_3>0) || (new_sonar_data_4>0) ) ) );

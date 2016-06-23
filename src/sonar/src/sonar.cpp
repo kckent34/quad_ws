@@ -38,7 +38,6 @@ int Sonar::open_port(std::string PATH2SONAR, int bytes_to_block)
 
 	//Set local mode and enable the receiver
 	newtio.c_cflag |= (CLOCAL | CREAD);
-
 	//tcflush(port, TCIFLUSH);
 	//Set the new options for the port...
 	int status=tcsetattr(port, TCSANOW, &newtio);
@@ -385,7 +384,7 @@ int main(int argc, char** argv)
 	ros::NodeHandle n;
 	ros::Publisher sonar_pub;
 	
-	sonar_pub = n.advertise<sonar::SonarData>("sonar/sonar_data",100); 
+	sonar_pub = n.advertise<sonar::SonarData>("sonar/sonar_data",5); 
 	
 	while(ros::ok()){
 	//get new sonar data 

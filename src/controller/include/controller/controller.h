@@ -83,6 +83,7 @@ Vicon vicon_velocity(Vicon& current, Vicon& old);
 void log_data(const Distances& sonar_distances, const float& dt, const State_Error& vicon_error, const State& imu_data, const State& imu_error, const Angles& desired_angles);
 void display_info(const Distances& sonar_distances, const int succ_read,  const State& imu_data,  const State& imu_error, const State_Error& vicon_error, const Control_command& U,  const Angles& desired_angles, const int joystick_thrust, const int flight_mode, const Times& times, const Times& time_m);
 void configure_threads(void);
+void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg);
 
 
 void set_timespec(timespec& x, timespec& y){
