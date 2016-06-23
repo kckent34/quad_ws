@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "motors")
+set(motors_MAINTAINER "odroid <odroid@todo.todo>")
+set(motors_DEPRECATED "")
+set(motors_VERSION "0.0.0")
+set(motors_BUILD_DEPENDS "roscpp" "rospy" "message_generation" "std_msgs")
+set(motors_RUN_DEPENDS "message_runtime" "roscpp" "rospy" "std_msgs")
+set(motors_BUILDTOOL_DEPENDS "catkin")

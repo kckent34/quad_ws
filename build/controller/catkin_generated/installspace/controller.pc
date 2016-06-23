@@ -1,0 +1,8 @@
+prefix=/home/odroid/quad_ws/install
+
+Name: controller
+Description: Description of controller
+Version: 0.0.0
+Cflags: -I/home/odroid/quad_ws/install/include
+Libs: -L/home/odroid/quad_ws/install/lib 
+Requires: roscpp std_msgs message_runtime
