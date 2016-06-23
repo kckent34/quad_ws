@@ -39,6 +39,7 @@
 
 #include <ros/ros.h>
 #include "controller/MotorCommands.h"
+#include "controller/SonarData.h"
 //time utility change
 
 #define diff time_diff

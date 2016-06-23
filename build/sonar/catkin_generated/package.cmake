@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "sonar")
+set(sonar_MAINTAINER "odroid <odroid@todo.todo>")
+set(sonar_DEPRECATED "")
+set(sonar_VERSION "0.0.0")
+set(sonar_BUILD_DEPENDS "roscpp" "message_generation" "std_msgs")
+set(sonar_RUN_DEPENDS "roscpp" "std_msgs" "message_runtime")
+set(sonar_BUILDTOOL_DEPENDS "catkin")

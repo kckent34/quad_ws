@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "controller: 1 messages, 0 services")
+message(STATUS "controller: 2 messages, 0 services")
 
 set(MSG_I_FLAGS "-Icontroller:/home/odroid/quad_ws/src/controller/msg;-Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg")
 
@@ -20,12 +20,23 @@ add_custom_target(_controller_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "controller" "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg" ""
 )
 
+get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" NAME_WE)
+add_custom_target(_controller_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "controller" "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" ""
+)
+
 #
 #  langs = gencpp;genlisp;genpy
 #
 
 ### Section generating for lang: gencpp
 ### Generating Messages
+_generate_msg_cpp(controller
+  "/home/odroid/quad_ws/src/controller/msg/SonarData.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/controller
+)
 _generate_msg_cpp(controller
   "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg"
   "${MSG_I_FLAGS}"
@@ -49,6 +60,8 @@ add_dependencies(controller_generate_messages controller_generate_messages_cpp)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg" NAME_WE)
 add_dependencies(controller_generate_messages_cpp _controller_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" NAME_WE)
+add_dependencies(controller_generate_messages_cpp _controller_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(controller_gencpp)
@@ -59,6 +72,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS controller_generate_messages_cpp)
 
 ### Section generating for lang: genlisp
 ### Generating Messages
+_generate_msg_lisp(controller
+  "/home/odroid/quad_ws/src/controller/msg/SonarData.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/controller
+)
 _generate_msg_lisp(controller
   "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg"
   "${MSG_I_FLAGS}"
@@ -82,6 +101,8 @@ add_dependencies(controller_generate_messages controller_generate_messages_lisp)
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg" NAME_WE)
 add_dependencies(controller_generate_messages_lisp _controller_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" NAME_WE)
+add_dependencies(controller_generate_messages_lisp _controller_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(controller_genlisp)
@@ -92,6 +113,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS controller_generate_messages_lisp)
 
 ### Section generating for lang: genpy
 ### Generating Messages
+_generate_msg_py(controller
+  "/home/odroid/quad_ws/src/controller/msg/SonarData.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/controller
+)
 _generate_msg_py(controller
   "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg"
   "${MSG_I_FLAGS}"
@@ -114,6 +141,8 @@ add_dependencies(controller_generate_messages controller_generate_messages_py)
 
 # add dependencies to all check dependencies targets
 get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg" NAME_WE)
+add_dependencies(controller_generate_messages_py _controller_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" NAME_WE)
 add_dependencies(controller_generate_messages_py _controller_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

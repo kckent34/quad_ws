@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg"
+messages_str = "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg;/home/odroid/quad_ws/src/controller/msg/SonarData.msg"
 services_str = ""
 pkg_name = "controller"
 dependencies_str = "std_msgs"

@@ -48,15 +48,23 @@ CMAKE_BINARY_DIR = /home/odroid/quad_ws/build
 # Include the progress variables for this target.
 include controller/CMakeFiles/controller_generate_messages_lisp.dir/progress.make
 
+controller/CMakeFiles/controller_generate_messages_lisp: /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/SonarData.lisp
 controller/CMakeFiles/controller_generate_messages_lisp: /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/MotorCommands.lisp
+
+/home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/SonarData.lisp: /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
+/home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/SonarData.lisp: /home/odroid/quad_ws/src/controller/msg/SonarData.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from controller/SonarData.msg"
+	cd /home/odroid/quad_ws/build/controller && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/odroid/quad_ws/src/controller/msg/SonarData.msg -Icontroller:/home/odroid/quad_ws/src/controller/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p controller -o /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg
 
 /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/MotorCommands.lisp: /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py
 /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/MotorCommands.lisp: /home/odroid/quad_ws/src/controller/msg/MotorCommands.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Lisp code from controller/MotorCommands.msg"
 	cd /home/odroid/quad_ws/build/controller && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/odroid/quad_ws/src/controller/msg/MotorCommands.msg -Icontroller:/home/odroid/quad_ws/src/controller/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p controller -o /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg
 
 controller_generate_messages_lisp: controller/CMakeFiles/controller_generate_messages_lisp
+controller_generate_messages_lisp: /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/SonarData.lisp
 controller_generate_messages_lisp: /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/MotorCommands.lisp
 controller_generate_messages_lisp: controller/CMakeFiles/controller_generate_messages_lisp.dir/build.make
 .PHONY : controller_generate_messages_lisp

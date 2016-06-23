@@ -16,6 +16,9 @@
 #include <fcntl.h>
 #include <termios.h>
 #include <stdint.h>
+//include ros dependencies 
+#include <ros/ros.h>
+#include "sonar/SonarData.h"
 using namespace std;
 
 #define BAUDRATE_SONAR B9600
@@ -46,9 +49,8 @@ class Sonar {
 
 	long num_fds_n1 = 0, num_fds_0 = 0, num_fds_1 = 0, num_fds_p = 0;
 
-
 	fd_set read_fds;
-        struct timeval no_timeout;
+    struct timeval no_timeout;
 
 	public:
 	Sonar(std::string PATH2SONAR);
@@ -65,6 +67,7 @@ class Sonar {
 	int returnLastDistance(void);
 	int indexOfStartByte(const char arr[], int length);
 	void clean(void);
+	
 };
 
 #endif

@@ -3,6 +3,7 @@
 
 controller/CMakeFiles/controller.dir/src/controller.cpp.o
  /home/odroid/quad_ws/devel/include/controller/MotorCommands.h
+ /home/odroid/quad_ws/devel/include/controller/SonarData.h
  /home/odroid/quad_ws/src/controller/include/controller/controller.h
  /home/odroid/quad_ws/src/controller/include/controller/data_structs.h
  /home/odroid/quad_ws/src/controller/include/controller/imu.h

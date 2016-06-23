@@ -28,7 +28,7 @@ bool SONAR_BUBBLE_SIDES = false;
 bool SONAR_BUBBLE_DOWN = false;
 bool SONAR_BUBBLE_UP = false;
 
-int repulsion_factor = 15;
+/*int repulsion_factor = 15;
 int repulsion_factor_down = 20;
 int repulsion_factor_up = 20;
 int minDist = 500;
@@ -38,6 +38,7 @@ int minDistDown = 300;
 int maxDistDown = 1000;
 int minDistUp = 300;
 int maxDistUp = 1000;
+*/
 
 
 int aa = 0;

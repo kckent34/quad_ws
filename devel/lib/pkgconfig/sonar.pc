@@ -1,0 +1,8 @@
+prefix=/home/odroid/quad_ws/devel
+
+Name: sonar
+Description: Description of sonar
+Version: 0.0.0
+Cflags: -I/home/odroid/quad_ws/devel/include -I/home/odroid/quad_ws/src/sonar/include
+Libs: -L/home/odroid/quad_ws/devel/lib 
+Requires: roscpp std_msgs message_runtime

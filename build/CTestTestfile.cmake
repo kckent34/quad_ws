@@ -7,3 +7,4 @@
 SUBDIRS(gtest)
 SUBDIRS(controller)
 SUBDIRS(motors)
+SUBDIRS(sonar)

@@ -355,8 +355,9 @@ void Sonar::printStats(void)
 printf("Not Ready to Read Count:  %ld, Ready to Read Count: %ld \n\n",  (this->num_fds_0), (this->num_fds_1));
 }
 
-int main()
+int main(int argc, char** argv)
 {
+	
 	//define repulsion factors and parameters for sonar 
 	int repulsion_factor_down = 20;
 	int repulsion_factor_up = 20;
@@ -378,16 +379,34 @@ int main()
 	Sonar sonar_down("/dev/ttyUSB6");
 	Sonar sonar_up("/dev/ttyUSB2");
 	
-	int new_sonar_data_x_pos, new_sonar_data_x_neg, new_sonar_data_y_pos, new_sonar_data_y_neg, new_sonar_data_down, new_sonar_data_up;
+	
+	//initialize ros
+	ros::init(argc,argv,"sonar");
+	ros::NodeHandle n;
+	ros::Publisher sonar_pub;
+	
+	sonar_pub = n.advertise<sonar::SonarData>("sonar/sonar_data",100); 
 	
 	while(ros::ok()){
 	//get new sonar data 
-	new_sonar_data_x_pos = sonar_x_pos.get_sonar_data(x_pos);
-	new_sonar_data_x_neg = sonar_x_neg.get_sonar_data(x_neg);
-	new_sonar_data_y_pos = sonar_y_pos.get_sonar_data(y_pos);
-	new_sonar_data_y_neg = sonar_y_neg.get_sonar_data(y_neg);
-	new_sonar_data_down  = sonar_down.get_sonar_data(down);
-	new_sonar_data_up    = sonar_up.get_sonar_data(up);
+	sonar_x_pos.get_sonar_data(x_pos);
+	sonar_x_neg.get_sonar_data(x_neg);
+	sonar_y_pos.get_sonar_data(y_pos);
+	sonar_y_neg.get_sonar_data(y_neg);
+	sonar_down.get_sonar_data(down);
+	sonar_up.get_sonar_data(up);
+	
+	sonar::SonarData sonarMsg;
+	
+	sonarMsg.x_pos = sonar_x_pos.returnLastDistance();
+	sonarMsg.x_neg = sonar_x_neg.returnLastDistance();
+	sonarMsg.y_pos = sonar_y_pos.returnLastDistance();
+	sonarMsg.y_neg = sonar_y_neg.returnLastDistance();
+	sonarMsg.up = sonar_up.returnLastDistance();
+	sonarMsg.down = sonar_down.returnLastDistance();
+	
+	sonar_pub.publish(sonarMsg);
+	
 	}
 	
 
