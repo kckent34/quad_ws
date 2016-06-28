@@ -36,6 +36,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/controller/msg" TYPE FILE FILES
     "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg"
     "/home/odroid/quad_ws/src/controller/msg/SonarData.msg"
+    "/home/odroid/quad_ws/src/controller/msg/ImuData.msg"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

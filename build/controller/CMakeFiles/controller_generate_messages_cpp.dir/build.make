@@ -50,6 +50,7 @@ include controller/CMakeFiles/controller_generate_messages_cpp.dir/progress.make
 
 controller/CMakeFiles/controller_generate_messages_cpp: /home/odroid/quad_ws/devel/include/controller/SonarData.h
 controller/CMakeFiles/controller_generate_messages_cpp: /home/odroid/quad_ws/devel/include/controller/MotorCommands.h
+controller/CMakeFiles/controller_generate_messages_cpp: /home/odroid/quad_ws/devel/include/controller/ImuData.h
 
 /home/odroid/quad_ws/devel/include/controller/SonarData.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
 /home/odroid/quad_ws/devel/include/controller/SonarData.h: /home/odroid/quad_ws/src/controller/msg/SonarData.msg
@@ -65,9 +66,17 @@ controller/CMakeFiles/controller_generate_messages_cpp: /home/odroid/quad_ws/dev
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from controller/MotorCommands.msg"
 	cd /home/odroid/quad_ws/build/controller && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/odroid/quad_ws/src/controller/msg/MotorCommands.msg -Icontroller:/home/odroid/quad_ws/src/controller/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p controller -o /home/odroid/quad_ws/devel/include/controller -e /opt/ros/indigo/share/gencpp/cmake/..
 
+/home/odroid/quad_ws/devel/include/controller/ImuData.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/odroid/quad_ws/devel/include/controller/ImuData.h: /home/odroid/quad_ws/src/controller/msg/ImuData.msg
+/home/odroid/quad_ws/devel/include/controller/ImuData.h: /opt/ros/indigo/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from controller/ImuData.msg"
+	cd /home/odroid/quad_ws/build/controller && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/odroid/quad_ws/src/controller/msg/ImuData.msg -Icontroller:/home/odroid/quad_ws/src/controller/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p controller -o /home/odroid/quad_ws/devel/include/controller -e /opt/ros/indigo/share/gencpp/cmake/..
+
 controller_generate_messages_cpp: controller/CMakeFiles/controller_generate_messages_cpp
 controller_generate_messages_cpp: /home/odroid/quad_ws/devel/include/controller/SonarData.h
 controller_generate_messages_cpp: /home/odroid/quad_ws/devel/include/controller/MotorCommands.h
+controller_generate_messages_cpp: /home/odroid/quad_ws/devel/include/controller/ImuData.h
 controller_generate_messages_cpp: controller/CMakeFiles/controller_generate_messages_cpp.dir/build.make
 .PHONY : controller_generate_messages_cpp
 

@@ -48,6 +48,7 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
    MotorCommands.msg
    SonarData.msg
+   ImuData.msg
  )
 
 ## Generate services in the 'srv' folder

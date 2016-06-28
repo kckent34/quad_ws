@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "controller: 2 messages, 0 services")
+message(STATUS "controller: 3 messages, 0 services")
 
 set(MSG_I_FLAGS "-Icontroller:/home/odroid/quad_ws/src/controller/msg;-Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg")
 
@@ -25,6 +25,11 @@ add_custom_target(_controller_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "controller" "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" ""
 )
 
+get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/ImuData.msg" NAME_WE)
+add_custom_target(_controller_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "controller" "/home/odroid/quad_ws/src/controller/msg/ImuData.msg" ""
+)
+
 #
 #  langs = gencpp;genlisp;genpy
 #
@@ -39,6 +44,12 @@ _generate_msg_cpp(controller
 )
 _generate_msg_cpp(controller
   "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/controller
+)
+_generate_msg_cpp(controller
+  "/home/odroid/quad_ws/src/controller/msg/ImuData.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/controller
@@ -62,6 +73,8 @@ get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/MotorC
 add_dependencies(controller_generate_messages_cpp _controller_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" NAME_WE)
 add_dependencies(controller_generate_messages_cpp _controller_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/ImuData.msg" NAME_WE)
+add_dependencies(controller_generate_messages_cpp _controller_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(controller_gencpp)
@@ -80,6 +93,12 @@ _generate_msg_lisp(controller
 )
 _generate_msg_lisp(controller
   "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/controller
+)
+_generate_msg_lisp(controller
+  "/home/odroid/quad_ws/src/controller/msg/ImuData.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/controller
@@ -103,6 +122,8 @@ get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/MotorC
 add_dependencies(controller_generate_messages_lisp _controller_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" NAME_WE)
 add_dependencies(controller_generate_messages_lisp _controller_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/ImuData.msg" NAME_WE)
+add_dependencies(controller_generate_messages_lisp _controller_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(controller_genlisp)
@@ -125,6 +146,12 @@ _generate_msg_py(controller
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/controller
 )
+_generate_msg_py(controller
+  "/home/odroid/quad_ws/src/controller/msg/ImuData.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/controller
+)
 
 ### Generating Services
 
@@ -143,6 +170,8 @@ add_dependencies(controller_generate_messages controller_generate_messages_py)
 get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg" NAME_WE)
 add_dependencies(controller_generate_messages_py _controller_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/SonarData.msg" NAME_WE)
+add_dependencies(controller_generate_messages_py _controller_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/odroid/quad_ws/src/controller/msg/ImuData.msg" NAME_WE)
 add_dependencies(controller_generate_messages_py _controller_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

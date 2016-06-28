@@ -244,6 +244,19 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
+# Target rules for targets named _controller_generate_messages_check_deps_ImuData
+
+# Build rule for target.
+_controller_generate_messages_check_deps_ImuData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _controller_generate_messages_check_deps_ImuData
+.PHONY : _controller_generate_messages_check_deps_ImuData
+
+# fast build rule for target.
+_controller_generate_messages_check_deps_ImuData/fast:
+	$(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/build
+.PHONY : _controller_generate_messages_check_deps_ImuData/fast
+
+#=============================================================================
 # Target rules for targets named _controller_generate_messages_check_deps_MotorCommands
 
 # Build rule for target.
@@ -489,6 +502,123 @@ std_msgs_generate_messages_py: cmake_check_build_system
 std_msgs_generate_messages_py/fast:
 	$(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named _imu_generate_messages_check_deps_ImuData
+
+# Build rule for target.
+_imu_generate_messages_check_deps_ImuData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _imu_generate_messages_check_deps_ImuData
+.PHONY : _imu_generate_messages_check_deps_ImuData
+
+# fast build rule for target.
+_imu_generate_messages_check_deps_ImuData/fast:
+	$(MAKE) -f imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/build.make imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/build
+.PHONY : _imu_generate_messages_check_deps_ImuData/fast
+
+#=============================================================================
+# Target rules for targets named imu
+
+# Build rule for target.
+imu: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu
+.PHONY : imu
+
+# fast build rule for target.
+imu/fast:
+	$(MAKE) -f imu/CMakeFiles/imu.dir/build.make imu/CMakeFiles/imu.dir/build
+.PHONY : imu/fast
+
+#=============================================================================
+# Target rules for targets named imu_gencpp
+
+# Build rule for target.
+imu_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu_gencpp
+.PHONY : imu_gencpp
+
+# fast build rule for target.
+imu_gencpp/fast:
+	$(MAKE) -f imu/CMakeFiles/imu_gencpp.dir/build.make imu/CMakeFiles/imu_gencpp.dir/build
+.PHONY : imu_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named imu_generate_messages
+
+# Build rule for target.
+imu_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu_generate_messages
+.PHONY : imu_generate_messages
+
+# fast build rule for target.
+imu_generate_messages/fast:
+	$(MAKE) -f imu/CMakeFiles/imu_generate_messages.dir/build.make imu/CMakeFiles/imu_generate_messages.dir/build
+.PHONY : imu_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named imu_generate_messages_cpp
+
+# Build rule for target.
+imu_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu_generate_messages_cpp
+.PHONY : imu_generate_messages_cpp
+
+# fast build rule for target.
+imu_generate_messages_cpp/fast:
+	$(MAKE) -f imu/CMakeFiles/imu_generate_messages_cpp.dir/build.make imu/CMakeFiles/imu_generate_messages_cpp.dir/build
+.PHONY : imu_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named imu_generate_messages_lisp
+
+# Build rule for target.
+imu_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu_generate_messages_lisp
+.PHONY : imu_generate_messages_lisp
+
+# fast build rule for target.
+imu_generate_messages_lisp/fast:
+	$(MAKE) -f imu/CMakeFiles/imu_generate_messages_lisp.dir/build.make imu/CMakeFiles/imu_generate_messages_lisp.dir/build
+.PHONY : imu_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named imu_generate_messages_py
+
+# Build rule for target.
+imu_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu_generate_messages_py
+.PHONY : imu_generate_messages_py
+
+# fast build rule for target.
+imu_generate_messages_py/fast:
+	$(MAKE) -f imu/CMakeFiles/imu_generate_messages_py.dir/build.make imu/CMakeFiles/imu_generate_messages_py.dir/build
+.PHONY : imu_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named imu_genlisp
+
+# Build rule for target.
+imu_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu_genlisp
+.PHONY : imu_genlisp
+
+# fast build rule for target.
+imu_genlisp/fast:
+	$(MAKE) -f imu/CMakeFiles/imu_genlisp.dir/build.make imu/CMakeFiles/imu_genlisp.dir/build
+.PHONY : imu_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named imu_genpy
+
+# Build rule for target.
+imu_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu_genpy
+.PHONY : imu_genpy
+
+# fast build rule for target.
+imu_genpy/fast:
+	$(MAKE) -f imu/CMakeFiles/imu_genpy.dir/build.make imu/CMakeFiles/imu_genpy.dir/build
+.PHONY : imu_genpy/fast
 
 #=============================================================================
 # Target rules for targets named _motors_generate_messages_check_deps_MotorCommands
@@ -744,6 +874,7 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... _controller_generate_messages_check_deps_ImuData"
 	@echo "... _controller_generate_messages_check_deps_MotorCommands"
 	@echo "... _controller_generate_messages_check_deps_SonarData"
 	@echo "... controller"
@@ -763,6 +894,15 @@ help:
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
+	@echo "... _imu_generate_messages_check_deps_ImuData"
+	@echo "... imu"
+	@echo "... imu_gencpp"
+	@echo "... imu_generate_messages"
+	@echo "... imu_generate_messages_cpp"
+	@echo "... imu_generate_messages_lisp"
+	@echo "... imu_generate_messages_py"
+	@echo "... imu_genlisp"
+	@echo "... imu_genpy"
 	@echo "... _motors_generate_messages_check_deps_MotorCommands"
 	@echo "... motor_test_1"
 	@echo "... motors_gencpp"

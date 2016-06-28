@@ -76,7 +76,7 @@ Sonar sonar_up("/dev/ttyUSB2");
 */
 
 std::string path = "/dev/ttyACM0";
-Imu imu(path, 26, .007);
+//Imu imu(path, 26, .007);
 
 int VICON_OR_JOY = 0; // 1 = VICON, 0 = JOYSTICK, 2 = both
 /*
@@ -110,19 +110,32 @@ void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg){
 	
 }
 
+void imuCallback(const controller::ImuData::ConstPtr& imuMsg){
+	imu_data.theta = imuMsg->theta;
+	imu_data.phi = imuMsg->phi;
+	imu_data.psi = imuMsg->psi;
+	imu_data.theta_dot = imuMsg->theta_dot;
+	imu_data.phi_dot = imuMsg -> phi_dot;
+	imu_data.psi_dot = imuMsg -> psi_dot;
+	printf("imu theta: %f \n",imu_data.theta);
+	
+}
+
 void control_stabilizer()
 {
 
 	
   printf("in control stabilizer \n");
-  State imu_data;
+  //State imu_data;
   
   ros::NodeHandle n;
   ros::NodeHandle nh;
   ros::Publisher cmd_pub;
   ros::Subscriber sonar_sub;
+  ros::Subscriber imu_sub;
   cmd_pub = n.advertise<controller::MotorCommands>("controller/cmd_motors",5); 
   sonar_sub = nh.subscribe<controller::SonarData>("sonar/sonar_data",5,sonarCallback); 
+  imu_sub = nh.subscribe<controller::ImuData>("imu/imu_data",5,imuCallback);
   Distances sonar_distances;
   Distances repulsive_forces;
   //weights is used for filter: current, one value ago, 2 values ago
@@ -174,7 +187,7 @@ while(SYSTEM_RUN && ros::ok())
 
 	//reads input from imu (in degrees), distributes into fields of imu_data
 	//get_imu_data returns 1 if read successful,< 0 if not. Reuse old values if not successful
-	int new_imu_data = imu.get_imu_calibrated_data(imu_data);
+	//int new_imu_data = imu.get_imu_calibrated_data(imu_data);
 	
 
 	//can switch between psi estimators
@@ -948,8 +961,8 @@ void init(void)
    //finds bias in gyro and checks for out of range imu values. returns 1 if bad imu values.
   // printf("finding gyro bias...\n");  
    //if(ncurse)refresh();
-   if(imu.calibrate() == 1) ;
-   else CONTROLLER_RUN = false;
+   //if(imu.calibrate() == 1) ;
+   //else CONTROLLER_RUN = false;
    //if(ncurse)refresh();
 	
    //printf("xbee.check_start_thrust() %i \n", xbee.check_start_thrust());

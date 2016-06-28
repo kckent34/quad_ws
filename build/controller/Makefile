@@ -153,6 +153,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/rule:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/rule
+.PHONY : controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/rule
+
+# Convenience name for target.
+_controller_generate_messages_check_deps_ImuData: controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/rule
+.PHONY : _controller_generate_messages_check_deps_ImuData
+
+# fast build rule for target.
+_controller_generate_messages_check_deps_ImuData/fast:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/build
+.PHONY : _controller_generate_messages_check_deps_ImuData/fast
+
+# Convenience name for target.
 controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/rule:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/rule
 .PHONY : controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/rule
@@ -592,6 +606,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... _controller_generate_messages_check_deps_ImuData"
 	@echo "... _controller_generate_messages_check_deps_MotorCommands"
 	@echo "... _controller_generate_messages_check_deps_SonarData"
 	@echo "... controller"

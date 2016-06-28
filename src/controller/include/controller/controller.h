@@ -40,6 +40,7 @@
 #include <ros/ros.h>
 #include "controller/MotorCommands.h"
 #include "controller/SonarData.h"
+#include "controller/ImuData.h"
 //time utility change
 
 #define diff time_diff
@@ -65,6 +66,7 @@ float delta_time = 500000; // .5 ms
 //The address of i2c: {between +X/+Y, -X/+Y, -X/-Y, +X/-Y}                                                                                                                           
 //int address[4] = {0x2b, 0x2a, 0x2c, 0x29};
 int address[4] = {0x2e, 0x30, 0x2d, 0x2f};// this is not correct
+State imu_data = {0};
 
 //function prototypes
 void *command_input(void *thread_id);
@@ -84,6 +86,7 @@ void log_data(const Distances& sonar_distances, const float& dt, const State_Err
 void display_info(const Distances& sonar_distances, const int succ_read,  const State& imu_data,  const State& imu_error, const State_Error& vicon_error, const Control_command& U,  const Angles& desired_angles, const int joystick_thrust, const int flight_mode, const Times& times, const Times& time_m);
 void configure_threads(void);
 void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg);
+void imuCallback(const controller::ImuData::ConstPtr& imuMsg);
 
 
 void set_timespec(timespec& x, timespec& y){
