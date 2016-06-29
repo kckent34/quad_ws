@@ -384,7 +384,7 @@ int main(int argc, char** argv)
 	ros::NodeHandle n;
 	ros::Publisher sonar_pub;
 	
-	sonar_pub = n.advertise<sonar::SonarData>("sonar/sonar_data",5); 
+	sonar_pub = n.advertise<sonar::SonarData>("sonar/sonar_data",1); 
 	
 	while(ros::ok()){
 	//get new sonar data 

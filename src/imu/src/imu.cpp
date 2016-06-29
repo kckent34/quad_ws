@@ -13,6 +13,7 @@ int Imu::get_imu_calibrated_data(State& imu_data){
 	//if successfuly recieved data, subtract off bias
         if(imu_data.succ_read==1)
         {
+        	
         		imu_data.phi_dot    = imu_data.phi_dot_cal;
                 imu_data.theta_dot = imu_data.theta_dot_cal;
                 imu_data.psi_dot   = imu_data.psi_dot_cal;
@@ -28,6 +29,8 @@ int Imu::get_imu_calibrated_data(State& imu_data){
                 imu_data.psi                  += - gyro_bias.psi;
                 imu_data.psi_gyro_integration += - gyro_bias.psi_dot*(this->dt); //may have to use pg object
 */  
+      } else {
+    	  printf("bad read\n");
       }
 
 	return imu_data.succ_read;
@@ -112,8 +115,9 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
      //CALIBRATED
 
  	imu_data.psi_contin      =  p.make_contin(imu_data.psi);
+ 	//printf("gyro_bias.psi = %f \n ", gyro_bias.psi);
 	imu_data.psi_contin_cal  =  imu_data.psi_contin - gyro_bias.psi;
-
+	printf("imu_data.psi_contin_cal = %f \n ", imu_data.psi_contin_cal);
 
 	imu_data.phi_dot_cal    =  imu_data.phi_dot    - gyro_bias.phi_dot;
 	imu_data.psi_dot_cal    =  imu_data.psi_dot    - gyro_bias.psi_dot;
@@ -126,6 +130,8 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
 	imu_data.psi_gyro_integration = scale_factor*(pg->integ_gyro(imu_data.psi_dot_cal));
 
 }
+
+
 
 int main(int argc, char** argv){
 
@@ -142,7 +148,7 @@ ros::init(argc,argv,"imu");
 ros::NodeHandle n;
 ros::Publisher imu_pub;
 
-imu_pub = n.advertise<imu::ImuData>("imu/imu_data",5); 
+imu_pub = n.advertise<imu::ImuData>("imu/imu_data",1); 
 
 while(ros::ok())
 {
@@ -150,7 +156,7 @@ while(ros::ok())
 	////int suc = imu.get_imu_calibrated_data(imu_data);
 	int suc = imu.get_imu_calibrated_data(imu_data);
 	
-	
+	printf("imu_data.psi = %f \n", imu_data.psi);
 	if(suc==1)
 	{       
 		imu::ImuData imuMsg;

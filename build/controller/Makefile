@@ -456,30 +456,6 @@ src/controller.cpp.s:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/controller.cpp.s
 .PHONY : src/controller.cpp.s
 
-src/imu.o: src/imu.cpp.o
-.PHONY : src/imu.o
-
-# target to build an object file
-src/imu.cpp.o:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/imu.cpp.o
-.PHONY : src/imu.cpp.o
-
-src/imu.i: src/imu.cpp.i
-.PHONY : src/imu.i
-
-# target to preprocess a source file
-src/imu.cpp.i:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/imu.cpp.i
-.PHONY : src/imu.cpp.i
-
-src/imu.s: src/imu.cpp.s
-.PHONY : src/imu.s
-
-# target to generate assembly for a file
-src/imu.cpp.s:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/imu.cpp.s
-.PHONY : src/imu.cpp.s
-
 src/logger.o: src/logger.cpp.o
 .PHONY : src/logger.o
 
@@ -503,30 +479,6 @@ src/logger.s: src/logger.cpp.s
 src/logger.cpp.s:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/logger.cpp.s
 .PHONY : src/logger.cpp.s
-
-src/sonar.o: src/sonar.cpp.o
-.PHONY : src/sonar.o
-
-# target to build an object file
-src/sonar.cpp.o:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/sonar.cpp.o
-.PHONY : src/sonar.cpp.o
-
-src/sonar.i: src/sonar.cpp.i
-.PHONY : src/sonar.i
-
-# target to preprocess a source file
-src/sonar.cpp.i:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/sonar.cpp.i
-.PHONY : src/sonar.cpp.i
-
-src/sonar.s: src/sonar.cpp.s
-.PHONY : src/sonar.s
-
-# target to generate assembly for a file
-src/sonar.cpp.s:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/sonar.cpp.s
-.PHONY : src/sonar.cpp.s
 
 src/utility.o: src/utility.cpp.o
 .PHONY : src/utility.o
@@ -636,15 +588,9 @@ help:
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"
-	@echo "... src/imu.o"
-	@echo "... src/imu.i"
-	@echo "... src/imu.s"
 	@echo "... src/logger.o"
 	@echo "... src/logger.i"
 	@echo "... src/logger.s"
-	@echo "... src/sonar.o"
-	@echo "... src/sonar.i"
-	@echo "... src/sonar.s"
 	@echo "... src/utility.o"
 	@echo "... src/utility.i"
 	@echo "... src/utility.s"

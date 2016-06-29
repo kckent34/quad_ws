@@ -6,11 +6,8 @@ controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/devel/include/controller/SonarData.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/controller.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/data_structs.h
-controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/imu.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/logger.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/motor_test_1.h
-controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/psi.h
-controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/sonar.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/utility.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/vicon.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/xbee1.h
@@ -72,22 +69,9 @@ controller/CMakeFiles/controller.dir/src/controller.cpp.o: /opt/ros/indigo/inclu
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /opt/ros/indigo/include/ros/wall_timer_options.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /opt/ros/indigo/include/rosconsole/macros_generated.h
 
-controller/CMakeFiles/controller.dir/src/imu.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/data_structs.h
-controller/CMakeFiles/controller.dir/src/imu.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/imu.h
-controller/CMakeFiles/controller.dir/src/imu.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/logger.h
-controller/CMakeFiles/controller.dir/src/imu.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/psi.h
-controller/CMakeFiles/controller.dir/src/imu.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/utility.h
-controller/CMakeFiles/controller.dir/src/imu.cpp.o: /home/odroid/quad_ws/src/controller/src/imu.cpp
-
 controller/CMakeFiles/controller.dir/src/logger.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/data_structs.h
 controller/CMakeFiles/controller.dir/src/logger.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/logger.h
 controller/CMakeFiles/controller.dir/src/logger.cpp.o: /home/odroid/quad_ws/src/controller/src/logger.cpp
-
-controller/CMakeFiles/controller.dir/src/sonar.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/data_structs.h
-controller/CMakeFiles/controller.dir/src/sonar.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/logger.h
-controller/CMakeFiles/controller.dir/src/sonar.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/sonar.h
-controller/CMakeFiles/controller.dir/src/sonar.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/utility.h
-controller/CMakeFiles/controller.dir/src/sonar.cpp.o: /home/odroid/quad_ws/src/controller/src/sonar.cpp
 
 controller/CMakeFiles/controller.dir/src/utility.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/utility.h
 controller/CMakeFiles/controller.dir/src/utility.cpp.o: /home/odroid/quad_ws/src/controller/src/utility.cpp

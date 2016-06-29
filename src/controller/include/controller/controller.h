@@ -11,9 +11,9 @@
 
 #include "vicon.h" // change to xbee.h
 #include "logger.h"
-#include "imu.h"
+//#include "imu.h"
 #include "utility.h"
-#include "sonar.h"
+//#include "sonar.h"
 #include "xbee1.h"
 
 #include <pthread.h>
@@ -66,7 +66,7 @@ float delta_time = 500000; // .5 ms
 //The address of i2c: {between +X/+Y, -X/+Y, -X/-Y, +X/-Y}                                                                                                                           
 //int address[4] = {0x2b, 0x2a, 0x2c, 0x29};
 int address[4] = {0x2e, 0x30, 0x2d, 0x2f};// this is not correct
-State imu_data = {0};
+State new_imu_data = {0};
 
 //function prototypes
 void *command_input(void *thread_id);
@@ -78,7 +78,8 @@ void stop_motors(void);
 void controller_on_off(bool& CONTROLLER_RUN);
 void display_on_off(bool& DISPLAY_RUN);
 void desired_angles_calc(Angles& desired_angles, const State_Error& error, const Gains& gains);
-State error_imu(const State& imu_data, const Angles& desired_angles);
+//State error_imu(const State& imu_data, const Angles& desired_angles);
+State error_imu(const Angles& desired_angles);
 Control_command thrust(const State& imu_error, const State_Error& vicon_error, const Control_command& U_trim, const int joystick_thrust, const Gains& gains);
 double* set_forces(const Control_command& U, double Ct, double d);
 Vicon vicon_velocity(Vicon& current, Vicon& old);

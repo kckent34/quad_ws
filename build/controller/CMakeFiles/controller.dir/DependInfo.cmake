@@ -5,9 +5,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/odroid/quad_ws/src/controller/src/controller.cpp" "/home/odroid/quad_ws/build/controller/CMakeFiles/controller.dir/src/controller.cpp.o"
-  "/home/odroid/quad_ws/src/controller/src/imu.cpp" "/home/odroid/quad_ws/build/controller/CMakeFiles/controller.dir/src/imu.cpp.o"
   "/home/odroid/quad_ws/src/controller/src/logger.cpp" "/home/odroid/quad_ws/build/controller/CMakeFiles/controller.dir/src/logger.cpp.o"
-  "/home/odroid/quad_ws/src/controller/src/sonar.cpp" "/home/odroid/quad_ws/build/controller/CMakeFiles/controller.dir/src/sonar.cpp.o"
   "/home/odroid/quad_ws/src/controller/src/utility.cpp" "/home/odroid/quad_ws/build/controller/CMakeFiles/controller.dir/src/utility.cpp.o"
   "/home/odroid/quad_ws/src/controller/src/vicon.cpp" "/home/odroid/quad_ws/build/controller/CMakeFiles/controller.dir/src/vicon.cpp.o"
   "/home/odroid/quad_ws/src/controller/src/xbee1.cpp" "/home/odroid/quad_ws/build/controller/CMakeFiles/controller.dir/src/xbee1.cpp.o"

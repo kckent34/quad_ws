@@ -19,16 +19,17 @@ motor::motor(uint8_t motor_id, uint8_t i2c_handle, uint8_t i2c_address)
 void motor::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
 	if(motorId_ == 0){
 	  //ROS_INFO("I recieved %f\n",cmdMsg->m0);
-		send_force_i2c(0,(uint16_t)cmdMsg->m0);
+		
+		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m0));
 	} else if(motorId_ == 1) {
 	  //ROS_INFO("I recieved %f\n",cmdMsg->m1);
-		send_force_i2c(0,(uint16_t)cmdMsg->m1);
+		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m1));
 	} else if(motorId_ == 2) {
 	  //	ROS_INFO("I recieved %f\n",cmdMsg->m2);
-		send_force_i2c(0,(uint16_t)cmdMsg->m2);
+		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m2));
 	} else if (motorId_ == 3){
 	  //	ROS_INFO("I recieved %f\n",cmdMsg->m3);
-		send_force_i2c(0,(uint16_t)cmdMsg->m3);
+		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m3));
 	} 
 	return;
 }

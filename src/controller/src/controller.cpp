@@ -12,6 +12,7 @@ Positions desired_positions = {0.0};
 Gains gains= {0.0};
 Control_command U_trim = {0};
 
+
 bool MAGN = false;
 bool SYSTEM_RUN = true;
 bool CONTROLLER_RUN = false;
@@ -20,7 +21,7 @@ bool XConfig = true;
 bool AUTO_HEIGHT = false;
 bool DISPLAY_RUN = false;
 bool LOG_DATA = false;
-bool DEBUG = true;
+bool DEBUG = false;
 
 int i2cHandle, usb_imu_ivn, usb_xbee;
 uint16_t display_count=0;
@@ -46,8 +47,9 @@ timespec s,f;
 timespec dd,tt;
 int port;
 
-std::string log_filename = "file.log";
+/*std::string log_filename = "file.log";
 logger logger(log_filename, 10, LOG_DATA);
+*/
 
 //create our motor objects - accesible from all threads
 //on this particular quadrotor the Body Frame is defined as follows:
@@ -75,7 +77,7 @@ Sonar sonar_down("/dev/ttyUSB6");
 Sonar sonar_up("/dev/ttyUSB2");
 */
 
-std::string path = "/dev/ttyACM0";
+//std::string path = "/dev/ttyACM0";
 //Imu imu(path, 26, .007);
 
 int VICON_OR_JOY = 0; // 1 = VICON, 0 = JOYSTICK, 2 = both
@@ -111,13 +113,14 @@ void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg){
 }
 
 void imuCallback(const controller::ImuData::ConstPtr& imuMsg){
-	imu_data.theta = imuMsg->theta;
-	imu_data.phi = imuMsg->phi;
-	imu_data.psi = imuMsg->psi;
-	imu_data.theta_dot = imuMsg->theta_dot;
-	imu_data.phi_dot = imuMsg -> phi_dot;
-	imu_data.psi_dot = imuMsg -> psi_dot;
-	printf("imu theta: %f \n",imu_data.theta);
+	new_imu_data.theta = imuMsg->theta;
+	new_imu_data.phi = imuMsg->phi;
+	
+	new_imu_data.psi = imuMsg->psi;
+	new_imu_data.theta_dot = imuMsg->theta_dot;
+	new_imu_data.phi_dot = imuMsg -> phi_dot;
+	new_imu_data.psi_dot = imuMsg -> psi_dot;
+	//printf("imu theta: %f \n",new_imu_data.theta);
 	
 }
 
@@ -133,9 +136,9 @@ void control_stabilizer()
   ros::Publisher cmd_pub;
   ros::Subscriber sonar_sub;
   ros::Subscriber imu_sub;
-  cmd_pub = n.advertise<controller::MotorCommands>("controller/cmd_motors",5); 
-  sonar_sub = nh.subscribe<controller::SonarData>("sonar/sonar_data",5,sonarCallback); 
-  imu_sub = nh.subscribe<controller::ImuData>("imu/imu_data",5,imuCallback);
+  cmd_pub = n.advertise<controller::MotorCommands>("controller/cmd_motors",1); 
+  sonar_sub = nh.subscribe<controller::SonarData>("sonar/sonar_data",1,sonarCallback); 
+  imu_sub = nh.subscribe<controller::ImuData>("imu/imu_data",1,imuCallback);
   Distances sonar_distances;
   Distances repulsive_forces;
   //weights is used for filter: current, one value ago, 2 values ago
@@ -149,7 +152,9 @@ void control_stabilizer()
   State imu_error = {0};
   Control_command U = {0};
   Angles desired_angles = {0};
-  uint8_t joystick_thrust , flight_mode = 0;
+  U_trim.thrust = 10;
+  uint8_t joystick_thrust = 0;
+  uint8_t flight_mode = 0;
   int succ_read;
   
   times.delta.tv_nsec = delta_time; //500000;
@@ -168,7 +173,7 @@ void control_stabilizer()
   
 
 	
-while(SYSTEM_RUN && ros::ok()) 
+while(ros::ok()) 
   {
 	//calc new times and delta
 	float dt = UTILITY::calcDt(dd,tt);    
@@ -191,7 +196,7 @@ while(SYSTEM_RUN && ros::ok())
 	
 
 	//can switch between psi estimators
-	if(!MAGN) imu_data.psi = imu_data.psi_gyro_integration;
+	if(!MAGN) new_imu_data.psi = new_imu_data.psi_gyro_integration;
 
 	if (VICON_OR_JOY == 1)
 	{
@@ -232,9 +237,12 @@ while(SYSTEM_RUN && ros::ok())
 
 	ros::spinOnce();
 	//calculate error from imu (in radians) between desired and measured state
-	State imu_error = error_imu(imu_data, desired_angles);
+	//State imu_error = error_imu(imu_data, desired_angles);
+	State imu_error = error_imu(desired_angles);
+	//printf("phi: %f , theta: %f , psi: %f \n", imu_error.phi,imu_error.theta,imu_error.psi);
 
 	//calculate thrust and desired acceleration
+
 	U = thrust(imu_error,vicon_error, U_trim, joystick_thrust, gains);
 	
 	controller::MotorCommands mcs;
@@ -265,7 +273,7 @@ while(SYSTEM_RUN && ros::ok())
 	cmd_pub.publish(mcs);
 	
 	
-
+/*
 	//printf("BOOOOL: %i\n", (LOG_DATA && ( (new_xbee_data>0) || (new_imu_data>0) || (new_sonar_data_1>0) || (new_sonar_data_2>0) || (new_sonar_data_3>0) || (new_sonar_data_4>0) ) ) );
 	if (LOG_DATA && ( (new_xbee_data>0) || (new_imu_data>0) || (new_sonar_data_x_pos>0) || (new_sonar_data_x_neg>0) || (new_sonar_data_y_pos>0) || (new_sonar_data_y_neg>0) ) || (new_sonar_data_down>0) )   
 	//if(true)
@@ -280,6 +288,8 @@ while(SYSTEM_RUN && ros::ok())
 	{ 
 	display_info(sonar_distances, new_xbee_data,  imu_data,  imu_error, vicon_error, U, desired_angles,joystick_thrust, flight_mode, times_display, time_m); 
 	}
+	
+	*/
 
  }
     printf("EXIT CONTROL_STABILIZER\n");
@@ -378,13 +388,15 @@ void display_on_off(bool& DISPLAY_RUN){
         DISPLAY_RUN = false;
     }
 }
-State error_imu(const State& imu_data, const Angles& desired_angles){
+//State error_imu(const State& imu_data, const Angles& desired_angles){
+State error_imu(const Angles& desired_angles){
     //calculate error in RADIANS
     //  xxx_d is xxx_desired.  imu outputs  degrees, we convert to radians with factor PI/180
     // 
+	//printf("phi: %f, theta: %f, psi: %f \n", imu_data.phi,imu_data.theta,imu_data.psi);
     State error;
-    error.phi    =  (desired_angles.phi   - imu_data.phi)      * PI/180;
-    error.theta  =  (desired_angles.theta - imu_data.theta)   * PI/180;
+    error.phi    =  (desired_angles.phi   - new_imu_data.phi)      * PI/180;
+    error.theta  =  (desired_angles.theta - new_imu_data.theta)   * PI/180;
 
     /*if (SONAR_BUBBLE_SIDES)
     {
@@ -392,15 +404,18 @@ State error_imu(const State& imu_data, const Angles& desired_angles){
          error.theta += repulsion_factor*(UTILITY::dist2ScaleInv(sonar_x_pos.returnLastDistance(), minDist, maxDist) - UTILITY::dist2ScaleInv(sonar_x_neg.returnLastDistance(), minDist, maxDist))  * PI/180;
     }
 	*/
-    error.psi       =     (-imu_data.psi  + desired_angles.psi) * PI/180;
+    //printf("desired_angles.psi = %f \n", desired_angles.psi);
+    printf("new_imu_data.psi = %f \n ", new_imu_data.psi);
+    error.psi       =     (-new_imu_data.psi  + desired_angles.psi) * PI/180;
+    //printf("error.psi = %f \n", error.psi);
     /*if(ncurse)clear();
     printf("error.psi(desired_psi - imu_psi) , %3.3f  imu_data.psi %3.3f, desired_angles.psi %3.3f\n", error.psi, imu_data.psi, desired_angles.psi);
     printf("error.theta(desired_psi - imu_theta) , %3.3f  imu_data.theta %3.3f, desired_angles.theta %3.3f\n", error.theta, imu_data.theta, desired_angles.theta);
     if(ncurse)refresh();
     */
-    error.phi_dot   =                           (-imu_data.phi_dot) * PI/180;
-    error.theta_dot =                         (-imu_data.theta_dot) * PI/180;
-    error.psi_dot   =                           (-imu_data.psi_dot) * PI/180;
+    error.phi_dot   =                           (-new_imu_data.phi_dot) * PI/180;
+    error.theta_dot =                         (-new_imu_data.theta_dot) * PI/180;
+    error.psi_dot   =                           (-new_imu_data.psi_dot) * PI/180;
     return error;
 }
 Control_command thrust(const State& imu_error, const State_Error& vicon_error, const Control_command& U_trim, const int joystick_thrust, const Gains& gains){
@@ -412,7 +427,9 @@ Control_command thrust(const State& imu_error, const State_Error& vicon_error, c
     	 U.thrust        =  calc_thrust + U_trim.thrust; }
     else{
 	//U.thrust        =  floor(joystick_thrust * (4) ) + U_trim.thrust; //thrust from joystick
+    //printf("trim thrust: %i", U_trim.thrust);
 	U.thrust        = 4 * joystick_thrust  + U_trim.thrust;
+	
     }
 
    /* if(SONAR_BUBBLE_DOWN)
@@ -425,7 +442,7 @@ Control_command thrust(const State& imu_error, const State_Error& vicon_error, c
         U.thrust -= repulsion_factor_up*UTILITY::dist2ScaleInv(sonar_up.returnLastDistance(), minDistUp, maxDistUp); 
     }
     */
- 	
+ 	//printf("imu_error.psidot = %f\n", imu_error.psi_dot);
     U.roll_acc  =  (gains.kp_phi   * imu_error.phi  )  +  (gains.kd_phi   * imu_error.phi_dot  )  + U_trim.roll_acc;
     U.pitch_acc =  (gains.kp_theta * imu_error.theta)  +  (gains.kd_theta * imu_error.theta_dot)  + U_trim.pitch_acc;
     U.yaw_acc   =  (gains.kp_psi   * imu_error.psi  )  +  (gains.kd_psi   * imu_error.psi_dot  )  + U_trim.yaw_acc;
@@ -451,10 +468,10 @@ double* set_forces(const Control_command& U, double Ct, double d){
         double force_3 = (U.thrust/4 - (U.yaw_acc /(4*Ct)) - (U.pitch_acc /  (2*d)));
         double force_4 = (U.thrust/4 + (U.yaw_acc /(4*Ct)) + (U.roll_acc  /  (2*d)));
         
-        force_1 = 950;
-        force_2 = 30;
-        force_3 = 20;
-        force_4 = 10;
+        //force_1 = 950;
+        //force_2 = 30;
+        //force_3 = 20;
+        //force_4 = 10;
        /* motor_1.set_force( round(force_1), CONTROLLER_RUN );
         motor_2.set_force( round(force_2), CONTROLLER_RUN );
         motor_3.set_force( round(force_3), CONTROLLER_RUN );
@@ -475,19 +492,19 @@ double* set_forces(const Control_command& U, double Ct, double d){
         double force_2 = (U.thrust/4 - (U.roll_acc/(2*d)))  ;
         double force_3 = (U.thrust/4 - (U.pitch_acc/(2*d))); 
         double force_4 = (U.thrust/4 + (U.roll_acc/(2*d)))  ; 
-        
+       // printf("f1: %f , f2 %f, f3: %f , f4: %f \n", force_1,force_2,force_3,force_4);
         double x_param = sqrt(2)/2;
-        
+       // printf("yaw_acc: %f \n", U.yaw_acc/(4*Ct));
         double x1 = x_param * (force_1 + force_2)-(U.yaw_acc/(4*Ct));
         double x2 = x_param * (force_2 + force_3)+(U.yaw_acc/(4*Ct));
         double x3 = x_param * (force_3 + force_4)-(U.yaw_acc/(4*Ct));
         double x4 = x_param * (force_4 + force_1)+(U.yaw_acc/(4*Ct));
         
-        x1 = 950;
-        x2 = 30;
-        x3 = 20;
-        x4 = 10;
-            
+        //x1 = 950;
+        //x2 = 30;
+        //x3 = 20;
+        //x4 = 10;
+        
        /* motor_1.set_force( round(x1), CONTROLLER_RUN );
         motor_2.set_force( round(x2), CONTROLLER_RUN );
         motor_3.set_force( round(x3), CONTROLLER_RUN );
@@ -1002,7 +1019,7 @@ int main(int argc, char** argv)
 	
   //configure_threads();
 
-  usleep(onesecond*2);
+  //usleep(onesecond*2);
   //if(ncurse)clear();
   //if(ncurse) endwin();
   return 0;

@@ -1,7 +1,5 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/controller.dir/src/controller.cpp.o"
-  "CMakeFiles/controller.dir/src/imu.cpp.o"
-  "CMakeFiles/controller.dir/src/sonar.cpp.o"
   "CMakeFiles/controller.dir/src/xbee1.cpp.o"
   "CMakeFiles/controller.dir/src/vicon.cpp.o"
   "CMakeFiles/controller.dir/src/logger.cpp.o"

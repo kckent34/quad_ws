@@ -188,6 +188,6 @@ include_directories(include/controller ${catkin_INCLUDE_DIRS})
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 #file(GLOB SOURCES "src/*.cpp")
-add_executable(controller src/controller.cpp src/imu.cpp src/sonar.cpp src/xbee1.cpp src/vicon.cpp src/logger.cpp src/utility.cpp)
+add_executable(controller src/controller.cpp src/xbee1.cpp src/vicon.cpp src/logger.cpp src/utility.cpp)
 target_link_libraries(controller ${catkin_LIBRARIES})
 add_dependencies(controller controller_generate_messages_cpp )

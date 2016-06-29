@@ -2,27 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="calibrate" key="selection"/>
+		<item value="imu_data" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="calibrate"/>
-			<item value="wrong"/>
 			<item value="imu_data"/>
+			<item value="error_imu"/>
 			<item value="imu"/>
-			<item value="spin"/>
-			<item value="last_dis"/>
+			<item value="controller"/>
+			<item value="make_contin"/>
+			<item value="make"/>
+			<item value="make_"/>
+			<item value="unpack_data"/>
 		</list>
 		<list key="replacehistory">
+			<item value="new_imu_data"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="312" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value="438" key="DIALOG_HEIGHT"/>
-		<item value="1185" key="DIALOG_X_ORIGIN"/>
-		<item value="207" key="DIALOG_Y_ORIGIN"/>
+		<item value="-48" key="DIALOG_X_ORIGIN"/>
+		<item value="132" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
