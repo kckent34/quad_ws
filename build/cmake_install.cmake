@@ -121,6 +121,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   INCLUDE("/home/odroid/quad_ws/build/imu/cmake_install.cmake")
   INCLUDE("/home/odroid/quad_ws/build/motors/cmake_install.cmake")
   INCLUDE("/home/odroid/quad_ws/build/sonar/cmake_install.cmake")
+  INCLUDE("/home/odroid/quad_ws/build/xbee/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

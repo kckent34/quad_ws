@@ -1,2 +1,2 @@
-controller:imu:motors:sonar
+controller:imu:motors:sonar:xbee
 -DCATKIN_DEVEL_PREFIX=/home/odroid/quad_ws/devel -DCMAKE_INSTALL_PREFIX=/home/odroid/quad_ws/install -G Unix Makefiles

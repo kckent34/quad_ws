@@ -854,6 +854,123 @@ sonar_genpy/fast:
 	$(MAKE) -f sonar/CMakeFiles/sonar_genpy.dir/build.make sonar/CMakeFiles/sonar_genpy.dir/build
 .PHONY : sonar_genpy/fast
 
+#=============================================================================
+# Target rules for targets named _xbee_generate_messages_check_deps_XbeeData
+
+# Build rule for target.
+_xbee_generate_messages_check_deps_XbeeData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xbee_generate_messages_check_deps_XbeeData
+.PHONY : _xbee_generate_messages_check_deps_XbeeData
+
+# fast build rule for target.
+_xbee_generate_messages_check_deps_XbeeData/fast:
+	$(MAKE) -f xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/build.make xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/build
+.PHONY : _xbee_generate_messages_check_deps_XbeeData/fast
+
+#=============================================================================
+# Target rules for targets named xbee
+
+# Build rule for target.
+xbee: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbee
+.PHONY : xbee
+
+# fast build rule for target.
+xbee/fast:
+	$(MAKE) -f xbee/CMakeFiles/xbee.dir/build.make xbee/CMakeFiles/xbee.dir/build
+.PHONY : xbee/fast
+
+#=============================================================================
+# Target rules for targets named xbee_gencpp
+
+# Build rule for target.
+xbee_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbee_gencpp
+.PHONY : xbee_gencpp
+
+# fast build rule for target.
+xbee_gencpp/fast:
+	$(MAKE) -f xbee/CMakeFiles/xbee_gencpp.dir/build.make xbee/CMakeFiles/xbee_gencpp.dir/build
+.PHONY : xbee_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named xbee_generate_messages
+
+# Build rule for target.
+xbee_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbee_generate_messages
+.PHONY : xbee_generate_messages
+
+# fast build rule for target.
+xbee_generate_messages/fast:
+	$(MAKE) -f xbee/CMakeFiles/xbee_generate_messages.dir/build.make xbee/CMakeFiles/xbee_generate_messages.dir/build
+.PHONY : xbee_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named xbee_generate_messages_cpp
+
+# Build rule for target.
+xbee_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbee_generate_messages_cpp
+.PHONY : xbee_generate_messages_cpp
+
+# fast build rule for target.
+xbee_generate_messages_cpp/fast:
+	$(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_cpp.dir/build.make xbee/CMakeFiles/xbee_generate_messages_cpp.dir/build
+.PHONY : xbee_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named xbee_generate_messages_lisp
+
+# Build rule for target.
+xbee_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbee_generate_messages_lisp
+.PHONY : xbee_generate_messages_lisp
+
+# fast build rule for target.
+xbee_generate_messages_lisp/fast:
+	$(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_lisp.dir/build.make xbee/CMakeFiles/xbee_generate_messages_lisp.dir/build
+.PHONY : xbee_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named xbee_generate_messages_py
+
+# Build rule for target.
+xbee_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbee_generate_messages_py
+.PHONY : xbee_generate_messages_py
+
+# fast build rule for target.
+xbee_generate_messages_py/fast:
+	$(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_py.dir/build.make xbee/CMakeFiles/xbee_generate_messages_py.dir/build
+.PHONY : xbee_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named xbee_genlisp
+
+# Build rule for target.
+xbee_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbee_genlisp
+.PHONY : xbee_genlisp
+
+# fast build rule for target.
+xbee_genlisp/fast:
+	$(MAKE) -f xbee/CMakeFiles/xbee_genlisp.dir/build.make xbee/CMakeFiles/xbee_genlisp.dir/build
+.PHONY : xbee_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named xbee_genpy
+
+# Build rule for target.
+xbee_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xbee_genpy
+.PHONY : xbee_genpy
+
+# fast build rule for target.
+xbee_genpy/fast:
+	$(MAKE) -f xbee/CMakeFiles/xbee_genpy.dir/build.make xbee/CMakeFiles/xbee_genpy.dir/build
+.PHONY : xbee_genpy/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -921,6 +1038,15 @@ help:
 	@echo "... sonar_generate_messages_py"
 	@echo "... sonar_genlisp"
 	@echo "... sonar_genpy"
+	@echo "... _xbee_generate_messages_check_deps_XbeeData"
+	@echo "... xbee"
+	@echo "... xbee_gencpp"
+	@echo "... xbee_generate_messages"
+	@echo "... xbee_generate_messages_cpp"
+	@echo "... xbee_generate_messages_lisp"
+	@echo "... xbee_generate_messages_py"
+	@echo "... xbee_genlisp"
+	@echo "... xbee_genpy"
 .PHONY : help
 
 

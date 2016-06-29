@@ -7,6 +7,12 @@
 # new environment variables
 
 # modified environment variables
-export LD_LIBRARY_PATH="/home/odroid/quad_ws/devel/lib/arm-linux-gnueabihf:/home/odroid/catkin_ws/devel/lib/arm-linux-gnueabihf:/opt/ros/indigo/lib/arm-linux-gnueabihf:/home/odroid/quad_ws/devel/lib:/home/odroid/catkin_ws/devel/lib:/opt/ros/indigo/lib:./../lib"
-export PKG_CONFIG_PATH="/home/odroid/quad_ws/devel/lib/arm-linux-gnueabihf/pkgconfig:/home/odroid/catkin_ws/devel/lib/arm-linux-gnueabihf/pkgconfig:/opt/ros/indigo/lib/arm-linux-gnueabihf/pkgconfig:/home/odroid/quad_ws/devel/lib/pkgconfig:/home/odroid/catkin_ws/devel/lib/pkgconfig:/opt/ros/indigo/lib/pkgconfig"
+export CMAKE_PREFIX_PATH="/home/odroid/quad_ws/devel:$CMAKE_PREFIX_PATH"
+export CPATH="/home/odroid/quad_ws/devel/include:$CPATH"
+export LD_LIBRARY_PATH="/home/odroid/quad_ws/devel/lib:/home/odroid/quad_ws/devel/lib/arm-linux-gnueabihf:$LD_LIBRARY_PATH"
+export PATH="/home/odroid/quad_ws/devel/bin:$PATH"
+export PKG_CONFIG_PATH="/home/odroid/quad_ws/devel/lib/pkgconfig:/home/odroid/quad_ws/devel/lib/arm-linux-gnueabihf/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/odroid/quad_ws/build"
+export PYTHONPATH="/home/odroid/quad_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/odroid/quad_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/odroid/quad_ws/src:$ROS_PACKAGE_PATH"
