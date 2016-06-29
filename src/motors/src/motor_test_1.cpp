@@ -3,8 +3,11 @@
 //need sudo to run exec
 //#define MOTOR_PATH "/dev/i2c-10"  //may have to do this instead of passing in!
 
-#define MOTORS_OFF 854
+#define MOTORS_OFF 870
 #define MOTORS_FULL 1550
+
+
+motor::motor(){};
 
 motor::motor(uint8_t motor_id, uint8_t i2c_handle, uint8_t i2c_address)
 {
@@ -13,13 +16,13 @@ motor::motor(uint8_t motor_id, uint8_t i2c_handle, uint8_t i2c_address)
     i2cHandle_ = i2c_handle;
     i2cAddress_ = i2c_address;
     send_force_i2c(0,MOTORS_OFF);
-    cmd_sub = n.subscribe<controller::MotorCommands>("/controller/cmd_motors",1,&motor::cmdCallBack,this);
+    //cmd_sub = n.subscribe<controller::MotorCommands>("/controller/cmd_motors",1,&motor::cmdCallBack,this);
+    
 }
 
-void motor::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
+/*void motor::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
 	if(motorId_ == 0){
 	  //ROS_INFO("I recieved %f\n",cmdMsg->m0);
-		
 		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m0));
 	} else if(motorId_ == 1) {
 	  //ROS_INFO("I recieved %f\n",cmdMsg->m1);
@@ -32,7 +35,7 @@ void motor::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
 		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m3));
 	} 
 	return;
-}
+}*/
 void motor::write8(uint8_t addr, uint8_t d, uint8_t handle)
 {
 
@@ -197,10 +200,42 @@ float motor::timeSinceLastRead(void)
 
 //map values from 0-255 to 900-1550 returns a uint16_t to be passed to sned_motor_data parameter "on"
 
-uint16_t motor::map_values(uint16_t force){
-  return (887 + ((1550-887)*force)/255);
+uint16_t motor::map_values(double force){
+  return (uint16_t)round((887 + ((1550-887)*force)/255));
 }
 
+
+Motors::Motors(uint8_t i2c_handle, uint8_t i2c_address){
+	m0 = motor(0,i2c_handle,i2c_address);
+	m1 = motor(1,i2c_handle,i2c_address);
+	m2 = motor(2,i2c_handle,i2c_address);
+	m3 = motor(3,i2c_handle,i2c_address);
+	cmdSub_ = n.subscribe<controller::MotorCommands>("/controller/cmd_motors",1,&Motors::cmdCallBack,this);
+	ROS_INFO("successfully created Motors\n");
+}
+
+void Motors::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
+	/*if(motorId_ == 0){
+	  //ROS_INFO("I recieved %f\n",cmdMsg->m0);
+		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m0));
+	} else if(motorId_ == 1) {
+	  //ROS_INFO("I recieved %f\n",cmdMsg->m1);
+		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m1));
+	} else if(motorId_ == 2) {
+	  //	ROS_INFO("I recieved %f\n",cmdMsg->m2);
+		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m2));
+	} else if (motorId_ == 3){
+	  //	ROS_INFO("I recieved %f\n",cmdMsg->m3);
+		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m3));
+	} 
+	return; */
+	
+	m0.send_force_i2c(0,motor::map_values(cmdMsg->m0));
+	m1.send_force_i2c(0,motor::map_values(cmdMsg->m1));
+	m2.send_force_i2c(0,motor::map_values(cmdMsg->m2));
+	m3.send_force_i2c(0,motor::map_values(cmdMsg->m3));
+	return;
+}
 
 int main(int argc, char** argv)
 {
@@ -211,55 +246,35 @@ int main(int argc, char** argv)
   
   //init ros 
   ros::init(argc,argv,"motors");
-  motor motor0 = motor(0,handle,0x40);
-  motor motor1 = motor(1,handle,0x40);
-  motor motor2 = motor(2,handle,0x40);
-  motor motor3 = motor(3,handle,0x40);
-  while(ros::ok()){
-  int speed0;
 
-  timespec oldT, newT;
-  float loop_dt;
   
-  ros::spin();
+  Motors motors = Motors(handle,0x40);
+  
+  int motors_off;
+  //motors.n.setParam("all_off",0);
+  
+  while(ros::ok())
+  {
+	 /* motors.n.getParam("all_off",motors_off);
+	  if(motors_off == 1){
+		  motors.m0.send_force_i2c(0,MOTORS_OFF);
+		  motors.m1.send_force_i2c(0,MOTORS_OFF);
+		  motors.m2.send_force_i2c(0,MOTORS_OFF);
+		  motors.m3.send_force_i2c(0,MOTORS_OFF);
+		  while(motors_off == 1){ motors.n.getParam("all_off",motors_off); }
+  
+	  }*/
+	  
+	  ros::spinOnce();
   }
   
- 
+  ROS_INFO("EXITING MOTOR NODE AND SHUTTING OFF MOTORS\n");
+  motors.m0.send_force_i2c(0,MOTORS_OFF);
+  motors.m1.send_force_i2c(0,MOTORS_OFF);
+  motors.m2.send_force_i2c(0,MOTORS_OFF);
+  motors.m3.send_force_i2c(0,MOTORS_OFF);
   
   
-  
-  
-  /* while(1)
-{
-	  //cout << "enter speed for motor2" << endl;
-	  //cin >> speed0;
-	  //motor1.send_motor_data();
-	  //motor1.send_force_i2c(0,700); //speed0);
-	  //cout << "frequency: " << 1/motor1.getDt()  << "time since last read: " << motor1.timeSinceLastRead( )<< endl;
-	  clock_gettime(CLOCK_REALTIME,&oldT);
-	  int returnVal;
-	  uint16_t m0Val = motor::map_values(0);
-	  printf("%i \n ",m0Val);
-	  returnVal =  motor0.send_motor_data(0,m0Val);
-	  returnVal =  motor1.send_motor_data(0,705);
-	  returnVal =  motor2.send_motor_data(0,705);
-	  returnVal =  motor3.send_motor_data(0,705);
-	  // motor1.send_force_i2c(0,700);
-	  // motor2.send_force_i2c(0,700);
-	  // motor3.send_force_i2c(0,700);
-	  
-	  
-	  clock_gettime(CLOCK_REALTIME,&newT);
-	  //int returnVal = 1;
-	  loop_dt = UTILITY::calcDt(oldT, newT);
-
-	  //printf("returnVal: %i, loop frequency: %f, read frequency: %f, time since last read: %f  \n\n", returnVal, 1/loop_dt,1/motor1.getDt(), motor1.timeSinceLastRead());
-	  if(returnVal == 0){
-	    printf("not able to write");
-	    break;
-	  }
-	  */
-	
 
  }
  

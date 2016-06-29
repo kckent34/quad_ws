@@ -117,7 +117,7 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
  	imu_data.psi_contin      =  p.make_contin(imu_data.psi);
  	//printf("gyro_bias.psi = %f \n ", gyro_bias.psi);
 	imu_data.psi_contin_cal  =  imu_data.psi_contin - gyro_bias.psi;
-	printf("imu_data.psi_contin_cal = %f \n ", imu_data.psi_contin_cal);
+	//printf("imu_data.psi_contin_cal = %f \n ", imu_data.psi_contin_cal);
 
 	imu_data.phi_dot_cal    =  imu_data.phi_dot    - gyro_bias.phi_dot;
 	imu_data.psi_dot_cal    =  imu_data.psi_dot    - gyro_bias.psi_dot;
@@ -156,9 +156,9 @@ while(ros::ok())
 	////int suc = imu.get_imu_calibrated_data(imu_data);
 	int suc = imu.get_imu_calibrated_data(imu_data);
 	
-	printf("imu_data.psi = %f \n", imu_data.psi);
 	if(suc==1)
 	{       
+		//printf("imu_data.psi = %f \n", imu_data.psi);
 		imu::ImuData imuMsg;
 		imuMsg.phi = imu_data.phi;
 		imuMsg.theta = imu_data.theta;

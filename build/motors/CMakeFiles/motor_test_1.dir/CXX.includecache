@@ -29,6 +29,8 @@ sys/ioctl.h
 -
 iostream
 -
+sstream
+-
 fcntl.h
 -
 linux/i2c.h

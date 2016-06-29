@@ -131,12 +131,12 @@ void control_stabilizer()
   printf("in control stabilizer \n");
   //State imu_data;
   
-  ros::NodeHandle n;
+  //ros::NodeHandle n;
   ros::NodeHandle nh;
   ros::Publisher cmd_pub;
   ros::Subscriber sonar_sub;
   ros::Subscriber imu_sub;
-  cmd_pub = n.advertise<controller::MotorCommands>("controller/cmd_motors",1); 
+  cmd_pub = nh.advertise<controller::MotorCommands>("controller/cmd_motors",1); 
   sonar_sub = nh.subscribe<controller::SonarData>("sonar/sonar_data",1,sonarCallback); 
   imu_sub = nh.subscribe<controller::ImuData>("imu/imu_data",1,imuCallback);
   Distances sonar_distances;
@@ -153,22 +153,23 @@ void control_stabilizer()
   Control_command U = {0};
   Angles desired_angles = {0};
   U_trim.thrust = 10;
-  uint8_t joystick_thrust = 0;
+  uint8_t joystick_thrust = 20;
   uint8_t flight_mode = 0;
   int succ_read;
   
   times.delta.tv_nsec = delta_time; //500000;
 
-  clock_gettime(CLOCK_REALTIME,&s);
+  /*clock_gettime(CLOCK_REALTIME,&s);
   clock_gettime(CLOCK_REALTIME,&f);
   clock_gettime(CLOCK_REALTIME,&dd);
   clock_gettime(CLOCK_REALTIME,&tt);
+  */
 
   if(DEBUG){
-    n.setParam("m0_cmd",700);
-    n.setParam("m1_cmd",700);
-    n.setParam("m2_cmd",700);
-    n.setParam("m3_cmd",700);
+    nh.setParam("m0_cmd",700);
+    nh.setParam("m1_cmd",700);
+    nh.setParam("m2_cmd",700);
+    nh.setParam("m3_cmd",700);
   } 
   
 
@@ -178,7 +179,6 @@ while(ros::ok())
 	//calc new times and delta
 	float dt = UTILITY::calcDt(dd,tt);    
 	//time_calc(times_display);
-
 	//Uncomment after adding sonar 
 
 	/*
@@ -258,10 +258,10 @@ while(ros::ok())
 	  
 	} else {
 	  double m0c, m1c, m2c,m3c;
-	  n.getParam("m0_cmd",m0c);
-	  n.getParam("m1_cmd",m1c);
-	  n.getParam("m2_cmd",m2c);
-	  n.getParam("m3_cmd",m3c);
+	  nh.getParam("m0_cmd",m0c);
+	  nh.getParam("m1_cmd",m1c);
+	  nh.getParam("m2_cmd",m2c);
+	  nh.getParam("m3_cmd",m3c);
 
 	  mcs.m0 = m0c;
 	  mcs.m1 = m1c;
@@ -405,7 +405,7 @@ State error_imu(const Angles& desired_angles){
     }
 	*/
     //printf("desired_angles.psi = %f \n", desired_angles.psi);
-    printf("new_imu_data.psi = %f \n ", new_imu_data.psi);
+    //printf("new_imu_data.psi = %f \n ", new_imu_data.psi);
     error.psi       =     (-new_imu_data.psi  + desired_angles.psi) * PI/180;
     //printf("error.psi = %f \n", error.psi);
     /*if(ncurse)clear();
