@@ -29,7 +29,8 @@ struct ImuData_
     , psi(0.0)
     , theta_dot(0.0)
     , phi_dot(0.0)
-    , psi_dot(0.0)  {
+    , psi_dot(0.0)
+    , psi_gyro_integration(0.0)  {
     }
   ImuData_(const ContainerAllocator& _alloc)
     : theta(0.0)
@@ -37,28 +38,32 @@ struct ImuData_
     , psi(0.0)
     , theta_dot(0.0)
     , phi_dot(0.0)
-    , psi_dot(0.0)  {
+    , psi_dot(0.0)
+    , psi_gyro_integration(0.0)  {
     }
 
 
 
-   typedef double _theta_type;
+   typedef float _theta_type;
   _theta_type theta;
 
-   typedef double _phi_type;
+   typedef float _phi_type;
   _phi_type phi;
 
-   typedef double _psi_type;
+   typedef float _psi_type;
   _psi_type psi;
 
-   typedef double _theta_dot_type;
+   typedef float _theta_dot_type;
   _theta_dot_type theta_dot;
 
-   typedef double _phi_dot_type;
+   typedef float _phi_dot_type;
   _phi_dot_type phi_dot;
 
-   typedef double _psi_dot_type;
+   typedef float _psi_dot_type;
   _psi_dot_type psi_dot;
+
+   typedef float _psi_gyro_integration_type;
+  _psi_gyro_integration_type psi_gyro_integration;
 
 
 
@@ -137,12 +142,12 @@ struct MD5Sum< ::imu::ImuData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "6d12c1b1418f0fcd269a1dafcbda678f";
+    return "1e67f9547d3aff4c172378fd0c9696f9";
   }
 
   static const char* value(const ::imu::ImuData_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x6d12c1b1418f0fcdULL;
-  static const uint64_t static_value2 = 0x269a1dafcbda678fULL;
+  static const uint64_t static_value1 = 0x1e67f9547d3aff4cULL;
+  static const uint64_t static_value2 = 0x172378fd0c9696f9ULL;
 };
 
 template<class ContainerAllocator>
@@ -161,12 +166,13 @@ struct Definition< ::imu::ImuData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 theta\n\
-float64 phi\n\
-float64 psi\n\
-float64 theta_dot\n\
-float64 phi_dot\n\
-float64 psi_dot\n\
+    return "float32 theta\n\
+float32 phi\n\
+float32 psi\n\
+float32 theta_dot\n\
+float32 phi_dot\n\
+float32 psi_dot\n\
+float32 psi_gyro_integration\n\
 ";
   }
 
@@ -191,6 +197,7 @@ namespace serialization
       stream.next(m.theta_dot);
       stream.next(m.phi_dot);
       stream.next(m.psi_dot);
+      stream.next(m.psi_gyro_integration);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -210,17 +217,19 @@ struct Printer< ::imu::ImuData_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::imu::ImuData_<ContainerAllocator>& v)
   {
     s << indent << "theta: ";
-    Printer<double>::stream(s, indent + "  ", v.theta);
+    Printer<float>::stream(s, indent + "  ", v.theta);
     s << indent << "phi: ";
-    Printer<double>::stream(s, indent + "  ", v.phi);
+    Printer<float>::stream(s, indent + "  ", v.phi);
     s << indent << "psi: ";
-    Printer<double>::stream(s, indent + "  ", v.psi);
+    Printer<float>::stream(s, indent + "  ", v.psi);
     s << indent << "theta_dot: ";
-    Printer<double>::stream(s, indent + "  ", v.theta_dot);
+    Printer<float>::stream(s, indent + "  ", v.theta_dot);
     s << indent << "phi_dot: ";
-    Printer<double>::stream(s, indent + "  ", v.phi_dot);
+    Printer<float>::stream(s, indent + "  ", v.phi_dot);
     s << indent << "psi_dot: ";
-    Printer<double>::stream(s, indent + "  ", v.psi_dot);
+    Printer<float>::stream(s, indent + "  ", v.psi_dot);
+    s << indent << "psi_gyro_integration: ";
+    Printer<float>::stream(s, indent + "  ", v.psi_gyro_integration);
   }
 };
 

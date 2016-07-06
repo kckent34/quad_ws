@@ -11,4 +11,6 @@
           PHI_DOT
           PSI_DOT-VAL
           PSI_DOT
+          PSI_GYRO_INTEGRATION-VAL
+          PSI_GYRO_INTEGRATION
 ))

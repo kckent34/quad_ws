@@ -50,6 +50,7 @@ include controller/CMakeFiles/controller_generate_messages_py.dir/progress.make
 
 controller/CMakeFiles/controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_SonarData.py
 controller/CMakeFiles/controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_MotorCommands.py
+controller/CMakeFiles/controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_XbeeData.py
 controller/CMakeFiles/controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_ImuData.py
 controller/CMakeFiles/controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/__init__.py
 
@@ -65,23 +66,31 @@ controller/CMakeFiles/controller_generate_messages_py: /home/odroid/quad_ws/deve
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG controller/MotorCommands"
 	cd /home/odroid/quad_ws/build/controller && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/odroid/quad_ws/src/controller/msg/MotorCommands.msg -Icontroller:/home/odroid/quad_ws/src/controller/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p controller -o /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg
 
+/home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_XbeeData.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
+/home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_XbeeData.py: /home/odroid/quad_ws/src/controller/msg/XbeeData.msg
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG controller/XbeeData"
+	cd /home/odroid/quad_ws/build/controller && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/odroid/quad_ws/src/controller/msg/XbeeData.msg -Icontroller:/home/odroid/quad_ws/src/controller/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p controller -o /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg
+
 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_ImuData.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_ImuData.py: /home/odroid/quad_ws/src/controller/msg/ImuData.msg
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python from MSG controller/ImuData"
 	cd /home/odroid/quad_ws/build/controller && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/odroid/quad_ws/src/controller/msg/ImuData.msg -Icontroller:/home/odroid/quad_ws/src/controller/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p controller -o /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg
 
 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/__init__.py: /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py
 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/__init__.py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_SonarData.py
 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/__init__.py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_MotorCommands.py
+/home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/__init__.py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_XbeeData.py
 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/__init__.py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_ImuData.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Python msg __init__.py for controller"
 	cd /home/odroid/quad_ws/build/controller && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg --initpy
 
 controller_generate_messages_py: controller/CMakeFiles/controller_generate_messages_py
 controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_SonarData.py
 controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_MotorCommands.py
+controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_XbeeData.py
 controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_ImuData.py
 controller_generate_messages_py: /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/__init__.py
 controller_generate_messages_py: controller/CMakeFiles/controller_generate_messages_py.dir/build.make

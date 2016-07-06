@@ -6,16 +6,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
-		<item value="false" key="wholeword"/>
+		<item value="true" key="wholeword"/>
 		<list key="findhistory">
 			<item value="imu_data"/>
+			<item value="desired_angles"/>
+			<item value="unpack"/>
 			<item value="error_imu"/>
 			<item value="imu"/>
 			<item value="controller"/>
 			<item value="make_contin"/>
 			<item value="make"/>
-			<item value="make_"/>
-			<item value="unpack_data"/>
 		</list>
 		<list key="replacehistory">
 			<item value="new_imu_data"/>
@@ -25,7 +25,7 @@
 		<item value="312" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value="438" key="DIALOG_HEIGHT"/>
-		<item value="-48" key="DIALOG_X_ORIGIN"/>
-		<item value="132" key="DIALOG_Y_ORIGIN"/>
+		<item value="904" key="DIALOG_X_ORIGIN"/>
+		<item value="188" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

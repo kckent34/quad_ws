@@ -283,6 +283,19 @@ _controller_generate_messages_check_deps_SonarData/fast:
 .PHONY : _controller_generate_messages_check_deps_SonarData/fast
 
 #=============================================================================
+# Target rules for targets named _controller_generate_messages_check_deps_XbeeData
+
+# Build rule for target.
+_controller_generate_messages_check_deps_XbeeData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _controller_generate_messages_check_deps_XbeeData
+.PHONY : _controller_generate_messages_check_deps_XbeeData
+
+# fast build rule for target.
+_controller_generate_messages_check_deps_XbeeData/fast:
+	$(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/build
+.PHONY : _controller_generate_messages_check_deps_XbeeData/fast
+
+#=============================================================================
 # Target rules for targets named controller
 
 # Build rule for target.
@@ -994,6 +1007,7 @@ help:
 	@echo "... _controller_generate_messages_check_deps_ImuData"
 	@echo "... _controller_generate_messages_check_deps_MotorCommands"
 	@echo "... _controller_generate_messages_check_deps_SonarData"
+	@echo "... _controller_generate_messages_check_deps_XbeeData"
 	@echo "... controller"
 	@echo "... controller_gencpp"
 	@echo "... controller_generate_messages"

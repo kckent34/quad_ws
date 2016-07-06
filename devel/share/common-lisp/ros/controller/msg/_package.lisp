@@ -7,5 +7,7 @@
    "SONARDATA"
    "<MOTORCOMMANDS>"
    "MOTORCOMMANDS"
+   "<XBEEDATA>"
+   "XBEEDATA"
   ))
 

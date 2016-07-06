@@ -12,6 +12,12 @@ Positions desired_positions = {0.0};
 Gains gains= {0.0};
 Control_command U_trim = {0};
 
+State imu_error = {0};
+Control_command U = {0};
+Angles desired_angles = {0};
+uint8_t joystick_thrust = 0;
+uint8_t flight_mode = 0;
+
 
 bool MAGN = false;
 bool SYSTEM_RUN = true;
@@ -120,8 +126,16 @@ void imuCallback(const controller::ImuData::ConstPtr& imuMsg){
 	new_imu_data.theta_dot = imuMsg->theta_dot;
 	new_imu_data.phi_dot = imuMsg -> phi_dot;
 	new_imu_data.psi_dot = imuMsg -> psi_dot;
+	new_imu_data.psi_gyro_integration = imuMsg ->psi_gyro_integration;
 	//printf("imu theta: %f \n",new_imu_data.theta);
 	
+}
+void xbeeCallback(const controller::XbeeData::ConstPtr& xbeeMsg){
+	desired_angles.phi = xbeeMsg->joy_des_angles[0];
+	desired_angles.theta = xbeeMsg->joy_des_angles[1];
+	desired_angles.psi = xbeeMsg->joy_des_angles[2];
+	joystick_thrust = xbeeMsg->joy_thrust;
+	flight_mode = xbeeMsg->flight_mode;
 }
 
 void control_stabilizer()
@@ -129,16 +143,16 @@ void control_stabilizer()
 
 	
   printf("in control stabilizer \n");
-  //State imu_data;
-  
-  //ros::NodeHandle n;
+  U_trim.thrust = 100;
   ros::NodeHandle nh;
   ros::Publisher cmd_pub;
   ros::Subscriber sonar_sub;
   ros::Subscriber imu_sub;
+  ros::Subscriber xbee_sub;
   cmd_pub = nh.advertise<controller::MotorCommands>("controller/cmd_motors",1); 
   sonar_sub = nh.subscribe<controller::SonarData>("sonar/sonar_data",1,sonarCallback); 
   imu_sub = nh.subscribe<controller::ImuData>("imu/imu_data",1,imuCallback);
+  xbee_sub = nh.subscribe<controller::XbeeData>("xbee/xbee_cmds",1,xbeeCallback); 
   Distances sonar_distances;
   Distances repulsive_forces;
   //weights is used for filter: current, one value ago, 2 values ago
@@ -149,12 +163,12 @@ void control_stabilizer()
   Vicon desired_velocity = {0.0}; 
    
   //for display
-  State imu_error = {0};
+  /*State imu_error = {0};
   Control_command U = {0};
   Angles desired_angles = {0};
   U_trim.thrust = 10;
   uint8_t joystick_thrust = 20;
-  uint8_t flight_mode = 0;
+  uint8_t flight_mode = 0;*/
   int succ_read;
   
   times.delta.tv_nsec = delta_time; //500000;
@@ -220,7 +234,8 @@ while(ros::ok())
 		//new_xbee_data = select_get_joystick_data(usb_xbee, desired_angles, joystick_thrust, flight_mode);
 		//new_xbee_data = xbee.get_xbee_data(desired_angles,joystick_thrust,flight_mode);
 
-
+		ros::spinOnce();
+		
 		if(new_xbee_data < 0) ; //printf("joystick not ready to read: old data");
 		//check flight mode
 		    if(ESTOP)
@@ -235,7 +250,7 @@ while(ros::ok())
 		    }
 	}
 
-	ros::spinOnce();
+	
 	//calculate error from imu (in radians) between desired and measured state
 	//State imu_error = error_imu(imu_data, desired_angles);
 	State imu_error = error_imu(desired_angles);

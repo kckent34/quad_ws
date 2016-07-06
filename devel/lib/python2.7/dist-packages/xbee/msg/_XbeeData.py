@@ -6,13 +6,15 @@ import struct
 
 
 class XbeeData(genpy.Message):
-  _md5sum = "fdb28210bfa9d7c91146260178d9a584"
+  _md5sum = "b7e330524fa79c3fba6bcd72b2bca3fd"
   _type = "xbee/XbeeData"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """float64 data
+  _full_text = """float32[3] joy_des_angles
+uint8 joy_thrust
+uint8 flight_mode
 """
-  __slots__ = ['data']
-  _slot_types = ['float64']
+  __slots__ = ['joy_des_angles','joy_thrust','flight_mode']
+  _slot_types = ['float32[3]','uint8','uint8']
 
   def __init__(self, *args, **kwds):
     """
@@ -22,7 +24,7 @@ class XbeeData(genpy.Message):
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       data
+       joy_des_angles,joy_thrust,flight_mode
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -31,10 +33,16 @@ class XbeeData(genpy.Message):
     if args or kwds:
       super(XbeeData, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
-      if self.data is None:
-        self.data = 0.
+      if self.joy_des_angles is None:
+        self.joy_des_angles = [0.,0.,0.]
+      if self.joy_thrust is None:
+        self.joy_thrust = 0
+      if self.flight_mode is None:
+        self.flight_mode = 0
     else:
-      self.data = 0.
+      self.joy_des_angles = [0.,0.,0.]
+      self.joy_thrust = 0
+      self.flight_mode = 0
 
   def _get_types(self):
     """
@@ -48,7 +56,9 @@ class XbeeData(genpy.Message):
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_struct_d.pack(self.data))
+      buff.write(_struct_3f.pack(*self.joy_des_angles))
+      _x = self
+      buff.write(_struct_2B.pack(_x.joy_thrust, _x.flight_mode))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -60,8 +70,12 @@ class XbeeData(genpy.Message):
     try:
       end = 0
       start = end
-      end += 8
-      (self.data,) = _struct_d.unpack(str[start:end])
+      end += 12
+      self.joy_des_angles = _struct_3f.unpack(str[start:end])
+      _x = self
+      start = end
+      end += 2
+      (_x.joy_thrust, _x.flight_mode,) = _struct_2B.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -74,7 +88,9 @@ class XbeeData(genpy.Message):
     :param numpy: numpy python module
     """
     try:
-      buff.write(_struct_d.pack(self.data))
+      buff.write(self.joy_des_angles.tostring())
+      _x = self
+      buff.write(_struct_2B.pack(_x.joy_thrust, _x.flight_mode))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -87,11 +103,16 @@ class XbeeData(genpy.Message):
     try:
       end = 0
       start = end
-      end += 8
-      (self.data,) = _struct_d.unpack(str[start:end])
+      end += 12
+      self.joy_des_angles = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=3)
+      _x = self
+      start = end
+      end += 2
+      (_x.joy_thrust, _x.flight_mode,) = _struct_2B.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_d = struct.Struct("<d")
+_struct_3f = struct.Struct("<3f")
+_struct_2B = struct.Struct("<2B")

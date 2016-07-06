@@ -1,0 +1,12 @@
+<launch>
+
+
+	 <node pkg="controller" name="controller_main" type="controller" />
+	 <node pkg="xbee" name="xbee_recieve" type="xbee" />
+	 <node pkg="imu" name="imu_main" type="imu" />
+	 <node pkg="motors" name="motors_main " type="motor_test_1" />
+	 
+
+
+
+</launch>

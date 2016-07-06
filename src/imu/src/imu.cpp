@@ -166,6 +166,7 @@ while(ros::ok())
 		imuMsg.phi_dot = imu_data.phi_dot;
 		imuMsg.theta_dot = imu_data.theta_dot;
 		imuMsg.psi_dot = imu_data.psi_dot;
+		imuMsg.psi_gyro_integration = imu_data.psi_gyro_integration;
 		imu_pub.publish(imuMsg);
 		
 		

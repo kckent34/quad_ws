@@ -41,6 +41,7 @@
 #include "controller/MotorCommands.h"
 #include "controller/SonarData.h"
 #include "controller/ImuData.h"
+#include "controller/XbeeData.h"
 //time utility change
 
 #define diff time_diff
@@ -88,6 +89,7 @@ void display_info(const Distances& sonar_distances, const int succ_read,  const 
 void configure_threads(void);
 void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg);
 void imuCallback(const controller::ImuData::ConstPtr& imuMsg);
+void xbeeCallback(const controller::XbeeData::ConstPtr& xbeeMsg);
 
 
 void set_timespec(timespec& x, timespec& y){

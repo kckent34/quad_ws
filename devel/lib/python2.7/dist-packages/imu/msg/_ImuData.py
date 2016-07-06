@@ -6,18 +6,19 @@ import struct
 
 
 class ImuData(genpy.Message):
-  _md5sum = "6d12c1b1418f0fcd269a1dafcbda678f"
+  _md5sum = "1e67f9547d3aff4c172378fd0c9696f9"
   _type = "imu/ImuData"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """float64 theta
-float64 phi
-float64 psi
-float64 theta_dot
-float64 phi_dot
-float64 psi_dot
+  _full_text = """float32 theta
+float32 phi
+float32 psi
+float32 theta_dot
+float32 phi_dot
+float32 psi_dot
+float32 psi_gyro_integration
 """
-  __slots__ = ['theta','phi','psi','theta_dot','phi_dot','psi_dot']
-  _slot_types = ['float64','float64','float64','float64','float64','float64']
+  __slots__ = ['theta','phi','psi','theta_dot','phi_dot','psi_dot','psi_gyro_integration']
+  _slot_types = ['float32','float32','float32','float32','float32','float32','float32']
 
   def __init__(self, *args, **kwds):
     """
@@ -27,7 +28,7 @@ float64 psi_dot
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       theta,phi,psi,theta_dot,phi_dot,psi_dot
+       theta,phi,psi,theta_dot,phi_dot,psi_dot,psi_gyro_integration
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -48,6 +49,8 @@ float64 psi_dot
         self.phi_dot = 0.
       if self.psi_dot is None:
         self.psi_dot = 0.
+      if self.psi_gyro_integration is None:
+        self.psi_gyro_integration = 0.
     else:
       self.theta = 0.
       self.phi = 0.
@@ -55,6 +58,7 @@ float64 psi_dot
       self.theta_dot = 0.
       self.phi_dot = 0.
       self.psi_dot = 0.
+      self.psi_gyro_integration = 0.
 
   def _get_types(self):
     """
@@ -69,7 +73,7 @@ float64 psi_dot
     """
     try:
       _x = self
-      buff.write(_struct_6d.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot))
+      buff.write(_struct_7f.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -82,8 +86,8 @@ float64 psi_dot
       end = 0
       _x = self
       start = end
-      end += 48
-      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot,) = _struct_6d.unpack(str[start:end])
+      end += 28
+      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration,) = _struct_7f.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -97,7 +101,7 @@ float64 psi_dot
     """
     try:
       _x = self
-      buff.write(_struct_6d.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot))
+      buff.write(_struct_7f.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -111,11 +115,11 @@ float64 psi_dot
       end = 0
       _x = self
       start = end
-      end += 48
-      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot,) = _struct_6d.unpack(str[start:end])
+      end += 28
+      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration,) = _struct_7f.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_6d = struct.Struct("<6d")
+_struct_7f = struct.Struct("<7f")

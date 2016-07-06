@@ -1,6 +1,7 @@
 /home/odroid/quad_ws/build/controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir
 /home/odroid/quad_ws/build/controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir
 /home/odroid/quad_ws/build/controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir
+/home/odroid/quad_ws/build/controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir
 /home/odroid/quad_ws/build/imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir
 /home/odroid/quad_ws/build/motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir
 /home/odroid/quad_ws/build/sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir

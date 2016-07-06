@@ -24,16 +24,28 @@ struct XbeeData_
   typedef XbeeData_<ContainerAllocator> Type;
 
   XbeeData_()
-    : data(0.0)  {
-    }
+    : joy_des_angles()
+    , joy_thrust(0)
+    , flight_mode(0)  {
+      joy_des_angles.assign(0.0);
+  }
   XbeeData_(const ContainerAllocator& _alloc)
-    : data(0.0)  {
-    }
+    : joy_des_angles()
+    , joy_thrust(0)
+    , flight_mode(0)  {
+      joy_des_angles.assign(0.0);
+  }
 
 
 
-   typedef double _data_type;
-  _data_type data;
+   typedef boost::array<float, 3>  _joy_des_angles_type;
+  _joy_des_angles_type joy_des_angles;
+
+   typedef uint8_t _joy_thrust_type;
+  _joy_thrust_type joy_thrust;
+
+   typedef uint8_t _flight_mode_type;
+  _flight_mode_type flight_mode;
 
 
 
@@ -112,12 +124,12 @@ struct MD5Sum< ::xbee::XbeeData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "fdb28210bfa9d7c91146260178d9a584";
+    return "b7e330524fa79c3fba6bcd72b2bca3fd";
   }
 
   static const char* value(const ::xbee::XbeeData_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xfdb28210bfa9d7c9ULL;
-  static const uint64_t static_value2 = 0x1146260178d9a584ULL;
+  static const uint64_t static_value1 = 0xb7e330524fa79c3fULL;
+  static const uint64_t static_value2 = 0xba6bcd72b2bca3fdULL;
 };
 
 template<class ContainerAllocator>
@@ -136,7 +148,9 @@ struct Definition< ::xbee::XbeeData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 data\n\
+    return "float32[3] joy_des_angles\n\
+uint8 joy_thrust\n\
+uint8 flight_mode\n\
 ";
   }
 
@@ -155,7 +169,9 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.data);
+      stream.next(m.joy_des_angles);
+      stream.next(m.joy_thrust);
+      stream.next(m.flight_mode);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -174,8 +190,16 @@ struct Printer< ::xbee::XbeeData_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::xbee::XbeeData_<ContainerAllocator>& v)
   {
-    s << indent << "data: ";
-    Printer<double>::stream(s, indent + "  ", v.data);
+    s << indent << "joy_des_angles[]" << std::endl;
+    for (size_t i = 0; i < v.joy_des_angles.size(); ++i)
+    {
+      s << indent << "  joy_des_angles[" << i << "]: ";
+      Printer<float>::stream(s, indent + "  ", v.joy_des_angles[i]);
+    }
+    s << indent << "joy_thrust: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.joy_thrust);
+    s << indent << "flight_mode: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.flight_mode);
   }
 };
 

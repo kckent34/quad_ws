@@ -4,6 +4,7 @@
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/devel/include/controller/ImuData.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/devel/include/controller/MotorCommands.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/devel/include/controller/SonarData.h
+controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/devel/include/controller/XbeeData.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/controller.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/data_structs.h
 controller/CMakeFiles/controller.dir/src/controller.cpp.o: /home/odroid/quad_ws/src/controller/include/controller/logger.h

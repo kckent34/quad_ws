@@ -2,6 +2,7 @@
 99dee7bea29783a0428797bd39ff1035 /home/odroid/quad_ws/devel/include/controller/ImuData.h
 9c93ce7b517529053e1f8b541aa57d97 /home/odroid/quad_ws/devel/include/controller/MotorCommands.h
 cd565f2962c3ceb6648bcfba25e9d0f1 /home/odroid/quad_ws/devel/include/controller/SonarData.h
+92aab30298fc1ecdb4073d944a72f9a0 /home/odroid/quad_ws/devel/include/controller/XbeeData.h
 9ffabfb130982b774515f0b2390ea1ff /home/odroid/quad_ws/devel/include/imu/ImuData.h
 93cddde1f2e8891bcff97219ec846c38 /home/odroid/quad_ws/devel/include/motors/MotorCommands.h
 3ad50fc5b60b8afc436b1dd0e6698c6e /home/odroid/quad_ws/devel/include/motors/MotorVals.h
@@ -10,6 +11,7 @@ cd565f2962c3ceb6648bcfba25e9d0f1 /home/odroid/quad_ws/devel/include/controller/S
 a35f38566a6e09ef8e7eb9f59b1dc5e1 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_ImuData.py
 0ddc3ce4d22aa905a6bc168cfb2ece47 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_MotorCommands.py
 cae2880a22337283c5146db5a3742332 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_SonarData.py
+4d017c6435193b417bb0b96b7d2eab91 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/_XbeeData.py
 8e1e6e39f9efc2d8f23d538bd1cd17b4 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/controller/msg/__init__.py
 ed61b6785d27c7462f7c99c557ebbe13 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/imu/msg/_ImuData.py
 036a2f5113121d324d1ce1e75533f3b7 /home/odroid/quad_ws/devel/lib/python2.7/dist-packages/imu/msg/__init__.py
@@ -23,6 +25,7 @@ f9533ace4e1e4e1eab648d63514efdbd /home/odroid/quad_ws/devel/lib/python2.7/dist-p
 220520742b4b1e4aa49e1a8998f221b0 /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/ImuData.lisp
 5e84351215ef6e49e953d9400dd76133 /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/MotorCommands.lisp
 afd5862260881118a8c5b4c39ba7e965 /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/SonarData.lisp
+45e703e3039cbb9fbd33f360eea19ba9 /home/odroid/quad_ws/devel/share/common-lisp/ros/controller/msg/XbeeData.lisp
 fb8367a99bff115736a4ff96d618fa6e /home/odroid/quad_ws/devel/share/common-lisp/ros/imu/msg/ImuData.lisp
 ff243febe0a33f452b14ee9a4fdfe72e /home/odroid/quad_ws/devel/share/common-lisp/ros/motors/msg/MotorCommands.lisp
 f1d4868818e41dc7513dd7baef17c977 /home/odroid/quad_ws/devel/share/common-lisp/ros/motors/msg/MotorVals.lisp
@@ -36,6 +39,7 @@ dda4ea3332e3084e9bbf86277dfb5cac CMakeFiles/tests
 c2a5e7e325076403a13f520f248b764e controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData
 a63669e136df1f4322f2fdfe57c3dd37 controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands
 df8ab9484250cd1fb536affb18b16866 controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData
+785ff6767443cb2ad9db82b2936ea790 controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData
 748572eeb3d2b7a4b7ec4eeba0d6d56f controller/CMakeFiles/controller_gencpp
 748572eeb3d2b7a4b7ec4eeba0d6d56f controller/CMakeFiles/controller_generate_messages
 748572eeb3d2b7a4b7ec4eeba0d6d56f controller/CMakeFiles/controller_generate_messages_cpp

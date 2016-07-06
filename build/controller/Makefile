@@ -195,6 +195,20 @@ _controller_generate_messages_check_deps_SonarData/fast:
 .PHONY : _controller_generate_messages_check_deps_SonarData/fast
 
 # Convenience name for target.
+controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/rule:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/rule
+.PHONY : controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/rule
+
+# Convenience name for target.
+_controller_generate_messages_check_deps_XbeeData: controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/rule
+.PHONY : _controller_generate_messages_check_deps_XbeeData
+
+# fast build rule for target.
+_controller_generate_messages_check_deps_XbeeData/fast:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/build
+.PHONY : _controller_generate_messages_check_deps_XbeeData/fast
+
+# Convenience name for target.
 controller/CMakeFiles/controller.dir/rule:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller.dir/rule
 .PHONY : controller/CMakeFiles/controller.dir/rule
@@ -561,6 +575,7 @@ help:
 	@echo "... _controller_generate_messages_check_deps_ImuData"
 	@echo "... _controller_generate_messages_check_deps_MotorCommands"
 	@echo "... _controller_generate_messages_check_deps_SonarData"
+	@echo "... _controller_generate_messages_check_deps_XbeeData"
 	@echo "... controller"
 	@echo "... controller_gencpp"
 	@echo "... controller_generate_messages"

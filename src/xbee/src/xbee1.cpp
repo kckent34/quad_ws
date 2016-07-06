@@ -274,7 +274,7 @@ int Xbee::get_xbee_helper(Angles& joystick_des_angles, uint8_t& joystick_thrust,
 		bool check1_correct =  (  data_received[0] == 253);
  		bool check2_correct =  (  data_received[6] == 173);
  		bool checksum_correct = (checksum_calc > 0); 	
- 		printf("data_recieved[5]: %i\n",data_received[5]);
+ 		//printf("data_recieved[1]: %i\n",data_received[1]);
 		if(result == 0)
 		{
 			printf("read 0 bytes \n");
@@ -307,7 +307,7 @@ int Xbee::get_xbee_helper(Angles& joystick_des_angles, uint8_t& joystick_thrust,
 }
 void Xbee::unpack_joystick_data(Angles& joystick_des_angles, uint8_t& joystick_thrust, uint8_t& flight_mode, uint8_t arr[])
 {
-	joystick_thrust             = (int8_t) arr[1] + 75 ; // thrust
+	joystick_thrust             = (int8_t) arr[1] ; // thrust
 	joystick_des_angles.phi     = (int8_t) arr[2]; // roll
 	joystick_des_angles.theta   = (int8_t) arr[3]; // pitch 
 	joystick_des_angles.psi     = (int8_t) arr[4]; // yaw 
@@ -436,18 +436,28 @@ void Xbee::printData(Angles& joystick_des_angles, uint8_t& joystick_thrust, uint
                 printf("Thrust: %i, Phi: %f, Theta: %f, Psi: %f, Flight Mode: %i  \n\n",joystick_thrust, joystick_des_angles.phi, joystick_des_angles.theta, joystick_des_angles.psi, flight_mode);
 }
 
-int main(void)
+int main(int argc, char**argv)
 {
 		Xbee xbee("/dev/ttyUSB0",9);
-		
 		Angles joystick_des_angles = {0};
 		uint8_t joystick_thrust = 0, flight_mode = 0;
-		
-		while(1)
+		ros::init(argc,argv,"xbee");
+		ros::NodeHandle nh;
+		ros::Publisher xbee_pub;
+		xbee_pub = nh.advertise<xbee::XbeeData>("xbee/xbee_cmds",1); 
+		while(ros::ok())
 		{
 
-			if(xbee.get_xbee_data(joystick_des_angles, joystick_thrust, joystick_thrust) > 0) xbee.printData(joystick_des_angles, joystick_thrust, flight_mode); 
-			//else xbee.printStats();
+			if(xbee.get_xbee_data(joystick_des_angles, joystick_thrust, flight_mode) > 0){
+				//xbee.printData(joystick_des_angles, joystick_thrust, flight_mode); 
+				xbee::XbeeData xb_msg;
+				xb_msg.joy_des_angles[0] = joystick_des_angles.phi;
+				xb_msg.joy_des_angles[1] = joystick_des_angles.theta;
+				xb_msg.joy_des_angles[2] = joystick_des_angles.psi;
+				xb_msg.joy_thrust = joystick_thrust;
+				xb_msg.flight_mode = flight_mode;
+				xbee_pub.publish(xb_msg);
+			}
 		}
 
 

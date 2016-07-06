@@ -219,6 +219,7 @@ SET(CMAKE_DEPEND_INFO_FILES
   "controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/DependInfo.cmake"
   "controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/DependInfo.cmake"
   "controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/DependInfo.cmake"
+  "controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/DependInfo.cmake"
   "controller/CMakeFiles/controller.dir/DependInfo.cmake"
   "controller/CMakeFiles/controller_gencpp.dir/DependInfo.cmake"
   "controller/CMakeFiles/controller_generate_messages.dir/DependInfo.cmake"

@@ -1,6 +1,7 @@
-float64 theta
-float64 phi
-float64 psi
-float64 theta_dot
-float64 phi_dot
-float64 psi_dot
+float32 theta
+float32 phi
+float32 psi
+float32 theta_dot
+float32 phi_dot
+float32 psi_dot
+float32 psi_gyro_integration

@@ -25,6 +25,10 @@
 #include <iostream>
 #include <curses.h> //for getch()
 
+#include <ros/ros.h>
+#include "xbee/XbeeData.h"
+
+
 #define PI 3.14159265359
 #define XBEE_START_BYTE 0xFD
 

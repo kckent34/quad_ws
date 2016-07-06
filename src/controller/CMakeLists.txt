@@ -49,6 +49,7 @@ find_package(catkin REQUIRED COMPONENTS
    MotorCommands.msg
    SonarData.msg
    ImuData.msg
+   XbeeData.msg
  )
 
 ## Generate services in the 'srv' folder
@@ -190,4 +191,4 @@ include_directories(include/controller ${catkin_INCLUDE_DIRS})
 #file(GLOB SOURCES "src/*.cpp")
 add_executable(controller src/controller.cpp src/xbee1.cpp src/vicon.cpp src/logger.cpp src/utility.cpp)
 target_link_libraries(controller ${catkin_LIBRARIES})
-add_dependencies(controller controller_generate_messages_cpp )
+add_dependencies(controller controller_generate_messages_cpp)

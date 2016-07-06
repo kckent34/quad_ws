@@ -37,6 +37,7 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/odroid/quad_ws/src/controller/msg/MotorCommands.msg"
     "/home/odroid/quad_ws/src/controller/msg/SonarData.msg"
     "/home/odroid/quad_ws/src/controller/msg/ImuData.msg"
+    "/home/odroid/quad_ws/src/controller/msg/XbeeData.msg"
     )
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
