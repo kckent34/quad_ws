@@ -307,7 +307,7 @@ int Xbee::get_xbee_helper(Angles& joystick_des_angles, uint8_t& joystick_thrust,
 }
 void Xbee::unpack_joystick_data(Angles& joystick_des_angles, uint8_t& joystick_thrust, uint8_t& flight_mode, uint8_t arr[])
 {
-	joystick_thrust             = (int8_t) arr[1] ; // thrust
+	joystick_thrust             = (int8_t) arr[1] + 75 ; // thrust
 	joystick_des_angles.phi     = (int8_t) arr[2]; // roll
 	joystick_des_angles.theta   = (int8_t) arr[3]; // pitch 
 	joystick_des_angles.psi     = (int8_t) arr[4]; // yaw 

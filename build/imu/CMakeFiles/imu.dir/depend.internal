@@ -5,8 +5,8 @@ imu/CMakeFiles/imu.dir/src/imu.cpp.o
  /home/odroid/quad_ws/devel/include/imu/ImuData.h
  /home/odroid/quad_ws/src/imu/include/imu/data_structs.h
  /home/odroid/quad_ws/src/imu/include/imu/imu.h
- /home/odroid/quad_ws/src/imu/include/imu/logger.h
  /home/odroid/quad_ws/src/imu/include/imu/psi.h
+ /home/odroid/quad_ws/src/imu/include/imu/timer.h
  /home/odroid/quad_ws/src/imu/include/imu/utility.h
  /home/odroid/quad_ws/src/imu/src/imu.cpp
  /opt/ros/indigo/include/XmlRpcDecl.h

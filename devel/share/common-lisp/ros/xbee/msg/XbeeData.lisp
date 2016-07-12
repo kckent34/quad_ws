@@ -86,10 +86,10 @@
   "b7e330524fa79c3fba6bcd72b2bca3fd")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<XbeeData>)))
   "Returns full string definition for message of type '<XbeeData>"
-  (cl:format cl:nil "float32[3] joy_des_angles~%uint8 joy_thrust~%uint8 flight_mode~%~%"))
+  (cl:format cl:nil "float32[3] joy_des_angles~%uint8 joy_thrust~%uint8 flight_mode~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'XbeeData)))
   "Returns full string definition for message of type 'XbeeData"
-  (cl:format cl:nil "float32[3] joy_des_angles~%uint8 joy_thrust~%uint8 flight_mode~%~%"))
+  (cl:format cl:nil "float32[3] joy_des_angles~%uint8 joy_thrust~%uint8 flight_mode~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <XbeeData>))
   (cl:+ 0
      0 (cl:reduce #'cl:+ (cl:slot-value msg 'joy_des_angles) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))

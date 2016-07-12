@@ -22,7 +22,7 @@ uint8_t flight_mode = 0;
 bool MAGN = false;
 bool SYSTEM_RUN = true;
 bool CONTROLLER_RUN = false;
-bool ESTOP = true;
+bool ESTOP = false;
 bool XConfig = true;
 bool AUTO_HEIGHT = false;
 bool DISPLAY_RUN = false;
@@ -34,6 +34,7 @@ uint16_t display_count=0;
 bool SONAR_BUBBLE_SIDES = false;
 bool SONAR_BUBBLE_DOWN = false;
 bool SONAR_BUBBLE_UP = false;
+bool KILL_MOTORS = false;
 
 /*int repulsion_factor = 15;
 int repulsion_factor_down = 20;
@@ -119,14 +120,19 @@ void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg){
 }
 
 void imuCallback(const controller::ImuData::ConstPtr& imuMsg){
+	if(imuMsg->succ_read < 0) {
+		KILL_MOTORS = true; 
+		return;
+	}
 	new_imu_data.theta = imuMsg->theta;
 	new_imu_data.phi = imuMsg->phi;
 	
-	new_imu_data.psi = imuMsg->psi;
+	new_imu_data.psi = imuMsg->psi_gyro_integration;
 	new_imu_data.theta_dot = imuMsg->theta_dot;
 	new_imu_data.phi_dot = imuMsg -> phi_dot;
 	new_imu_data.psi_dot = imuMsg -> psi_dot;
-	new_imu_data.psi_gyro_integration = imuMsg ->psi_gyro_integration;
+	return;
+	//new_imu_data.psi_gyro_integration = imuMsg ->psi_gyro_integration;
 	//printf("imu theta: %f \n",new_imu_data.theta);
 	
 }
@@ -136,6 +142,8 @@ void xbeeCallback(const controller::XbeeData::ConstPtr& xbeeMsg){
 	desired_angles.psi = xbeeMsg->joy_des_angles[2];
 	joystick_thrust = xbeeMsg->joy_thrust;
 	flight_mode = xbeeMsg->flight_mode;
+	if(flight_mode == 1) {KILL_MOTORS = true;}
+	return;
 }
 
 void control_stabilizer()
@@ -143,7 +151,7 @@ void control_stabilizer()
 
 	
   printf("in control stabilizer \n");
-  U_trim.thrust = 100;
+  U_trim.thrust = 10;
   ros::NodeHandle nh;
   ros::Publisher cmd_pub;
   ros::Subscriber sonar_sub;
@@ -169,7 +177,7 @@ void control_stabilizer()
   U_trim.thrust = 10;
   uint8_t joystick_thrust = 20;
   uint8_t flight_mode = 0;*/
-  int succ_read;
+  //int succ_read;
   
   times.delta.tv_nsec = delta_time; //500000;
 
@@ -210,7 +218,7 @@ while(ros::ok())
 	
 
 	//can switch between psi estimators
-	if(!MAGN) new_imu_data.psi = new_imu_data.psi_gyro_integration;
+	//if(!MAGN) new_imu_data.psi = new_imu_data.psi_gyro_integration;
 
 	if (VICON_OR_JOY == 1)
 	{
@@ -236,7 +244,18 @@ while(ros::ok())
 
 		ros::spinOnce();
 		
-		if(new_xbee_data < 0) ; //printf("joystick not ready to read: old data");
+		if(KILL_MOTORS){
+			controller::MotorCommands mcs;
+			mcs.m0 = 0;
+			mcs.m1 = 0;
+			mcs.m2 = 0;
+			mcs.m3 = 0;
+			cmd_pub.publish(mcs);
+			ROS_INFO("KILLING MOTORS: KILL_MOTORS = true\n");
+			break;
+		}
+		
+		/*if(new_xbee_data < 0) ; //printf("joystick not ready to read: old data");
 		//check flight mode
 		    if(ESTOP)
 		    {
@@ -247,7 +266,7 @@ while(ros::ok())
 				}
 			    else if (flight_mode > 15.0 && flight_mode < 17.0) AUTO_HEIGHT = false;
 			    else if (flight_mode > 17.0) AUTO_HEIGHT = true;
-		    }
+		    } */
 	}
 
 	
@@ -475,6 +494,7 @@ double* set_forces(const Control_command& U, double Ct, double d){
 
  
   static double mcs[4];
+  
   
   if(!XConfig)
     {//this is Plus Configuration

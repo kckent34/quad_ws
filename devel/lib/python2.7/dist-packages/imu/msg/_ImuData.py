@@ -6,7 +6,7 @@ import struct
 
 
 class ImuData(genpy.Message):
-  _md5sum = "1e67f9547d3aff4c172378fd0c9696f9"
+  _md5sum = "2ffa0158eafd09aab90668e8a07da7b7"
   _type = "imu/ImuData"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """float32 theta
@@ -16,9 +16,11 @@ float32 theta_dot
 float32 phi_dot
 float32 psi_dot
 float32 psi_gyro_integration
+float32 dt
+int32 succ_read
 """
-  __slots__ = ['theta','phi','psi','theta_dot','phi_dot','psi_dot','psi_gyro_integration']
-  _slot_types = ['float32','float32','float32','float32','float32','float32','float32']
+  __slots__ = ['theta','phi','psi','theta_dot','phi_dot','psi_dot','psi_gyro_integration','dt','succ_read']
+  _slot_types = ['float32','float32','float32','float32','float32','float32','float32','float32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -28,7 +30,7 @@ float32 psi_gyro_integration
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       theta,phi,psi,theta_dot,phi_dot,psi_dot,psi_gyro_integration
+       theta,phi,psi,theta_dot,phi_dot,psi_dot,psi_gyro_integration,dt,succ_read
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -51,6 +53,10 @@ float32 psi_gyro_integration
         self.psi_dot = 0.
       if self.psi_gyro_integration is None:
         self.psi_gyro_integration = 0.
+      if self.dt is None:
+        self.dt = 0.
+      if self.succ_read is None:
+        self.succ_read = 0
     else:
       self.theta = 0.
       self.phi = 0.
@@ -59,6 +65,8 @@ float32 psi_gyro_integration
       self.phi_dot = 0.
       self.psi_dot = 0.
       self.psi_gyro_integration = 0.
+      self.dt = 0.
+      self.succ_read = 0
 
   def _get_types(self):
     """
@@ -73,7 +81,7 @@ float32 psi_gyro_integration
     """
     try:
       _x = self
-      buff.write(_struct_7f.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration))
+      buff.write(_struct_8fi.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.dt, _x.succ_read))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -86,8 +94,8 @@ float32 psi_gyro_integration
       end = 0
       _x = self
       start = end
-      end += 28
-      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration,) = _struct_7f.unpack(str[start:end])
+      end += 36
+      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.dt, _x.succ_read,) = _struct_8fi.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -101,7 +109,7 @@ float32 psi_gyro_integration
     """
     try:
       _x = self
-      buff.write(_struct_7f.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration))
+      buff.write(_struct_8fi.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.dt, _x.succ_read))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -115,11 +123,11 @@ float32 psi_gyro_integration
       end = 0
       _x = self
       start = end
-      end += 28
-      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration,) = _struct_7f.unpack(str[start:end])
+      end += 36
+      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.dt, _x.succ_read,) = _struct_8fi.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_7f = struct.Struct("<7f")
+_struct_8fi = struct.Struct("<8fi")

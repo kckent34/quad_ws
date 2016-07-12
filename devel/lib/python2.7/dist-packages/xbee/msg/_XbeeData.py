@@ -12,6 +12,7 @@ class XbeeData(genpy.Message):
   _full_text = """float32[3] joy_des_angles
 uint8 joy_thrust
 uint8 flight_mode
+
 """
   __slots__ = ['joy_des_angles','joy_thrust','flight_mode']
   _slot_types = ['float32[3]','uint8','uint8']

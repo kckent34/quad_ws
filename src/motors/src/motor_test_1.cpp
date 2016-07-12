@@ -201,7 +201,12 @@ float motor::timeSinceLastRead(void)
 //map values from 0-255 to 900-1550 returns a uint16_t to be passed to sned_motor_data parameter "on"
 
 uint16_t motor::map_values(double force){
-  return (uint16_t)round((887 + ((1550-887)*force)/255));
+	int min = 880;
+	int max = 1550;
+	int val = (int)round((min + ((max-min)*force)/255));
+	if (val < min) {val = min;}
+	else if(val > 1550){val = 1550;}
+	return (uint16_t)val;
 }
 
 
@@ -229,11 +234,15 @@ void Motors::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
 		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m3));
 	} 
 	return; */
-	
+	//ros::Time start = ros::Time::now();
 	m0.send_force_i2c(0,motor::map_values(cmdMsg->m0));
 	m1.send_force_i2c(0,motor::map_values(cmdMsg->m1));
 	m2.send_force_i2c(0,motor::map_values(cmdMsg->m2));
 	m3.send_force_i2c(0,motor::map_values(cmdMsg->m3));
+	//ros::Time end = ros::Time::now();
+	//ros::Duration dur = end - start;
+	//double freq = 1/(dur.toSec());
+	//printf("freq: %f \n", freq);
 	return;
 }
 

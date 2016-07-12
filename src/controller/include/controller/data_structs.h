@@ -25,9 +25,11 @@ long num_fds_n1, num_fds_0, num_fds_1, num_fds_p;
 
 //cal = calibrated, contin = continuous
 typedef struct state {
-float theta, phi, psi, psi_contin, theta_dot, phi_dot, psi_dot;
+float theta, phi, psi, psi_contin, psi_magn_raw, psi_magn_continuous, psi_magn_continuous_calibrated, theta_dot, phi_dot, psi_dot;
 float psi_cal, psi_contin_cal, theta_dot_cal, phi_dot_cal, psi_dot_cal;
 float psi_gyro_integration, psi_gyro_integration_cal;
+
+float altitude_raw_old, altitude_raw, altitude_calibrated, altitude_deriv;
 int succ_read;
 float dt;
 float numPsiRot;
@@ -39,9 +41,6 @@ typedef struct repforces {
 float x_pos, x_neg, y_pos, y_neg, up, down;
 } RepForces;
 
-
-
- 
 typedef struct distances {
 //int one, two, three, four, five, six;
 int x_pos, x_neg, y_pos, y_neg, up, down;
@@ -49,7 +48,6 @@ int x_pos, x_neg, y_pos, y_neg, up, down;
 int succ_read;
 float dt;
 } Distances;
-
 
 typedef struct angles {
 float theta, phi, psi;
@@ -126,6 +124,8 @@ RepForces scales;
 RepForces repulsive_forces;
 
 SonarTest sonar_test;
+int thrust;
+
 } Data_log;
 
 #endif

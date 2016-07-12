@@ -13,4 +13,8 @@
           PSI_DOT
           PSI_GYRO_INTEGRATION-VAL
           PSI_GYRO_INTEGRATION
+          DT-VAL
+          DT
+          SUCC_READ-VAL
+          SUCC_READ
 ))

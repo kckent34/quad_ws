@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="imu_data" key="selection"/>
+		<item value="scale_factor" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
-			<item value="imu_data"/>
-			<item value="desired_angles"/>
-			<item value="unpack"/>
-			<item value="error_imu"/>
-			<item value="imu"/>
-			<item value="controller"/>
-			<item value="make_contin"/>
-			<item value="make"/>
+			<item value="scale_factor"/>
+			<item value="scale"/>
+			<item value="Psi"/>
+			<item value="p"/>
+			<item value="succ_read"/>
+			<item value="new_xbee_data"/>
+			<item value="ESTOP"/>
+			<item value="ESTP"/>
 		</list>
 		<list key="replacehistory">
 			<item value="new_imu_data"/>

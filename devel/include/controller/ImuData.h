@@ -30,7 +30,9 @@ struct ImuData_
     , theta_dot(0.0)
     , phi_dot(0.0)
     , psi_dot(0.0)
-    , psi_gyro_integration(0.0)  {
+    , psi_gyro_integration(0.0)
+    , dt(0.0)
+    , succ_read(0)  {
     }
   ImuData_(const ContainerAllocator& _alloc)
     : theta(0.0)
@@ -39,7 +41,9 @@ struct ImuData_
     , theta_dot(0.0)
     , phi_dot(0.0)
     , psi_dot(0.0)
-    , psi_gyro_integration(0.0)  {
+    , psi_gyro_integration(0.0)
+    , dt(0.0)
+    , succ_read(0)  {
     }
 
 
@@ -64,6 +68,12 @@ struct ImuData_
 
    typedef float _psi_gyro_integration_type;
   _psi_gyro_integration_type psi_gyro_integration;
+
+   typedef float _dt_type;
+  _dt_type dt;
+
+   typedef int32_t _succ_read_type;
+  _succ_read_type succ_read;
 
 
 
@@ -142,12 +152,12 @@ struct MD5Sum< ::controller::ImuData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "1e67f9547d3aff4c172378fd0c9696f9";
+    return "2ffa0158eafd09aab90668e8a07da7b7";
   }
 
   static const char* value(const ::controller::ImuData_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x1e67f9547d3aff4cULL;
-  static const uint64_t static_value2 = 0x172378fd0c9696f9ULL;
+  static const uint64_t static_value1 = 0x2ffa0158eafd09aaULL;
+  static const uint64_t static_value2 = 0xb90668e8a07da7b7ULL;
 };
 
 template<class ContainerAllocator>
@@ -173,6 +183,8 @@ float32 theta_dot\n\
 float32 phi_dot\n\
 float32 psi_dot\n\
 float32 psi_gyro_integration\n\
+float32 dt\n\
+int32 succ_read\n\
 ";
   }
 
@@ -198,6 +210,8 @@ namespace serialization
       stream.next(m.phi_dot);
       stream.next(m.psi_dot);
       stream.next(m.psi_gyro_integration);
+      stream.next(m.dt);
+      stream.next(m.succ_read);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER;
@@ -230,6 +244,10 @@ struct Printer< ::controller::ImuData_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.psi_dot);
     s << indent << "psi_gyro_integration: ";
     Printer<float>::stream(s, indent + "  ", v.psi_gyro_integration);
+    s << indent << "dt: ";
+    Printer<float>::stream(s, indent + "  ", v.dt);
+    s << indent << "succ_read: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.succ_read);
   }
 };
 
