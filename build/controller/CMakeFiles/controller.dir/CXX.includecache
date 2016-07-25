@@ -306,6 +306,18 @@ curses.h
 controller.h
 /home/odroid/quad_ws/src/controller/src/controller.h
 
+/home/odroid/quad_ws/src/controller/src/logger.cpp
+logger.h
+/home/odroid/quad_ws/src/controller/src/logger.h
+
+/home/odroid/quad_ws/src/controller/src/vicon.cpp
+vicon.h
+/home/odroid/quad_ws/src/controller/src/vicon.h
+
+/home/odroid/quad_ws/src/controller/src/xbee1.cpp
+xbee1.h
+/home/odroid/quad_ws/src/controller/src/xbee1.h
+
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
 -

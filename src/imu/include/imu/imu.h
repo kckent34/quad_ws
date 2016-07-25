@@ -45,7 +45,7 @@ class Imu {
   //for Psi
   Psi p;
   Psi gyroEstimate;
-  Psi* pg;
+  //Psi* pg;
 
   //Altitude altitude;
 
@@ -62,9 +62,10 @@ class Imu {
   Imu(std::string PATH2IMU, int DATASIZE, float dt)
     {
       (this->data_size) = DATASIZE;
-      Psi *psiGyro = new Psi(0.0011);
-      (this->pg) = psiGyro;
-      (this->dt) = dt;
+      //      Psi *psiGyro = new Psi(0.0011);
+      //(this->pg) = psiGyro;
+      //(this->pg) = new Psi(0.0011);
+      //(this->dt) = dt;
       
       printf("opening usb port for imu...\n");
       int port; /* File descriptor for the port */
@@ -134,11 +135,11 @@ class Imu {
     int i = 0;
     Timer calibrateTimer;
 
-    State imu_data = {0};
+    State cal_data = {0};
 
     while(calibrateTimer.timeSinceStart() < 5)
       {
-	int suc_read = get_imu_data(imu_data);
+	int suc_read = get_imu_data(cal_data);
 	//suc_read: -1: first byte wrong or failed read()
 	//-2: no file descriptors ready to read
 	//-3: select() returned an error()
@@ -146,15 +147,15 @@ class Imu {
 	if(suc_read<0);// printf("printing old values\n \n \n \n \n \n");
 	else if(suc_read == 1)
 	  {
-	    if((imu_value_check(imu_data) == -1)) disable_motors = -1;
-	    bias.theta_dot += imu_data.theta_dot;
-	    bias.phi_dot   += imu_data.phi_dot;
-	    bias.psi_dot   += imu_data.psi_dot;
-	    bias.psi_magn_continuous  += imu_data.psi_magn_continuous;
-	    bias.altitude_raw  += imu_data.altitude_raw;
+	    if((imu_value_check(cal_data) == -1)) disable_motors = -1;
+	    bias.theta_dot += cal_data.theta_dot;
+	    bias.phi_dot   += cal_data.phi_dot;
+	    bias.psi_dot   += cal_data.psi_dot;
+	    bias.psi_magn_continuous  += cal_data.psi_magn_continuous;
+	    bias.altitude_raw  += cal_data.altitude_raw;
 	    //printf("bias (averaged) :  theta_dot: %5.3f  phi_dot: %5.3f  psi_dot: %5.3f psi_magn_contin: %5.3f altitude: %5.3f iterations: %i  \n\n", bias.theta_dot/i, bias.phi_dot/i, bias.psi_dot/i,bias.psi_magn_continuous/i, bias.altitude_raw/i, i);
 	    i++;
-	    //print_data(imu_data);
+	    //print_data(cal_data);
 	  }
       }
 
@@ -164,9 +165,9 @@ class Imu {
     bias.psi_dot      = bias.psi_dot/i;
     bias.altitude_raw = bias.altitude_raw/i;
     bias.psi_magn_continuous   = bias.psi_magn_continuous/i;
-
+    printf("right here\n");
     this->calibrated = true;
-    (this->bias) = bias;
+    //(this->bias) = bias;
     return disable_motors;
   } 
 

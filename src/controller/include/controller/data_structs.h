@@ -32,7 +32,7 @@ float psi_gyro_integration, psi_gyro_integration_cal;
 float altitude_raw_old, altitude_raw, altitude_calibrated, altitude_deriv;
 int succ_read;
 float dt;
-float numPsiRot;
+int numPsiRot;
 
 } State ;
 

@@ -15,10 +15,10 @@ int Imu::get_imu_calibrated_data(State& imu_data){
         if(imu_data.succ_read==1 && (this ->calibrated))
         {
         	
-        	imu_data.phi_dot    = imu_data.phi_dot_cal;
-        	imu_data.theta_dot = imu_data.theta_dot_cal;
-        	imu_data.psi_dot   = imu_data.psi_dot_cal;
-        	imu_data.psi	   = imu_data.psi_gyro_integration;
+        	//imu_data.phi_dot    = imu_data.phi_dot_cal;
+        	//imu_data.theta_dot = imu_data.theta_dot_cal;
+        	//imu_data.psi_dot   = imu_data.psi_dot_cal;
+        	//imu_data.psi	   = imu_data.psi_gyro_integration;
 
 
 /*
@@ -48,10 +48,10 @@ int Imu::get_imu_data(State& imu_data)
 
     int a = -10;
     //No data ready to read
-    if(num_fds == 0)  a = 2;
+    if(num_fds == 0)  {a = 2;}
 
     //select returned an error
-    else if(num_fds ==-1)  a = -3;
+    else if(num_fds ==-1) { a = -3; }
 
     //A file descriptor is ready to read: check which one
     else if(FD_ISSET(port , &read_fds))
@@ -70,7 +70,7 @@ int Imu::get_imu_data(State& imu_data)
 		clock_gettime(CLOCK_REALTIME,&oldT);*/
 		timer.update();
 		
-		
+		//printf("%i\n",a);
 		
 		
 
@@ -109,9 +109,11 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
         att_vel[1]         = *(float *)&arr[17]; //printf("att_vel 2: %i \n", att_vel[1]);
         att_vel[2]         = *(float *)&arr[21]; //printf("att_vel 3: %i \n", att_vel[2]);
 
-        imu_data.phi_dot   = -att_vel[1]/100*1.5;
-        imu_data.theta_dot = -att_vel[0]/100*1.5;
-        imu_data.psi_dot   = -att_vel[2]/100*1.5;
+        imu_data.phi_dot   = -att_vel[1];
+        imu_data.theta_dot = -att_vel[0];
+        imu_data.psi_dot   = -att_vel[2];
+        
+        //printf("psi_dot: %f \n", imu_data.psi_dot);
 
         imu_data.psi_magn_raw     = *(float *)&arr[1]; //printf("psi 1: %f \n", imu_data.psi);
         imu_data.theta     = *(float *)&arr[5]; //printf("theta 1: %f \n", imu_data.theta)state2rawBytes(imu_data);
@@ -131,15 +133,20 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
 	  {
 	    //printf("Psi Freq: %f, Cal Psi_dot: %f, Uncal Psi_dot: %f, bias.psi_dot %f, Psi update out: %f, Psi returned: %f \n", 1/timer.getDt(), imu_data.psi_dot_cal, imu_data.psi_dot, bias.psi_dot, gyroEstimate.updatePsi(imu_data.psi_dot_cal), gyroEstimate.getPsi() );
 
-	    gyroEstimate.updatePsi(imu_data.psi_dot_cal);
+	    //gyroEstimate.updatePsi(imu_data.psi_dot_cal);
 	    //printf("Psi dt: %f, Psi freq: %f \n",  gyroEstimate.getDt(),  1/gyroEstimate.getDt());
 	    //pg->setDt(timer.getDt());
+		
+		
+		
 	    imu_data.psi_gyro_integration = gyroEstimate.getPsi();
-
+	   
 	    imu_data.phi_dot_cal    =  imu_data.phi_dot    - bias.phi_dot;
 	    imu_data.psi_dot_cal    =  imu_data.psi_dot    - bias.psi_dot;
 	    imu_data.theta_dot_cal  =  imu_data.theta_dot  - bias.theta_dot;
 	    imu_data.psi_magn_continuous_calibrated =  imu_data.psi_magn_continuous  - bias.psi_magn_continuous;
+  	    gyroEstimate.updatePsi(imu_data.psi_dot_cal);
+  	    imu_data.psi = imu_data.psi_magn_continuous_calibrated;
 	    
 	    // imu_data.altitude_calibrated = imu_data.altitude_raw - bias.altitude_raw;
 
@@ -152,7 +159,7 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
 int main(int argc, char** argv){
 
 std::string path = "/dev/ttyACM0";
-Imu imu(path, 26, .00112);
+Imu imu = Imu(path, 26, .00112);
 State new_data = {0.0};
 
 //int cal = imu.calibrate();
@@ -165,14 +172,16 @@ ros::NodeHandle n;
 ros::Publisher imu_pub;
 
 imu_pub = n.advertise<imu::ImuData>("imu/imu_data",1); 
-int cal = imu.calibrate();
+//int cal = imu.calibrate();
 float psi_t = 0;
+int suc = 0;
+int cal = imu.calibrate();
 while(ros::ok())
 {
 	
 	//begin = ros::Time::now().toSec();
 	////int suc = imu.get_imu_calibrated_data(imu_data);
-	int suc = imu.get_imu_calibrated_data(new_data);
+	 suc = imu.get_imu_calibrated_data(new_data);
 	
 	/*psi_t = psi_t + new_data.dt * new_data.psi_dot_cal*.0065;
 	printf("test psi = %f \n",psi_t);*/
@@ -182,7 +191,7 @@ while(ros::ok())
 		imu::ImuData imuMsg;
 		imuMsg.phi = new_data.phi;
 		imuMsg.theta = new_data.theta;
-		imuMsg.psi = new_data.psi;
+		imuMsg.psi =  new_data.psi_gyro_integration;
 		imuMsg.phi_dot = new_data.phi_dot_cal;
 		imuMsg.theta_dot = new_data.theta_dot_cal;
 		imuMsg.psi_dot = new_data.psi_dot_cal;
@@ -193,8 +202,8 @@ while(ros::ok())
 		//end = ros::Time::now().toSec();
 		//printf("%f \n" , end-begin);
 
-	} else if (suc < 0) {
-		//printf("suc = %i \n",suc);
+	} else if (suc == 2) {
+	  //printf("suc = %i \n",suc);
 		//imu::ImuData imuMsg;
 		//imuMsg.succ_read = new_data.succ_read;
 		//imu_pub.publish(imuMsg);
@@ -202,6 +211,6 @@ while(ros::ok())
 	
 	
 }
-
+ return 1;
 }
 

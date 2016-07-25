@@ -24,7 +24,7 @@ class Psi {
   float old_scaled_psi;
   float dt;
 
-  float scale_factor = .068;
+  float scale_factor = 1;
  
   Timer psiTimer;
 
@@ -50,9 +50,9 @@ class Psi {
   {
     float timeSinceLastUpdate = psiTimer.update();
     float old_psi = this->old_raw_psi;
-    printf("%f \n", timeSinceLastUpdate);
+    //printf("%f \n", timeSinceLastUpdate);
     //this->old_raw_psi = (old_raw_psi + psi_dot * timeSinceLastUpdate);
-    this->old_raw_psi = (old_raw_psi + psi_dot * timeSinceLastUpdate);
+    this->old_raw_psi = (old_psi + psi_dot * timeSinceLastUpdate);
     //printf("Psi Dt: %f, Psi Freq: %f, Old_Psi: %f, Psi_dot: %f, Psi_dot*Dt: %f, new_psi: %f, \n\n", timeSinceLastUpdate, 1/timeSinceLastUpdate,old_psi,psi_dot, psi_dot*timeSinceLastUpdate, (this->old_raw_psi));
     return old_raw_psi;
   }
