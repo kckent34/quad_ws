@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "vision")
+set(vision_MAINTAINER "odroid <odroid@todo.todo>")
+set(vision_DEPRECATED "")
+set(vision_VERSION "0.0.0")
+set(vision_BUILD_DEPENDS "cv_bridge" "image_transport" "roscpp" "sensor_msgs" "std_msgs")
+set(vision_RUN_DEPENDS "cv_bridge" "image_transport" "roscpp" "sensor_msgs" "std_msgs")
+set(vision_BUILDTOOL_DEPENDS "catkin")
