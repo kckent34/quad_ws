@@ -12,7 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-find_package(OpenCV 3.0.0 REQUIRED)
+
+
+find_package(OpenCV 2 REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -105,10 +107,7 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include
-#  LIBRARIES vision
-  CATKIN_DEPENDS cv_bridge image_transport roscpp sensor_msgs std_msgs
-#  DEPENDS system_lib
+INCLUDE_DIRS include
 )
 
 ###########
@@ -118,9 +117,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
+include_directories(include/vision ${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
 ## Declare a C++ library
 # add_library(vision
@@ -133,9 +130,9 @@ include_directories(
 # add_dependencies(vision ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(im_converter_node src/image_converter.cpp)
-target_link_libraries(im_converter_node ${catkin_LIBRARIES})
-target_link_libraries(im_converter_node ${OpenCV_LIBRARIES})
+add_executable(vision src/opticalflow.cpp)
+target_link_libraries(vision ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
 
 
 ## Add cmake target dependencies of the executable

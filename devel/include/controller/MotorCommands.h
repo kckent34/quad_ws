@@ -34,6 +34,7 @@ struct MotorCommands_
     , m1(0.0)
     , m2(0.0)
     , m3(0.0)  {
+  (void)_alloc;
     }
 
 
@@ -179,7 +180,7 @@ namespace serialization
       stream.next(m.m3);
     }
 
-    ROS_DECLARE_ALLINONE_SERIALIZER;
+    ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct MotorCommands_
 
 } // namespace serialization

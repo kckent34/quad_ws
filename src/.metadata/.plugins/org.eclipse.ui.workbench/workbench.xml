@@ -29,44 +29,49 @@
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="5"/>
-<part id="2"/>
-<part id="1"/>
 <part id="0"/>
-<part id="3"/>
 <part id="4"/>
+<part id="3"/>
+<part id="1"/>
+<part id="2"/>
+<part id="5"/>
 <part id="6"/>
+<part id="7"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="motor_test_1.cpp" partName="motor_test_1.cpp" title="motor_test_1.cpp" tooltip="/home/odroid/quad_ws/src/motors/src/motor_test_1.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/quad_ws/src/motors/src/motor_test_1.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8122" selectionTopPixel="3771"/>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="controller.cpp" partName="controller.cpp" title="controller.cpp" tooltip="/home/odroid/max_quad_ws/src/controller/src/controller.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/max_quad_ws/src/controller/src/controller.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="46604" selectionTopPixel="19650"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="imu.h" partName="imu.h" title="imu.h" tooltip="/home/odroid/quad_ws/src/imu/include/imu/imu.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/quad_ws/src/imu/include/imu/imu.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="1467" selectionTopPixel="541"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="opticalflow.cpp" partName="opticalflow.cpp" title="opticalflow.cpp" tooltip="/home/odroid/max_quad_ws/src/vision/src/opticalflow.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/max_quad_ws/src/vision/src/opticalflow.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="36"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="imu.cpp" partName="imu.cpp" title="imu.cpp" tooltip="/home/odroid/quad_ws/src/imu/src/imu.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/quad_ws/src/imu/src/imu.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6164" selectionTopPixel="1796"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="motor_test_1.h" partName="motor_test_1.h" title="motor_test_1.h" tooltip="/home/odroid/quad_ws/src/motors/include/motors/motor_test_1.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/quad_ws/src/motors/include/motors/motor_test_1.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="895"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="xbee1.cpp" partName="xbee1.cpp" title="xbee1.cpp" tooltip="/home/odroid/quad_ws/src/xbee/src/xbee1.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/quad_ws/src/xbee/src/xbee1.cpp"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="opticalflow.h" partName="opticalflow.h" title="opticalflow.h" tooltip="/home/odroid/max_quad_ws/src/vision/include/vision/opticalflow.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/max_quad_ws/src/vision/include/vision/opticalflow.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="controller.cpp" partName="controller.cpp" title="controller.cpp" tooltip="/home/odroid/quad_ws/src/controller/src/controller.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/quad_ws/src/controller/src/controller.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3076" selectionTopPixel="2544"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="grasp_quadrotor_node.cpp" partName="grasp_quadrotor_node.cpp" title="grasp_quadrotor_node.cpp" tooltip="/home/odroid/Downloads/grasp_quadrotor_node.cpp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/Downloads/grasp_quadrotor_node.cpp"/>
+<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="31361" selectionTopPixel="18648"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="data_structs.h" partName="data_structs.h" title="data_structs.h" tooltip="/home/odroid/quad_ws/src/controller/include/controller/data_structs.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/quad_ws/src/controller/include/controller/data_structs.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="3" selectionOffset="1091" selectionTopPixel="204"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="controller.h" partName="controller.h" title="controller.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/controller.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/controller.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5476" selectionTopPixel="1046"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="pid_controller.h" partName="pid_controller.h" title="pid_controller.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/pid_controller.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/pid_controller.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3790" selectionTopPixel="1924"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="xbee1.h" partName="xbee1.h" title="xbee1.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/xbee1.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/xbee1.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1239"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="vicon.h" partName="vicon.h" title="vicon.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/vicon.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/vicon.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2968" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -272,165 +277,162 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/motors/src/motor_test_1.cpp"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/imu/include/imu/imu.h"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/imu/src/imu.cpp"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/motors/include/motors/motor_test_1.h"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/xbee/src/xbee1.cpp"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/controller/src/controller.cpp"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/controller/include/controller/data_structs.h"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/imu/src/imu.cpp"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/quad_ws/src/imu/include/imu/imu.h"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/max_quad_ws/src/controller/src/controller.cpp"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/Downloads/grasp_quadrotor_node.cpp"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/controller.h"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/max_quad_ws/src/vision/src/opticalflow.cpp"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/max_quad_ws/src/controller/src/xbee1.cpp"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/vicon.h"/>
 </editors>
-<item historyLabel="imu.h" index="1">
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5183" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="28633" y="5"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5183" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="4939" y="6"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="11059" y="10"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5183" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="11059" y="10"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5183" y="0"/>
+</item>
+<item historyLabel="opticalflow.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="imu.cpp" index="2">
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="4939" y="6"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="11059" y="10"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5228" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="11059" y="10"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5228" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="30230" y="0"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5228" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="11059" y="10"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="30230" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="11058" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="14513" y="6"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="11058" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="31361" y="5"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="14570" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="31361" y="5"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5228" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="31361" y="5"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="14570" y="0"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5476" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="14570" y="0"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5476" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="31361" y="5"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="14414" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="31361" y="5"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="14414" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="31361" y="5"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="14414" y="0"/>
+</item>
+<item historyLabel="grasp_quadrotor_node.cpp" index="1">
+<position info="not_deleted" x="31361" y="5"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="47052" y="0"/>
+</item>
+<item historyLabel="opticalflow.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="motor_test_1.h" index="3">
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="47052" y="0"/>
+</item>
+<item historyLabel="opticalflow.cpp" index="3">
 <position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="47052" y="0"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5476" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="47052" y="0"/>
+</item>
+<item historyLabel="controller.h" index="2">
+<position info="not_deleted" x="5476" y="0"/>
+</item>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="7534" y="0"/>
 </item>
 <item historyLabel="xbee1.cpp" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="controller.cpp" index="5">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="7534" y="0"/>
 </item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="vicon.h" index="5">
+<position info="not_deleted" x="2968" y="0"/>
 </item>
-<item historyLabel="motor_test_1.h" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="controller.cpp" index="5">
-<position info="not_deleted" x="15782" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="4561" y="0"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="1188" y="0"/>
-</item>
-<item historyLabel="controller.cpp" index="5">
-<position info="not_deleted" x="3076" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="5693" y="0"/>
-</item>
-<item historyLabel="controller.cpp" index="5">
-<position info="not_deleted" x="3076" y="0"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="4330" y="1"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="938" y="1"/>
-</item>
-<item historyLabel="data_structs.h" index="6">
-<position info="not_deleted" x="1091" y="3"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="7263" y="3"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="4330" y="1"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="7263" y="3"/>
-</item>
-<item historyLabel="controller.cpp" index="5">
-<position info="not_deleted" x="3076" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="3884" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="motor_test_1.h" index="3">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="7263" y="3"/>
-</item>
-<item historyLabel="controller.cpp" index="5">
-<position info="not_deleted" x="3076" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="3884" y="0"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="7263" y="3"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="3884" y="0"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="7263" y="3"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="3884" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="6183" y="0"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="6053" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="6053" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="6183" y="0"/>
-</item>
-<item historyLabel="imu.h" index="1">
-<position info="not_deleted" x="6053" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="2">
-<position info="not_deleted" x="6164" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="7601" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="7848" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="7915" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="7950" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="7948" y="0"/>
-</item>
-<item historyLabel="motor_test_1.cpp" index="0">
-<position info="not_deleted" x="7950" y="0"/>
-</item>
-<item historyLabel="imu.cpp" index="7">
-<position info="not_deleted" x="6164" y="0"/>
-</item>
-<item active="true" historyLabel="imu.h" index="8">
-<position info="not_deleted" x="6053" y="0"/>
+<item active="true" historyLabel="controller.cpp" index="0">
+<position info="not_deleted" x="7534" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -453,50 +455,50 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="vicon.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/vicon.h">
+<persistable uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/vicon.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xbee1.cpp" tooltip="/home/odroid/max_quad_ws/src/controller/src/xbee1.cpp">
+<persistable uri="file:/home/odroid/max_quad_ws/src/controller/src/xbee1.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xbee1.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/xbee1.h">
+<persistable uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/xbee1.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="pid_controller.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/pid_controller.h">
+<persistable uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/pid_controller.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="altitude.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/altitude.h">
+<persistable uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/altitude.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="controller.h" tooltip="/home/odroid/max_quad_ws/src/controller/include/controller/controller.h">
+<persistable uri="file:/home/odroid/max_quad_ws/src/controller/include/controller/controller.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="grasp_quadrotor_node.cpp" tooltip="/home/odroid/Downloads/grasp_quadrotor_node.cpp">
+<persistable uri="file:/home/odroid/Downloads/grasp_quadrotor_node.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="opticalflow.h" tooltip="/home/odroid/max_quad_ws/src/vision/include/vision/opticalflow.h">
+<persistable uri="file:/home/odroid/max_quad_ws/src/vision/include/vision/opticalflow.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="opticalflow.cpp" tooltip="/home/odroid/max_quad_ws/src/vision/src/opticalflow.cpp">
+<persistable uri="file:/home/odroid/max_quad_ws/src/vision/src/opticalflow.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="controller.cpp" tooltip="/home/odroid/max_quad_ws/src/controller/src/controller.cpp">
+<persistable uri="file:/home/odroid/max_quad_ws/src/controller/src/controller.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="opticalflow.h" tooltip="/home/odroid/quad_ws/src/vision/include/vision/opticalflow.h">
+<persistable uri="file:/home/odroid/quad_ws/src/vision/include/vision/opticalflow.h"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="opticalflow.cpp" tooltip="/home/odroid/quad_ws/src/vision/src/opticalflow.cpp">
+<persistable uri="file:/home/odroid/quad_ws/src/vision/src/opticalflow.cpp"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="cmake_install.cmake" tooltip="/home/odroid/codes/opencv-3.0.0-Release-build/modules/core/cmake_install.cmake">
+<persistable uri="file:/home/odroid/codes/opencv-3.0.0-Release-build/modules/core/cmake_install.cmake"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="data_structs.h" tooltip="/home/odroid/quad_ws/src/controller/include/controller/data_structs.h">
 <persistable uri="file:/home/odroid/quad_ws/src/controller/include/controller/data_structs.h"/>
 </file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="controller.cpp" tooltip="/home/odroid/quad_ws/src/controller/src/controller.cpp">
 <persistable uri="file:/home/odroid/quad_ws/src/controller/src/controller.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xbee1.cpp" tooltip="/home/odroid/quad_ws/src/xbee/src/xbee1.cpp">
-<persistable uri="file:/home/odroid/quad_ws/src/xbee/src/xbee1.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor_test_1.h" tooltip="/home/odroid/quad_ws/src/motors/include/motors/motor_test_1.h">
-<persistable uri="file:/home/odroid/quad_ws/src/motors/include/motors/motor_test_1.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="imu.cpp" tooltip="/home/odroid/quad_ws/src/imu/src/imu.cpp">
-<persistable uri="file:/home/odroid/quad_ws/src/imu/src/imu.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="imu.h" tooltip="/home/odroid/quad_ws/src/imu/include/imu/imu.h">
-<persistable uri="file:/home/odroid/quad_ws/src/imu/include/imu/imu.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor_test_1.cpp" tooltip="/home/odroid/quad_ws/src/motors/src/motor_test_1.cpp">
-<persistable uri="file:/home/odroid/quad_ws/src/motors/src/motor_test_1.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="motor_test_1.h" tooltip="/home/odroid/quad_ws/src/controller/include/controller/motor_test_1.h">
-<persistable uri="file:/home/odroid/quad_ws/src/controller/include/controller/motor_test_1.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Xbee.h" tooltip="/home/odroid/quad_ws/src/controller/include/controller/Xbee.h">
-<persistable uri="file:/home/odroid/quad_ws/src/controller/include/controller/Xbee.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="joystick_send.cpp" tooltip="/home/odroid/quad_ws/src/controller/src/joystick_send.cpp">
-<persistable uri="file:/home/odroid/quad_ws/src/controller/src/joystick_send.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="xbee1.h" tooltip="/home/odroid/quad_ws/src/xbee/include/xbee/xbee1.h">
-<persistable uri="file:/home/odroid/quad_ws/src/xbee/include/xbee/xbee1.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sonar.cpp" tooltip="/home/odroid/quad_ws/src/sonar/src/sonar.cpp">
-<persistable uri="file:/home/odroid/quad_ws/src/sonar/src/sonar.cpp"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="data_structs.h" tooltip="/home/odroid/quad_ws/src/imu/include/imu/data_structs.h">
-<persistable uri="file:/home/odroid/quad_ws/src/imu/include/imu/data_structs.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="imu.h" tooltip="/home/odroid/quad_ws/src/controller/include/controller/imu.h">
-<persistable uri="file:/home/odroid/quad_ws/src/controller/include/controller/imu.h"/>
-</file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="imu.cpp" tooltip="/home/odroid/quad_ws/src/controller/src/imu.cpp">
-<persistable uri="file:/home/odroid/quad_ws/src/controller/src/imu.cpp"/>
 </file>
 </mruList>
 </workbench>

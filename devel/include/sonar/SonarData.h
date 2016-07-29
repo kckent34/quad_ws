@@ -38,6 +38,7 @@ struct SonarData_
     , y_neg(0.0)
     , up(0.0)
     , down(0.0)  {
+  (void)_alloc;
     }
 
 
@@ -193,7 +194,7 @@ namespace serialization
       stream.next(m.down);
     }
 
-    ROS_DECLARE_ALLINONE_SERIALIZER;
+    ROS_DECLARE_ALLINONE_SERIALIZER
   }; // struct SonarData_
 
 } // namespace serialization

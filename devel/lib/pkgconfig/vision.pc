@@ -5,4 +5,4 @@ Description: Description of vision
 Version: 0.0.0
 Cflags: -I/home/odroid/quad_ws/src/vision/include
 Libs: -L/home/odroid/quad_ws/devel/lib 
-Requires: cv_bridge image_transport roscpp sensor_msgs std_msgs
+Requires: 

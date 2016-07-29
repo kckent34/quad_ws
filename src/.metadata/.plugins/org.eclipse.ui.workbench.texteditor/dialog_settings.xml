@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="scale_factor" key="selection"/>
+		<item value="CONTROLLER_RUN" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
-			<item value="scale_factor"/>
-			<item value="scale"/>
-			<item value="Psi"/>
-			<item value="p"/>
-			<item value="succ_read"/>
-			<item value="new_xbee_data"/>
-			<item value="ESTOP"/>
-			<item value="ESTP"/>
+			<item value="CONTROLLER_RUN"/>
+			<item value="SYSTEM_RUN"/>
+			<item value="gyro"/>
+			<item value="main"/>
+			<item value="psi_d"/>
+			<item value="kd_pos"/>
+			<item value="gains.kd_x"/>
+			<item value="gains"/>
 		</list>
 		<list key="replacehistory">
 			<item value="new_imu_data"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="312" key="DIALOG_WIDTH"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="438" key="DIALOG_HEIGHT"/>
-		<item value="904" key="DIALOG_X_ORIGIN"/>
-		<item value="188" key="DIALOG_Y_ORIGIN"/>
+		<item value="311" key="DIALOG_WIDTH"/>
+		<item value="1|Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="427" key="DIALOG_HEIGHT"/>
+		<item value="1156" key="DIALOG_X_ORIGIN"/>
+		<item value="443" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

@@ -16,6 +16,9 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
+  "/usr/local/include/opencv"
+  "/usr/local/include"
+  "/home/odroid/quad_ws/src/vision/include/vision"
   "/opt/ros/indigo/include"
   "/usr/include/opencv"
   )
