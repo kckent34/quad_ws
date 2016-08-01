@@ -1,0 +1,21 @@
+\subsubsection usage Usage
+\verbatim
+<node name="controller" pkg="controller" type="controller">
+  <param name="kp_phi" type="double" value="19.0" />
+  <param name="kd_phi" type="double" value="0.33" />
+  <param name="kp_theta" type="double" value="19.0" />
+  <param name="kd_theta" type="double" value="0.33" />
+  <param name="kp_psi" type="double" value="20.0" />
+  <param name="kd_psi" type="double" value="0.2" />
+  <param name="kp_x" type="double" value="19.5" />
+  <param name="kd_x" type="double" value="2.7" />
+  <param name="ki_x" type="double" value="0.05" />
+  <param name="kp_y" type="double" value="19.5" />
+  <param name="kd_y" type="double" value="2.7" />
+  <param name="ki_y" type="double" value="0.05" />
+  <param name="kp_z" type="double" value="12.0" />
+  <param name="kd_z" type="double" value="5.0" />
+  <param name="ki_z" type="double" value="5.0" />
+</node>
+\endverbatim
+

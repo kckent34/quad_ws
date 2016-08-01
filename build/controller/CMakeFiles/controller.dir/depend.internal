@@ -6,6 +6,7 @@ controller/CMakeFiles/controller.dir/src/controller.cpp.o
  /home/odroid/quad_ws/devel/include/controller/MotorCommands.h
  /home/odroid/quad_ws/devel/include/controller/SonarData.h
  /home/odroid/quad_ws/devel/include/controller/XbeeData.h
+ /home/odroid/quad_ws/devel/include/controller/controllerConfig.h
  /home/odroid/quad_ws/src/controller/include/controller/controller.h
  /home/odroid/quad_ws/src/controller/include/controller/data_structs.h
  /home/odroid/quad_ws/src/controller/include/controller/logger.h
@@ -16,6 +17,21 @@ controller/CMakeFiles/controller.dir/src/controller.cpp.o
  /home/odroid/quad_ws/src/controller/src/controller.cpp
  /opt/ros/indigo/include/XmlRpcDecl.h
  /opt/ros/indigo/include/XmlRpcValue.h
+ /opt/ros/indigo/include/dynamic_reconfigure/BoolParameter.h
+ /opt/ros/indigo/include/dynamic_reconfigure/Config.h
+ /opt/ros/indigo/include/dynamic_reconfigure/ConfigDescription.h
+ /opt/ros/indigo/include/dynamic_reconfigure/DoubleParameter.h
+ /opt/ros/indigo/include/dynamic_reconfigure/Group.h
+ /opt/ros/indigo/include/dynamic_reconfigure/GroupState.h
+ /opt/ros/indigo/include/dynamic_reconfigure/IntParameter.h
+ /opt/ros/indigo/include/dynamic_reconfigure/ParamDescription.h
+ /opt/ros/indigo/include/dynamic_reconfigure/Reconfigure.h
+ /opt/ros/indigo/include/dynamic_reconfigure/ReconfigureRequest.h
+ /opt/ros/indigo/include/dynamic_reconfigure/ReconfigureResponse.h
+ /opt/ros/indigo/include/dynamic_reconfigure/StrParameter.h
+ /opt/ros/indigo/include/dynamic_reconfigure/config_init_mutex.h
+ /opt/ros/indigo/include/dynamic_reconfigure/config_tools.h
+ /opt/ros/indigo/include/dynamic_reconfigure/server.h
  /opt/ros/indigo/include/ros/advertise_options.h
  /opt/ros/indigo/include/ros/advertise_service_options.h
  /opt/ros/indigo/include/ros/assert.h

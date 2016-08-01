@@ -223,6 +223,20 @@ controller/fast:
 .PHONY : controller/fast
 
 # Convenience name for target.
+controller/CMakeFiles/controller_gencfg.dir/rule:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_gencfg.dir/rule
+.PHONY : controller/CMakeFiles/controller_gencfg.dir/rule
+
+# Convenience name for target.
+controller_gencfg: controller/CMakeFiles/controller_gencfg.dir/rule
+.PHONY : controller_gencfg
+
+# fast build rule for target.
+controller_gencfg/fast:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_gencfg.dir/build.make controller/CMakeFiles/controller_gencfg.dir/build
+.PHONY : controller_gencfg/fast
+
+# Convenience name for target.
 controller/CMakeFiles/controller_gencpp.dir/rule:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_gencpp.dir/rule
 .PHONY : controller/CMakeFiles/controller_gencpp.dir/rule
@@ -321,130 +335,60 @@ controller_genpy/fast:
 .PHONY : controller_genpy/fast
 
 # Convenience name for target.
-controller/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+controller/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
+.PHONY : controller/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_cpp: controller/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : roscpp_generate_messages_cpp
+dynamic_reconfigure_gencfg: controller/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule
+.PHONY : dynamic_reconfigure_gencfg
 
 # fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make controller/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
+dynamic_reconfigure_gencfg/fast:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make controller/CMakeFiles/dynamic_reconfigure_gencfg.dir/build
+.PHONY : dynamic_reconfigure_gencfg/fast
 
 # Convenience name for target.
-controller/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+controller/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
+.PHONY : controller/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_lisp: controller/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : roscpp_generate_messages_lisp
+dynamic_reconfigure_generate_messages_cpp: controller/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/rule
+.PHONY : dynamic_reconfigure_generate_messages_cpp
 
 # fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make controller/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
+dynamic_reconfigure_generate_messages_cpp/fast:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make controller/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_cpp/fast
 
 # Convenience name for target.
-controller/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : controller/CMakeFiles/roscpp_generate_messages_py.dir/rule
+controller/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
+.PHONY : controller/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_py: controller/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : roscpp_generate_messages_py
+dynamic_reconfigure_generate_messages_lisp: controller/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/rule
+.PHONY : dynamic_reconfigure_generate_messages_lisp
 
 # fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/roscpp_generate_messages_py.dir/build.make controller/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
+dynamic_reconfigure_generate_messages_lisp/fast:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make controller/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_lisp/fast
 
 # Convenience name for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+controller/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
+.PHONY : controller/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_cpp
+dynamic_reconfigure_generate_messages_py: controller/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/rule
+.PHONY : dynamic_reconfigure_generate_messages_py
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-controller/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : controller/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: controller/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/std_msgs_generate_messages_py.dir/build.make controller/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
+dynamic_reconfigure_generate_messages_py/fast:
+	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make controller/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_py/fast
 
 src/controller.o: src/controller.cpp.o
 .PHONY : src/controller.o
@@ -577,6 +521,7 @@ help:
 	@echo "... _controller_generate_messages_check_deps_SonarData"
 	@echo "... _controller_generate_messages_check_deps_XbeeData"
 	@echo "... controller"
+	@echo "... controller_gencfg"
 	@echo "... controller_gencpp"
 	@echo "... controller_generate_messages"
 	@echo "... controller_generate_messages_cpp"
@@ -584,21 +529,16 @@ help:
 	@echo "... controller_generate_messages_py"
 	@echo "... controller_genlisp"
 	@echo "... controller_genpy"
+	@echo "... dynamic_reconfigure_gencfg"
+	@echo "... dynamic_reconfigure_generate_messages_cpp"
+	@echo "... dynamic_reconfigure_generate_messages_lisp"
+	@echo "... dynamic_reconfigure_generate_messages_py"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_py"
 	@echo "... test"
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"

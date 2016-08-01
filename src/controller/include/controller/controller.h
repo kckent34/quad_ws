@@ -44,6 +44,12 @@
 #include "controller/XbeeData.h"
 //time utility change
 
+//dynamic reconfigure
+#include <dynamic_reconfigure/server.h>
+#include <controller/controllerConfig.h>
+
+
+
 #define diff time_diff
 #define tv2float timespec2float
 
@@ -90,7 +96,7 @@ void configure_threads(void);
 void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg);
 void imuCallback(const controller::ImuData::ConstPtr& imuMsg);
 void xbeeCallback(const controller::XbeeData::ConstPtr& xbeeMsg);
-
+void gainsCallback(controller::controllerConfig &config, uint32_t level); // dynamic reconfigure callback
 
 void set_timespec(timespec& x, timespec& y){
 //set x to equal y

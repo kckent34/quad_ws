@@ -193,6 +193,7 @@ controller_EXTERNAL_OBJECTS =
 /home/odroid/quad_ws/devel/lib/controller/controller: /usr/lib/liblog4cxx.so
 /home/odroid/quad_ws/devel/lib/controller/controller: /usr/lib/arm-linux-gnueabihf/libboost_regex.so
 /home/odroid/quad_ws/devel/lib/controller/controller: /opt/ros/indigo/lib/libxmlrpcpp.so
+/home/odroid/quad_ws/devel/lib/controller/controller: /opt/ros/indigo/lib/libdynamic_reconfigure_config_init_mutex.so
 /home/odroid/quad_ws/devel/lib/controller/controller: /opt/ros/indigo/lib/libroscpp_serialization.so
 /home/odroid/quad_ws/devel/lib/controller/controller: /opt/ros/indigo/lib/librostime.so
 /home/odroid/quad_ws/devel/lib/controller/controller: /usr/lib/arm-linux-gnueabihf/libboost_date_time.so

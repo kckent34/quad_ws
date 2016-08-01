@@ -1,9 +1,9 @@
 #include "xbee1.h"
 //g++ xbee1.cpp logger.cpp -I ../include -std=c++11
 
-Xbee::Xbee(std::string PATH2XBEE, int DATASIZE)
+Xbee::Xbee(std::string path, int DATASIZE)
 {
-        open_port(PATH2XBEE, DATASIZE);
+        open_port(path, DATASIZE);
 }
 int Xbee::open_port(std::string PATH2XBEE, int DATASIZE)
 {
@@ -274,7 +274,7 @@ int Xbee::get_xbee_helper(Angles& joystick_des_angles, uint8_t& joystick_thrust,
 		bool check1_correct =  (  data_received[0] == 253);
  		bool check2_correct =  (  data_received[6] == 173);
  		bool checksum_correct = (checksum_calc > 0); 	
- 		//printf("data_recieved[1]: %i\n",data_received[1]);
+ 		//printf("data_recieved[0]: %i\n",data_received[0]);
 		if(result == 0)
 		{
 			printf("read 0 bytes \n");
@@ -285,7 +285,8 @@ int Xbee::get_xbee_helper(Angles& joystick_des_angles, uint8_t& joystick_thrust,
 		if( (checksum_calc > 0) && (  data_received[0] == 253) && (  data_received[6] == 173) )
 		{
 			unpack_joystick_data(  joystick_des_angles,  joystick_thrust, flight_mode, data_received);
-			calcDt();		 
+			calcDt();	
+			//printf("checksum: %i \n",checksum_calc);
 			returnVal = 1;
 		}
 		 else
@@ -307,7 +308,7 @@ int Xbee::get_xbee_helper(Angles& joystick_des_angles, uint8_t& joystick_thrust,
 }
 void Xbee::unpack_joystick_data(Angles& joystick_des_angles, uint8_t& joystick_thrust, uint8_t& flight_mode, uint8_t arr[])
 {
-	joystick_thrust             = (int8_t) arr[1] + 75 ; // thrust
+	joystick_thrust             = (int8_t) arr[1] + 74; // thrust
 	joystick_des_angles.phi     = (int8_t) arr[2]; // roll
 	joystick_des_angles.theta   = (int8_t) arr[3]; // pitch 
 	joystick_des_angles.psi     = (int8_t) arr[4]; // yaw 
@@ -405,7 +406,7 @@ int Xbee::check_start_thrust(void)
 }
 void Xbee::print_raw_bytes(const uint8_t arr[], int arr_length){ 
                 printf("Bytes: \n"); 
-                for(int i = 0; i < arr_length; i++) printf("%i : %04x ,", i, arr[i]);//(arr[i] == 0xbd)); 
+                for(int i = 0; i < arr_length; i++) printf("%i : %i ,", i, arr[i]);//(arr[i] == 0xbd)); 
                 printf("\n  1st byte: %i, should be: 253, equal?:%i  6th byte: %i should be: 173, equal?:%i \n",  arr[0], (arr[0] == 253), arr[6], (arr[6] == 173) ); 
                 printf("\n"); 
 }
@@ -445,12 +446,15 @@ int main(int argc, char**argv)
 		ros::NodeHandle nh;
 		ros::Publisher xbee_pub;
 		xbee_pub = nh.advertise<xbee::XbeeData>("xbee/xbee_cmds",1); 
+		int suc = 0;
 		while(ros::ok())
 		{
-
-			if(xbee.get_xbee_data(joystick_des_angles, joystick_thrust, flight_mode) > 0){
+			suc = xbee.get_xbee_data(joystick_des_angles, joystick_thrust, flight_mode);
+			//printf("suc: %i \n",suc);
+			if(suc > 0){
 				//xbee.printData(joystick_des_angles, joystick_thrust, flight_mode); 
 				xbee::XbeeData xb_msg;
+				//printf("im in here");
 				xb_msg.joy_des_angles[0] = joystick_des_angles.phi;
 				xb_msg.joy_des_angles[1] = joystick_des_angles.theta;
 				xb_msg.joy_des_angles[2] = joystick_des_angles.psi;

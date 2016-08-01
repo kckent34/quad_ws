@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   message_generation
+  dynamic_reconfigure
 )
 
 ## System dependencies are found with CMake's conventions
@@ -87,10 +88,7 @@ find_package(catkin REQUIRED COMPONENTS
 ##     and list every .cfg file to be processed
 
 ## Generate dynamic reconfigure parameters in the 'cfg' folder
-# generate_dynamic_reconfigure_options(
-#   cfg/DynReconf1.cfg
-#   cfg/DynReconf2.cfg
-# )
+ generate_dynamic_reconfigure_options(cfg/controller.cfg)
 
 ###################################
 ## catkin specific configuration ##
@@ -191,4 +189,4 @@ include_directories(include/controller ${catkin_INCLUDE_DIRS})
 #file(GLOB SOURCES "src/*.cpp")
 add_executable(controller src/controller.cpp src/xbee1.cpp src/vicon.cpp src/logger.cpp src/utility.cpp)
 target_link_libraries(controller ${catkin_LIBRARIES})
-add_dependencies(controller controller_generate_messages_cpp)
+add_dependencies(controller controller_generate_messages_cpp controller_gencfg)

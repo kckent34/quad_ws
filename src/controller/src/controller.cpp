@@ -108,6 +108,31 @@ Xbee joystick("/dev/ttyUSB4",9);
 int new_xbee_data = 0;
 float new_sonar_data_x_pos, new_sonar_data_x_neg, new_sonar_data_y_pos, new_sonar_data_y_neg, new_sonar_data_down, new_sonar_data_up;
 
+void gainsCallback(controller::controllerConfig &config, uint32_t level) {
+  //dynamic reconfig callback
+  gains.kp_phi = config.kp_phi;
+  gains.kd_phi = config.kd_phi;
+
+  gains.kp_theta = config.kp_theta;
+  gains.kd_theta = config.kd_theta;
+
+  gains.kp_psi = config.kp_psi;
+  gains.kd_psi = config.kd_psi;
+  
+  gains.kp_x = config.kp_x;
+  gains.kd_x = config.kd_x;
+  gains.ki_x = config.ki_x;
+
+  gains.kp_y = config.kp_y;
+  gains.kd_y = config.kd_y;
+  gains.ki_y = config.ki_y;
+
+  ROS_INFO("kp_phi: %f, kd_phi: %f, kp_theta: %f, kd_theta:%f, kp_psi:%f, kd_psi:%f \n",gains.kp_phi,gains.kd_phi,gains.kp_theta,gains.kd_theta,gains.kp_psi,gains.kd_psi);
+}
+
+
+
+
 void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg){
 	new_sonar_data_x_pos = sonarMsg->x_pos;
 	new_sonar_data_x_neg = sonarMsg->x_neg;
@@ -161,6 +186,16 @@ void control_stabilizer()
   sonar_sub = nh.subscribe<controller::SonarData>("sonar/sonar_data",1,sonarCallback); 
   imu_sub = nh.subscribe<controller::ImuData>("imu/imu_data",1,imuCallback);
   xbee_sub = nh.subscribe<controller::XbeeData>("xbee/xbee_cmds",1,xbeeCallback); 
+  
+  dynamic_reconfigure::Server<controller::controllerConfig> server;
+  dynamic_reconfigure::Server<controller::controllerConfig>::CallbackType f;
+
+  f = boost::bind(&gainsCallback, _1, _2);
+  server.setCallback(f);
+
+
+
+
   Distances sonar_distances;
   Distances repulsive_forces;
   //weights is used for filter: current, one value ago, 2 values ago
@@ -202,7 +237,7 @@ while(ros::ok())
 	float dt = UTILITY::calcDt(dd,tt);    
 	//time_calc(times_display);
 	//Uncomment after adding sonar 
-
+	
 	/*
 	new_sonar_data_x_pos = sonar_x_pos.get_sonar_data(x_pos);
 	new_sonar_data_x_neg = sonar_x_neg.get_sonar_data(x_neg);
@@ -215,7 +250,7 @@ while(ros::ok())
 	//reads input from imu (in degrees), distributes into fields of imu_data
 	//get_imu_data returns 1 if read successful,< 0 if not. Reuse old values if not successful
 	//int new_imu_data = imu.get_imu_calibrated_data(imu_data);
-	
+	//	ROS_INFO("kp_phi:%f\n",gains.kp_phi);
 
 	//can switch between psi estimators
 	//if(!MAGN) new_imu_data.psi = new_imu_data.psi_gyro_integration;
