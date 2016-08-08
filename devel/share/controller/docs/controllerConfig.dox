@@ -3,11 +3,11 @@
 Reads and maintains the following parameters on the ROS server
 
 - \b "~kp_phi" : \b [double] kp_phi min: 0.0, default: 19.0, max: 100.0
-- \b "~kd_phi" : \b [double] kd_phi min: 0.0, default: 0.33, max: 100.0
+- \b "~kd_phi" : \b [double] kd_phi min: 0.0, default: 2.4, max: 100.0
 - \b "~kp_theta" : \b [double] kp_theta min: 0.0, default: 19.0, max: 100.0
-- \b "~kd_theta" : \b [double] kd_theta min: 0.0, default: 0.33, max: 100.0
-- \b "~kp_psi" : \b [double] kp_psi min: 0.0, default: 20.0, max: 100.0
-- \b "~kd_psi" : \b [double] kd_psi min: 0.0, default: 0.2, max: 100.0
+- \b "~kd_theta" : \b [double] kd_theta min: 0.0, default: 2.4, max: 100.0
+- \b "~kp_psi" : \b [double] kp_psi min: 0.0, default: 11.0, max: 100.0
+- \b "~kd_psi" : \b [double] kd_psi min: 0.0, default: 0.1, max: 100.0
 - \b "~kp_x" : \b [double] kp_x min: 0.0, default: 19.5, max: 100.0
 - \b "~kd_x" : \b [double] kd_x min: 0.0, default: 2.7, max: 100.0
 - \b "~ki_x" : \b [double] ki_x min: 0.0, default: 0.05, max: 100.0
@@ -17,4 +17,7 @@ Reads and maintains the following parameters on the ROS server
 - \b "~kp_z" : \b [double] kp_z min: 0.0, default: 12.0, max: 100.0
 - \b "~kd_z" : \b [double] kd_z min: 0.0, default: 5.0, max: 100.0
 - \b "~ki_z" : \b [double] ki_z min: 0.0, default: 5.0, max: 100.0
+- \b "~U_trim_roll_acc" : \b [double] U_trim_roll_acc min: -10.0, default: -0.085, max: 10.0
+- \b "~U_trim_pitch_acc" : \b [double] U_trim_pitch_acc min: -10.0, default: -0.98, max: 10.0
+- \b "~U_trim_yaw_acc" : \b [double] U_trim_yaw_acc min: -10.0, default: 0.0, max: 10.0
 

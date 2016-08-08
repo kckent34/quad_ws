@@ -153,20 +153,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir/rule
-.PHONY : sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir/rule
-
-# Convenience name for target.
-_sonar_generate_messages_check_deps_SonarData: sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir/rule
-.PHONY : _sonar_generate_messages_check_deps_SonarData
-
-# fast build rule for target.
-_sonar_generate_messages_check_deps_SonarData/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir/build.make sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir/build
-.PHONY : _sonar_generate_messages_check_deps_SonarData/fast
-
-# Convenience name for target.
 sonar/CMakeFiles/sonar.dir/rule:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/sonar.dir/rule
 .PHONY : sonar/CMakeFiles/sonar.dir/rule
@@ -179,104 +165,6 @@ sonar: sonar/CMakeFiles/sonar.dir/rule
 sonar/fast:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/sonar.dir/build.make sonar/CMakeFiles/sonar.dir/build
 .PHONY : sonar/fast
-
-# Convenience name for target.
-sonar/CMakeFiles/sonar_gencpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/sonar_gencpp.dir/rule
-.PHONY : sonar/CMakeFiles/sonar_gencpp.dir/rule
-
-# Convenience name for target.
-sonar_gencpp: sonar/CMakeFiles/sonar_gencpp.dir/rule
-.PHONY : sonar_gencpp
-
-# fast build rule for target.
-sonar_gencpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/sonar_gencpp.dir/build.make sonar/CMakeFiles/sonar_gencpp.dir/build
-.PHONY : sonar_gencpp/fast
-
-# Convenience name for target.
-sonar/CMakeFiles/sonar_generate_messages.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/sonar_generate_messages.dir/rule
-.PHONY : sonar/CMakeFiles/sonar_generate_messages.dir/rule
-
-# Convenience name for target.
-sonar_generate_messages: sonar/CMakeFiles/sonar_generate_messages.dir/rule
-.PHONY : sonar_generate_messages
-
-# fast build rule for target.
-sonar_generate_messages/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/sonar_generate_messages.dir/build.make sonar/CMakeFiles/sonar_generate_messages.dir/build
-.PHONY : sonar_generate_messages/fast
-
-# Convenience name for target.
-sonar/CMakeFiles/sonar_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/sonar_generate_messages_cpp.dir/rule
-.PHONY : sonar/CMakeFiles/sonar_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sonar_generate_messages_cpp: sonar/CMakeFiles/sonar_generate_messages_cpp.dir/rule
-.PHONY : sonar_generate_messages_cpp
-
-# fast build rule for target.
-sonar_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/sonar_generate_messages_cpp.dir/build.make sonar/CMakeFiles/sonar_generate_messages_cpp.dir/build
-.PHONY : sonar_generate_messages_cpp/fast
-
-# Convenience name for target.
-sonar/CMakeFiles/sonar_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/sonar_generate_messages_lisp.dir/rule
-.PHONY : sonar/CMakeFiles/sonar_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sonar_generate_messages_lisp: sonar/CMakeFiles/sonar_generate_messages_lisp.dir/rule
-.PHONY : sonar_generate_messages_lisp
-
-# fast build rule for target.
-sonar_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/sonar_generate_messages_lisp.dir/build.make sonar/CMakeFiles/sonar_generate_messages_lisp.dir/build
-.PHONY : sonar_generate_messages_lisp/fast
-
-# Convenience name for target.
-sonar/CMakeFiles/sonar_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/sonar_generate_messages_py.dir/rule
-.PHONY : sonar/CMakeFiles/sonar_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sonar_generate_messages_py: sonar/CMakeFiles/sonar_generate_messages_py.dir/rule
-.PHONY : sonar_generate_messages_py
-
-# fast build rule for target.
-sonar_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/sonar_generate_messages_py.dir/build.make sonar/CMakeFiles/sonar_generate_messages_py.dir/build
-.PHONY : sonar_generate_messages_py/fast
-
-# Convenience name for target.
-sonar/CMakeFiles/sonar_genlisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/sonar_genlisp.dir/rule
-.PHONY : sonar/CMakeFiles/sonar_genlisp.dir/rule
-
-# Convenience name for target.
-sonar_genlisp: sonar/CMakeFiles/sonar_genlisp.dir/rule
-.PHONY : sonar_genlisp
-
-# fast build rule for target.
-sonar_genlisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/sonar_genlisp.dir/build.make sonar/CMakeFiles/sonar_genlisp.dir/build
-.PHONY : sonar_genlisp/fast
-
-# Convenience name for target.
-sonar/CMakeFiles/sonar_genpy.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sonar/CMakeFiles/sonar_genpy.dir/rule
-.PHONY : sonar/CMakeFiles/sonar_genpy.dir/rule
-
-# Convenience name for target.
-sonar_genpy: sonar/CMakeFiles/sonar_genpy.dir/rule
-.PHONY : sonar_genpy
-
-# fast build rule for target.
-sonar_genpy/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f sonar/CMakeFiles/sonar_genpy.dir/build.make sonar/CMakeFiles/sonar_genpy.dir/build
-.PHONY : sonar_genpy/fast
 
 src/sonar.o: src/sonar.cpp.o
 .PHONY : src/sonar.o
@@ -308,7 +196,6 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... _sonar_generate_messages_check_deps_SonarData"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
@@ -316,13 +203,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... sonar"
-	@echo "... sonar_gencpp"
-	@echo "... sonar_generate_messages"
-	@echo "... sonar_generate_messages_cpp"
-	@echo "... sonar_generate_messages_lisp"
-	@echo "... sonar_generate_messages_py"
-	@echo "... sonar_genlisp"
-	@echo "... sonar_genpy"
 	@echo "... test"
 	@echo "... src/sonar.o"
 	@echo "... src/sonar.i"

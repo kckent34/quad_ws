@@ -40,56 +40,49 @@ int Imu::get_imu_data(State& imu_data)
 {
 //select: clear read_ds(set of file_descriptors to watch for reading), add port to this set, set time to 0 to returnimmediately,
     // select returns the number of fd's ready
-    FD_ZERO(&read_fds);
+    /*FD_ZERO(&read_fds);
     FD_SET(port, &read_fds);
     no_timeout.tv_sec  = 0;
     no_timeout.tv_usec = 0;
-    int num_fds = select(port+1, &read_fds, NULL, NULL, &no_timeout);
+    int num_fds = select(port+1, &read_fds, NULL, NULL, &no_timeout);*/
 
     int a = -10;
     //No data ready to read
-    if(num_fds == 0)  {a = 2;}
+    //if(num_fds == 0)  {a = 2;}
 
     //select returned an error
-    else if(num_fds ==-1) { a = -3; }
+    //else if(num_fds ==-1) { a = -3; }
 
-    //A file descriptor is ready to read: check which one
-    else if(FD_ISSET(port , &read_fds))
-         {
-		unsigned char sensor_bytes2[(this->data_size)]; //= {0.0};
 
-		lseek(port, -(this->data_size), SEEK_END);
+	unsigned char sensor_bytes2[(this->data_size)]; //= {0.0};
 
-		//read in 26 bytes of data from port to the address in memory &sensor_bytes2
-		//result1 indicates success of reading
-		int result = read(port, &sensor_bytes2[0], data_size);
+	//lseek(port, -(this->data_size), SEEK_END);
 
-		//track dt between reads
-		/*clock_gettime(CLOCK_REALTIME,&newT);
-		(this->calc_dt) = UTILITY::timespec2float(UTILITY::time_diff(oldT, newT));
-		clock_gettime(CLOCK_REALTIME,&oldT);*/
-		timer.update();
-		
-		//printf("%i\n",a);
-		
+	//read in 26 bytes of data from port to the address in memory &sensor_bytes2
+	//result1 indicates success of reading
+	//tcflush(port, TCIFLUSH);
+	int result = read(port, &sensor_bytes2[0], data_size);
+
+
+	timer.update();
 		
 
+	//check first and last byte
+	if((sensor_bytes2[0] == 0xbd) && (sensor_bytes2[data_size-1] == 0xff) )
+	{
+	   unpack_data(imu_data, sensor_bytes2);
+	   a=1;
 
-
-                //check first and last byte
-                if((sensor_bytes2[0] == 0xbd) && (sensor_bytes2[data_size-1] == 0xff) ){
-                    unpack_data(imu_data, sensor_bytes2);
-                    a=1;
-		    //                    a = imu_check(imu_data);
-                }else{
-                    if (result == -1) printf("get_imu_data: FAILED read from port \n");
-                    printf("\n\n\x1b[31mCHECK BYTES WRONG:FLUSHED PORT\x1b[0m\n\n");
-                    tcflush(port, TCIFLUSH);
-                    if(!(sensor_bytes2[0]== 0xbd))       {printf("FIRST BYTE WRONG%04x \x1b[0m\n\n", sensor_bytes2[0]); a=-5;}
-                    else if(!(sensor_bytes2[25] == 0xff)) {printf("LAST BYTE WRONG%04x \x1b[0m\n\n", sensor_bytes2[25]); a=-6;}
-                    else a = -1;
-                }
-         }
+	}else
+	{
+		if (result == -1) printf("get_imu_data: FAILED read from port \n");
+		printf("\n\n\x1b[31mCHECK BYTES WRONG:FLUSHED PORT\x1b[0m\n\n");
+		tcflush(port, TCIFLUSH);
+		if(!(sensor_bytes2[0]== 0xbd))       {printf("FIRST BYTE WRONG%04x \x1b[0m\n\n", sensor_bytes2[0]); a=-5;}
+		else if(!(sensor_bytes2[data_size-1] == 0xff)) {printf("LAST BYTE WRONG%04x \x1b[0m\n\n", sensor_bytes2[data_size-1]); a=-6;}
+		else a = -1;
+	}
+         
 
 	return a;
 }
@@ -101,6 +94,7 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
 //thus constructing a float
 
      //RAW VALUES
+		float acc[3] = {0.0};
         float att_vel[3] = {0.0};
         /*att_vel[0]         = *(int32_t *)&arr[13]; //printf("att_vel 1: %i \n", att_vel[0]);
         att_vel[1]         = *(int32_t *)&arr[17]; //printf("att_vel 2: %i \n", att_vel[1]);
@@ -108,6 +102,8 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
         att_vel[0]         = *(float *)&arr[13]; //printf("att_vel 1: %i \n", att_vel[0]);
         att_vel[1]         = *(float *)&arr[17]; //printf("att_vel 2: %i \n", att_vel[1]);
         att_vel[2]         = *(float *)&arr[21]; //printf("att_vel 3: %i \n", att_vel[2]);
+        
+        
 
         imu_data.phi_dot   = -att_vel[1];
         imu_data.theta_dot = -att_vel[0];
@@ -118,16 +114,23 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
         imu_data.psi_magn_raw     = *(float *)&arr[1]; //printf("psi 1: %f \n", imu_data.psi);
         imu_data.theta     = *(float *)&arr[5]; //printf("theta 1: %f \n", imu_data.theta)state2rawBytes(imu_data);
         imu_data.phi       = *(float *)&arr[9]; //printf("phi 1: %f \n", imu_data.phi);
-	//make psi continuos here
+        
+      /*  acc[0] = *(float *)&arr[1]; //x
+        acc[1] = *(float *)&arr[5]; //y
+        acc[2] = *(float *)&arr[9]; //z */
+	
 		
 	imu_data.numPsiRot = p.getIter();
     
     
 	imu_data.dt = timer.getDt();
 
+	
      //CALIBRATED
 
  	imu_data.psi_magn_continuous  =  p.make_contin(imu_data.psi_magn_raw);
+ 	
+ 	//float pitchAcc,rollAcc,accMag;
 	
 	if((this->calibrated)) 
 	  {
@@ -137,6 +140,10 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
 	    //printf("Psi dt: %f, Psi freq: %f \n",  gyroEstimate.getDt(),  1/gyroEstimate.getDt());
 	    //pg->setDt(timer.getDt());
 		
+		/*accMag = abs(acc[0]) + abs(acc[1]) + abs(acc[2]);
+		printf("accMag[0]: %f     accMag[1]: %f        accMag[2]: %f \n", abs(acc[0]), abs(acc[1]), abs(acc[2]));
+		pitchAcc = atan2f(acc[1],acc[2]) * 180 / 3.14;
+		rollAcc = atan2f(acc[0],acc[2]) * 180 / 3.14;*/
 		
 		
 	    imu_data.psi_gyro_integration = gyroEstimate.getPsi();
@@ -147,6 +154,14 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
 	    imu_data.psi_magn_continuous_calibrated =  imu_data.psi_magn_continuous  - bias.psi_magn_continuous;
   	    gyroEstimate.updatePsi(imu_data.psi_dot_cal);
   	    imu_data.psi = imu_data.psi_magn_continuous_calibrated;
+  	    
+  	   /* imu_data.phi += imu_data.phi_dot_cal * imu_data.dt ;
+  	    imu_data.theta += imu_data.theta_dot_cal * imu_data.dt;
+  	    
+  	    if((accMag > 1.0) && (accMag < 1.2)){
+  	    imu_data.phi = 0.98 * (imu_data.phi) + 0.02 * rollAcc;
+  	    imu_data.theta = 0.98 * (imu_data.theta) + 0.02 * pitchAcc;
+  	    }*/
 	    
 	    // imu_data.altitude_calibrated = imu_data.altitude_raw - bias.altitude_raw;
 
@@ -171,7 +186,7 @@ ros::init(argc,argv,"imu");
 ros::NodeHandle n;
 ros::Publisher imu_pub;
 
-imu_pub = n.advertise<imu::ImuData>("imu/imu_data",1); 
+imu_pub = n.advertise<quad_msgs::ImuData>("imu/imu_data",1); 
 //int cal = imu.calibrate();
 float psi_t = 0;
 int suc = 0;
@@ -188,7 +203,8 @@ while(ros::ok())
 	if(suc == 1)
 	{       
 		//printf("imu_data.psi = %f \n", imu_data.psi);
-		imu::ImuData imuMsg;
+		quad_msgs::ImuData imuMsg;
+		imuMsg.header.stamp = ros::Time::now();
 		imuMsg.phi = new_data.phi;
 		imuMsg.theta = new_data.theta;
 		imuMsg.psi =  new_data.psi_gyro_integration;

@@ -153,62 +153,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/rule
-.PHONY : controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/rule
-
-# Convenience name for target.
-_controller_generate_messages_check_deps_ImuData: controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/rule
-.PHONY : _controller_generate_messages_check_deps_ImuData
-
-# fast build rule for target.
-_controller_generate_messages_check_deps_ImuData/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/build
-.PHONY : _controller_generate_messages_check_deps_ImuData/fast
-
-# Convenience name for target.
-controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/rule
-.PHONY : controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/rule
-
-# Convenience name for target.
-_controller_generate_messages_check_deps_MotorCommands: controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/rule
-.PHONY : _controller_generate_messages_check_deps_MotorCommands
-
-# fast build rule for target.
-_controller_generate_messages_check_deps_MotorCommands/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/build
-.PHONY : _controller_generate_messages_check_deps_MotorCommands/fast
-
-# Convenience name for target.
-controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/rule
-.PHONY : controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/rule
-
-# Convenience name for target.
-_controller_generate_messages_check_deps_SonarData: controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/rule
-.PHONY : _controller_generate_messages_check_deps_SonarData
-
-# fast build rule for target.
-_controller_generate_messages_check_deps_SonarData/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/build
-.PHONY : _controller_generate_messages_check_deps_SonarData/fast
-
-# Convenience name for target.
-controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/rule
-.PHONY : controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/rule
-
-# Convenience name for target.
-_controller_generate_messages_check_deps_XbeeData: controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/rule
-.PHONY : _controller_generate_messages_check_deps_XbeeData
-
-# fast build rule for target.
-_controller_generate_messages_check_deps_XbeeData/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/build
-.PHONY : _controller_generate_messages_check_deps_XbeeData/fast
-
-# Convenience name for target.
 controller/CMakeFiles/controller.dir/rule:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller.dir/rule
 .PHONY : controller/CMakeFiles/controller.dir/rule
@@ -235,104 +179,6 @@ controller_gencfg: controller/CMakeFiles/controller_gencfg.dir/rule
 controller_gencfg/fast:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_gencfg.dir/build.make controller/CMakeFiles/controller_gencfg.dir/build
 .PHONY : controller_gencfg/fast
-
-# Convenience name for target.
-controller/CMakeFiles/controller_gencpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_gencpp.dir/rule
-.PHONY : controller/CMakeFiles/controller_gencpp.dir/rule
-
-# Convenience name for target.
-controller_gencpp: controller/CMakeFiles/controller_gencpp.dir/rule
-.PHONY : controller_gencpp
-
-# fast build rule for target.
-controller_gencpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_gencpp.dir/build.make controller/CMakeFiles/controller_gencpp.dir/build
-.PHONY : controller_gencpp/fast
-
-# Convenience name for target.
-controller/CMakeFiles/controller_generate_messages.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_generate_messages.dir/rule
-.PHONY : controller/CMakeFiles/controller_generate_messages.dir/rule
-
-# Convenience name for target.
-controller_generate_messages: controller/CMakeFiles/controller_generate_messages.dir/rule
-.PHONY : controller_generate_messages
-
-# fast build rule for target.
-controller_generate_messages/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_generate_messages.dir/build.make controller/CMakeFiles/controller_generate_messages.dir/build
-.PHONY : controller_generate_messages/fast
-
-# Convenience name for target.
-controller/CMakeFiles/controller_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_generate_messages_cpp.dir/rule
-.PHONY : controller/CMakeFiles/controller_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-controller_generate_messages_cpp: controller/CMakeFiles/controller_generate_messages_cpp.dir/rule
-.PHONY : controller_generate_messages_cpp
-
-# fast build rule for target.
-controller_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_generate_messages_cpp.dir/build.make controller/CMakeFiles/controller_generate_messages_cpp.dir/build
-.PHONY : controller_generate_messages_cpp/fast
-
-# Convenience name for target.
-controller/CMakeFiles/controller_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_generate_messages_lisp.dir/rule
-.PHONY : controller/CMakeFiles/controller_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-controller_generate_messages_lisp: controller/CMakeFiles/controller_generate_messages_lisp.dir/rule
-.PHONY : controller_generate_messages_lisp
-
-# fast build rule for target.
-controller_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_generate_messages_lisp.dir/build.make controller/CMakeFiles/controller_generate_messages_lisp.dir/build
-.PHONY : controller_generate_messages_lisp/fast
-
-# Convenience name for target.
-controller/CMakeFiles/controller_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_generate_messages_py.dir/rule
-.PHONY : controller/CMakeFiles/controller_generate_messages_py.dir/rule
-
-# Convenience name for target.
-controller_generate_messages_py: controller/CMakeFiles/controller_generate_messages_py.dir/rule
-.PHONY : controller_generate_messages_py
-
-# fast build rule for target.
-controller_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_generate_messages_py.dir/build.make controller/CMakeFiles/controller_generate_messages_py.dir/build
-.PHONY : controller_generate_messages_py/fast
-
-# Convenience name for target.
-controller/CMakeFiles/controller_genlisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_genlisp.dir/rule
-.PHONY : controller/CMakeFiles/controller_genlisp.dir/rule
-
-# Convenience name for target.
-controller_genlisp: controller/CMakeFiles/controller_genlisp.dir/rule
-.PHONY : controller_genlisp
-
-# fast build rule for target.
-controller_genlisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_genlisp.dir/build.make controller/CMakeFiles/controller_genlisp.dir/build
-.PHONY : controller_genlisp/fast
-
-# Convenience name for target.
-controller/CMakeFiles/controller_genpy.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 controller/CMakeFiles/controller_genpy.dir/rule
-.PHONY : controller/CMakeFiles/controller_genpy.dir/rule
-
-# Convenience name for target.
-controller_genpy: controller/CMakeFiles/controller_genpy.dir/rule
-.PHONY : controller_genpy
-
-# fast build rule for target.
-controller_genpy/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller_genpy.dir/build.make controller/CMakeFiles/controller_genpy.dir/build
-.PHONY : controller_genpy/fast
 
 # Convenience name for target.
 controller/CMakeFiles/dynamic_reconfigure_gencfg.dir/rule:
@@ -462,73 +308,14 @@ src/utility.cpp.s:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/utility.cpp.s
 .PHONY : src/utility.cpp.s
 
-src/vicon.o: src/vicon.cpp.o
-.PHONY : src/vicon.o
-
-# target to build an object file
-src/vicon.cpp.o:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/vicon.cpp.o
-.PHONY : src/vicon.cpp.o
-
-src/vicon.i: src/vicon.cpp.i
-.PHONY : src/vicon.i
-
-# target to preprocess a source file
-src/vicon.cpp.i:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/vicon.cpp.i
-.PHONY : src/vicon.cpp.i
-
-src/vicon.s: src/vicon.cpp.s
-.PHONY : src/vicon.s
-
-# target to generate assembly for a file
-src/vicon.cpp.s:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/vicon.cpp.s
-.PHONY : src/vicon.cpp.s
-
-src/xbee1.o: src/xbee1.cpp.o
-.PHONY : src/xbee1.o
-
-# target to build an object file
-src/xbee1.cpp.o:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/xbee1.cpp.o
-.PHONY : src/xbee1.cpp.o
-
-src/xbee1.i: src/xbee1.cpp.i
-.PHONY : src/xbee1.i
-
-# target to preprocess a source file
-src/xbee1.cpp.i:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/xbee1.cpp.i
-.PHONY : src/xbee1.cpp.i
-
-src/xbee1.s: src/xbee1.cpp.s
-.PHONY : src/xbee1.s
-
-# target to generate assembly for a file
-src/xbee1.cpp.s:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/xbee1.cpp.s
-.PHONY : src/xbee1.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... _controller_generate_messages_check_deps_ImuData"
-	@echo "... _controller_generate_messages_check_deps_MotorCommands"
-	@echo "... _controller_generate_messages_check_deps_SonarData"
-	@echo "... _controller_generate_messages_check_deps_XbeeData"
 	@echo "... controller"
 	@echo "... controller_gencfg"
-	@echo "... controller_gencpp"
-	@echo "... controller_generate_messages"
-	@echo "... controller_generate_messages_cpp"
-	@echo "... controller_generate_messages_lisp"
-	@echo "... controller_generate_messages_py"
-	@echo "... controller_genlisp"
-	@echo "... controller_genpy"
 	@echo "... dynamic_reconfigure_gencfg"
 	@echo "... dynamic_reconfigure_generate_messages_cpp"
 	@echo "... dynamic_reconfigure_generate_messages_lisp"
@@ -549,12 +336,6 @@ help:
 	@echo "... src/utility.o"
 	@echo "... src/utility.i"
 	@echo "... src/utility.s"
-	@echo "... src/vicon.o"
-	@echo "... src/vicon.i"
-	@echo "... src/vicon.s"
-	@echo "... src/xbee1.o"
-	@echo "... src/xbee1.i"
-	@echo "... src/xbee1.s"
 .PHONY : help
 
 

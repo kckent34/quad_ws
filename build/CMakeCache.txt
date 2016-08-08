@@ -362,6 +362,15 @@ motors_SOURCE_DIR:STATIC=/home/odroid/quad_ws/src/motors
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/indigo/share/pluginlib/cmake
 
+//Value Computed by CMake
+quad_msgs_BINARY_DIR:STATIC=/home/odroid/quad_ws/build/quad_msgs
+
+//The directory containing a CMake configuration file for quad_msgs.
+quad_msgs_DIR:PATH=/home/odroid/quad_ws/devel/share/quad_msgs/cmake
+
+//Value Computed by CMake
+quad_msgs_SOURCE_DIR:STATIC=/home/odroid/quad_ws/src/quad_msgs
+
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/indigo/share/rosconsole/cmake
 
@@ -517,7 +526,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=8
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

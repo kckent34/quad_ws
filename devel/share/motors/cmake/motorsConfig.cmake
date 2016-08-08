@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(motors_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/odroid/quad_ws/devel/include;/home/odroid/quad_ws/src/motors/include " STREQUAL " ")
+if(NOT "/home/odroid/quad_ws/src/motors/include " STREQUAL " ")
   set(motors_INCLUDE_DIRS "")
-  set(_include_dirs "/home/odroid/quad_ws/devel/include;/home/odroid/quad_ws/src/motors/include")
+  set(_include_dirs "/home/odroid/quad_ws/src/motors/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/odroid/quad_ws/devel/lib;/opt/ros/indigo/lib)
+    foreach(path /home/odroid/quad_ws/devel/lib;/home/odroid/quad_ws/devel/lib;/opt/ros/indigo/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -145,7 +145,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(motors_EXPORTED_TARGETS "motors_generate_messages_cpp;motors_generate_messages_lisp;motors_generate_messages_py")
+set(motors_EXPORTED_TARGETS "")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${motors_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -153,7 +153,7 @@ foreach(t ${motors_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "message_runtime;roscpp;rospy;std_msgs")
+set(depends "message_runtime;roscpp;rospy;std_msgs;quad_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -182,7 +182,7 @@ foreach(depend ${depends})
   list(APPEND motors_EXPORTED_TARGETS ${${motors_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "motors-msg-extras.cmake")
+set(pkg_cfg_extras "")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${motors_DIR}/${extra})

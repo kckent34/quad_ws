@@ -17,7 +17,7 @@
 
 //ros headers
 #include <ros/ros.h>
-#include <controller/MotorCommands.h>
+#include <quad_msgs/MotorCommands.h>
 
 #define PCA9685_SUBADR1 0x2
 #define PCA9685_SUBADR2 0x3
@@ -37,6 +37,8 @@
 #define ALLLED_OFF_L 0xFC
 #define ALLLED_OFF_H 0xFD
 
+bool write_motors = false;
+
 using namespace std;
 
 class motor
@@ -44,11 +46,11 @@ class motor
 private:
 	
        int ensure_valid_force(int force_in);
-       void cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg);
+       //void cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg);
        uint8_t motorId_;
        uint8_t i2cAddress_;
        uint8_t i2cHandle_;
-       uint8_t force_; //8 bit int
+       uint16_t force_; //8 bit int
        //ros::NodeHandle n;
        //ros::Subscriber cmd_sub;
        const static uint8_t max_force = 255;
@@ -66,7 +68,7 @@ public:
        motor(uint8_t motor_id, uint8_t i2c_handle, uint8_t i2c_address);
        void        send_force_i2c( uint16_t on, uint16_t off);
        int         send_motor_data(uint16_t on, uint16_t off);
-       void        set_force( int force_in, bool CONTROLLER_RUN );
+       void        set_force( int force_in);
        int	    get_force( void );
        float calcDt(timespec& oldT, timespec& newT);
        float getDt(void);
@@ -82,9 +84,11 @@ public:
 class Motors
 {
 private: 
-	void cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg);
+	void cmdCallBack(const quad_msgs::MotorCommands::ConstPtr& cmdMsg);
 	ros::Subscriber cmdSub_;
 public: 
+	uint8_t i2cHandle_;
+	void send_motor_forces();
 	motor m0;
 	motor m1;
 	motor m2;

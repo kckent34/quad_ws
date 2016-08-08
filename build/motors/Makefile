@@ -153,20 +153,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir/rule
-.PHONY : motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir/rule
-
-# Convenience name for target.
-_motors_generate_messages_check_deps_MotorCommands: motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir/rule
-.PHONY : _motors_generate_messages_check_deps_MotorCommands
-
-# fast build rule for target.
-_motors_generate_messages_check_deps_MotorCommands/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir/build.make motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir/build
-.PHONY : _motors_generate_messages_check_deps_MotorCommands/fast
-
-# Convenience name for target.
 motors/CMakeFiles/motor_test_1.dir/rule:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/motor_test_1.dir/rule
 .PHONY : motors/CMakeFiles/motor_test_1.dir/rule
@@ -179,104 +165,6 @@ motor_test_1: motors/CMakeFiles/motor_test_1.dir/rule
 motor_test_1/fast:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/motor_test_1.dir/build.make motors/CMakeFiles/motor_test_1.dir/build
 .PHONY : motor_test_1/fast
-
-# Convenience name for target.
-motors/CMakeFiles/motors_gencpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/motors_gencpp.dir/rule
-.PHONY : motors/CMakeFiles/motors_gencpp.dir/rule
-
-# Convenience name for target.
-motors_gencpp: motors/CMakeFiles/motors_gencpp.dir/rule
-.PHONY : motors_gencpp
-
-# fast build rule for target.
-motors_gencpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/motors_gencpp.dir/build.make motors/CMakeFiles/motors_gencpp.dir/build
-.PHONY : motors_gencpp/fast
-
-# Convenience name for target.
-motors/CMakeFiles/motors_generate_messages.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/motors_generate_messages.dir/rule
-.PHONY : motors/CMakeFiles/motors_generate_messages.dir/rule
-
-# Convenience name for target.
-motors_generate_messages: motors/CMakeFiles/motors_generate_messages.dir/rule
-.PHONY : motors_generate_messages
-
-# fast build rule for target.
-motors_generate_messages/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/motors_generate_messages.dir/build.make motors/CMakeFiles/motors_generate_messages.dir/build
-.PHONY : motors_generate_messages/fast
-
-# Convenience name for target.
-motors/CMakeFiles/motors_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/motors_generate_messages_cpp.dir/rule
-.PHONY : motors/CMakeFiles/motors_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-motors_generate_messages_cpp: motors/CMakeFiles/motors_generate_messages_cpp.dir/rule
-.PHONY : motors_generate_messages_cpp
-
-# fast build rule for target.
-motors_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/motors_generate_messages_cpp.dir/build.make motors/CMakeFiles/motors_generate_messages_cpp.dir/build
-.PHONY : motors_generate_messages_cpp/fast
-
-# Convenience name for target.
-motors/CMakeFiles/motors_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/motors_generate_messages_lisp.dir/rule
-.PHONY : motors/CMakeFiles/motors_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-motors_generate_messages_lisp: motors/CMakeFiles/motors_generate_messages_lisp.dir/rule
-.PHONY : motors_generate_messages_lisp
-
-# fast build rule for target.
-motors_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/motors_generate_messages_lisp.dir/build.make motors/CMakeFiles/motors_generate_messages_lisp.dir/build
-.PHONY : motors_generate_messages_lisp/fast
-
-# Convenience name for target.
-motors/CMakeFiles/motors_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/motors_generate_messages_py.dir/rule
-.PHONY : motors/CMakeFiles/motors_generate_messages_py.dir/rule
-
-# Convenience name for target.
-motors_generate_messages_py: motors/CMakeFiles/motors_generate_messages_py.dir/rule
-.PHONY : motors_generate_messages_py
-
-# fast build rule for target.
-motors_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/motors_generate_messages_py.dir/build.make motors/CMakeFiles/motors_generate_messages_py.dir/build
-.PHONY : motors_generate_messages_py/fast
-
-# Convenience name for target.
-motors/CMakeFiles/motors_genlisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/motors_genlisp.dir/rule
-.PHONY : motors/CMakeFiles/motors_genlisp.dir/rule
-
-# Convenience name for target.
-motors_genlisp: motors/CMakeFiles/motors_genlisp.dir/rule
-.PHONY : motors_genlisp
-
-# fast build rule for target.
-motors_genlisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/motors_genlisp.dir/build.make motors/CMakeFiles/motors_genlisp.dir/build
-.PHONY : motors_genlisp/fast
-
-# Convenience name for target.
-motors/CMakeFiles/motors_genpy.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 motors/CMakeFiles/motors_genpy.dir/rule
-.PHONY : motors/CMakeFiles/motors_genpy.dir/rule
-
-# Convenience name for target.
-motors_genpy: motors/CMakeFiles/motors_genpy.dir/rule
-.PHONY : motors_genpy
-
-# fast build rule for target.
-motors_genpy/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f motors/CMakeFiles/motors_genpy.dir/build.make motors/CMakeFiles/motors_genpy.dir/build
-.PHONY : motors_genpy/fast
 
 src/motor_test_1.o: src/motor_test_1.cpp.o
 .PHONY : src/motor_test_1.o
@@ -308,20 +196,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... _motors_generate_messages_check_deps_MotorCommands"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... motor_test_1"
-	@echo "... motors_gencpp"
-	@echo "... motors_generate_messages"
-	@echo "... motors_generate_messages_cpp"
-	@echo "... motors_generate_messages_lisp"
-	@echo "... motors_generate_messages_py"
-	@echo "... motors_genlisp"
-	@echo "... motors_genpy"
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... src/motor_test_1.o"

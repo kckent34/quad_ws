@@ -153,20 +153,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/rule
-.PHONY : imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/rule
-
-# Convenience name for target.
-_imu_generate_messages_check_deps_ImuData: imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/rule
-.PHONY : _imu_generate_messages_check_deps_ImuData
-
-# fast build rule for target.
-_imu_generate_messages_check_deps_ImuData/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/build.make imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/build
-.PHONY : _imu_generate_messages_check_deps_ImuData/fast
-
-# Convenience name for target.
 imu/CMakeFiles/imu.dir/rule:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/imu.dir/rule
 .PHONY : imu/CMakeFiles/imu.dir/rule
@@ -179,104 +165,6 @@ imu: imu/CMakeFiles/imu.dir/rule
 imu/fast:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/imu.dir/build.make imu/CMakeFiles/imu.dir/build
 .PHONY : imu/fast
-
-# Convenience name for target.
-imu/CMakeFiles/imu_gencpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/imu_gencpp.dir/rule
-.PHONY : imu/CMakeFiles/imu_gencpp.dir/rule
-
-# Convenience name for target.
-imu_gencpp: imu/CMakeFiles/imu_gencpp.dir/rule
-.PHONY : imu_gencpp
-
-# fast build rule for target.
-imu_gencpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/imu_gencpp.dir/build.make imu/CMakeFiles/imu_gencpp.dir/build
-.PHONY : imu_gencpp/fast
-
-# Convenience name for target.
-imu/CMakeFiles/imu_generate_messages.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/imu_generate_messages.dir/rule
-.PHONY : imu/CMakeFiles/imu_generate_messages.dir/rule
-
-# Convenience name for target.
-imu_generate_messages: imu/CMakeFiles/imu_generate_messages.dir/rule
-.PHONY : imu_generate_messages
-
-# fast build rule for target.
-imu_generate_messages/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/imu_generate_messages.dir/build.make imu/CMakeFiles/imu_generate_messages.dir/build
-.PHONY : imu_generate_messages/fast
-
-# Convenience name for target.
-imu/CMakeFiles/imu_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/imu_generate_messages_cpp.dir/rule
-.PHONY : imu/CMakeFiles/imu_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-imu_generate_messages_cpp: imu/CMakeFiles/imu_generate_messages_cpp.dir/rule
-.PHONY : imu_generate_messages_cpp
-
-# fast build rule for target.
-imu_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/imu_generate_messages_cpp.dir/build.make imu/CMakeFiles/imu_generate_messages_cpp.dir/build
-.PHONY : imu_generate_messages_cpp/fast
-
-# Convenience name for target.
-imu/CMakeFiles/imu_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/imu_generate_messages_lisp.dir/rule
-.PHONY : imu/CMakeFiles/imu_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-imu_generate_messages_lisp: imu/CMakeFiles/imu_generate_messages_lisp.dir/rule
-.PHONY : imu_generate_messages_lisp
-
-# fast build rule for target.
-imu_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/imu_generate_messages_lisp.dir/build.make imu/CMakeFiles/imu_generate_messages_lisp.dir/build
-.PHONY : imu_generate_messages_lisp/fast
-
-# Convenience name for target.
-imu/CMakeFiles/imu_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/imu_generate_messages_py.dir/rule
-.PHONY : imu/CMakeFiles/imu_generate_messages_py.dir/rule
-
-# Convenience name for target.
-imu_generate_messages_py: imu/CMakeFiles/imu_generate_messages_py.dir/rule
-.PHONY : imu_generate_messages_py
-
-# fast build rule for target.
-imu_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/imu_generate_messages_py.dir/build.make imu/CMakeFiles/imu_generate_messages_py.dir/build
-.PHONY : imu_generate_messages_py/fast
-
-# Convenience name for target.
-imu/CMakeFiles/imu_genlisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/imu_genlisp.dir/rule
-.PHONY : imu/CMakeFiles/imu_genlisp.dir/rule
-
-# Convenience name for target.
-imu_genlisp: imu/CMakeFiles/imu_genlisp.dir/rule
-.PHONY : imu_genlisp
-
-# fast build rule for target.
-imu_genlisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/imu_genlisp.dir/build.make imu/CMakeFiles/imu_genlisp.dir/build
-.PHONY : imu_genlisp/fast
-
-# Convenience name for target.
-imu/CMakeFiles/imu_genpy.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/imu_genpy.dir/rule
-.PHONY : imu/CMakeFiles/imu_genpy.dir/rule
-
-# Convenience name for target.
-imu_genpy: imu/CMakeFiles/imu_genpy.dir/rule
-.PHONY : imu_genpy
-
-# fast build rule for target.
-imu_genpy/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/imu_genpy.dir/build.make imu/CMakeFiles/imu_genpy.dir/build
-.PHONY : imu_genpy/fast
 
 # Convenience name for target.
 imu/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
@@ -362,48 +250,6 @@ rosgraph_msgs_generate_messages_py/fast:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make imu/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
-# Convenience name for target.
-imu/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : imu/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: imu/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make imu/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-imu/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : imu/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: imu/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make imu/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-imu/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : imu/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: imu/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f imu/CMakeFiles/std_msgs_generate_messages_py.dir/build.make imu/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
 src/imu.o: src/imu.cpp.o
 .PHONY : src/imu.o
 
@@ -458,16 +304,8 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... _imu_generate_messages_check_deps_ImuData"
 	@echo "... edit_cache"
 	@echo "... imu"
-	@echo "... imu_gencpp"
-	@echo "... imu_generate_messages"
-	@echo "... imu_generate_messages_cpp"
-	@echo "... imu_generate_messages_lisp"
-	@echo "... imu_generate_messages_py"
-	@echo "... imu_genlisp"
-	@echo "... imu_genpy"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
@@ -479,9 +317,6 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_py"
 	@echo "... test"
 	@echo "... src/imu.o"
 	@echo "... src/imu.i"

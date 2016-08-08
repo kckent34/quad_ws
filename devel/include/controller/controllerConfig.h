@@ -241,6 +241,9 @@ class DEFAULT
         if("kp_z"==(*_i)->name){kp_z = boost::any_cast<double>(val);}
         if("kd_z"==(*_i)->name){kd_z = boost::any_cast<double>(val);}
         if("ki_z"==(*_i)->name){ki_z = boost::any_cast<double>(val);}
+        if("U_trim_roll_acc"==(*_i)->name){U_trim_roll_acc = boost::any_cast<double>(val);}
+        if("U_trim_pitch_acc"==(*_i)->name){U_trim_pitch_acc = boost::any_cast<double>(val);}
+        if("U_trim_yaw_acc"==(*_i)->name){U_trim_yaw_acc = boost::any_cast<double>(val);}
       }
     }
 
@@ -259,6 +262,9 @@ double ki_y;
 double kp_z;
 double kd_z;
 double ki_z;
+double U_trim_roll_acc;
+double U_trim_pitch_acc;
+double U_trim_yaw_acc;
 
     bool state;
     std::string name;
@@ -298,6 +304,12 @@ double ki_z;
       double kd_z;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       double ki_z;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      double U_trim_roll_acc;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      double U_trim_pitch_acc;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      double U_trim_yaw_acc;
 //#line 218 "/opt/ros/indigo/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
     bool __fromMessage__(dynamic_reconfigure::Config &msg)
@@ -448,7 +460,7 @@ controllerConfig::GroupDescription<controllerConfig::DEFAULT, controllerConfig> 
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.kd_phi = 100.0;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.kd_phi = 0.33;
+      __default__.kd_phi = 2.4;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("kd_phi", "double", 0, "kd_phi", "", &controllerConfig::kd_phi)));
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
@@ -468,7 +480,7 @@ controllerConfig::GroupDescription<controllerConfig::DEFAULT, controllerConfig> 
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.kd_theta = 100.0;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.kd_theta = 0.33;
+      __default__.kd_theta = 2.4;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("kd_theta", "double", 0, "kd_theta", "", &controllerConfig::kd_theta)));
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
@@ -478,7 +490,7 @@ controllerConfig::GroupDescription<controllerConfig::DEFAULT, controllerConfig> 
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.kp_psi = 100.0;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.kp_psi = 20.0;
+      __default__.kp_psi = 11.0;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("kp_psi", "double", 0, "kp_psi", "", &controllerConfig::kp_psi)));
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
@@ -488,7 +500,7 @@ controllerConfig::GroupDescription<controllerConfig::DEFAULT, controllerConfig> 
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __max__.kd_psi = 100.0;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
-      __default__.kd_psi = 0.2;
+      __default__.kd_psi = 0.1;
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.abstract_parameters.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("kd_psi", "double", 0, "kd_psi", "", &controllerConfig::kd_psi)));
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
@@ -583,6 +595,36 @@ controllerConfig::GroupDescription<controllerConfig::DEFAULT, controllerConfig> 
       Default.abstract_parameters.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("ki_z", "double", 0, "ki_z", "", &controllerConfig::ki_z)));
 //#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("ki_z", "double", 0, "ki_z", "", &controllerConfig::ki_z)));
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.U_trim_roll_acc = -10.0;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.U_trim_roll_acc = 10.0;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.U_trim_roll_acc = -0.085;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("U_trim_roll_acc", "double", 0, "U_trim_roll_acc", "", &controllerConfig::U_trim_roll_acc)));
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("U_trim_roll_acc", "double", 0, "U_trim_roll_acc", "", &controllerConfig::U_trim_roll_acc)));
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.U_trim_pitch_acc = -10.0;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.U_trim_pitch_acc = 10.0;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.U_trim_pitch_acc = -0.98;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("U_trim_pitch_acc", "double", 0, "U_trim_pitch_acc", "", &controllerConfig::U_trim_pitch_acc)));
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("U_trim_pitch_acc", "double", 0, "U_trim_pitch_acc", "", &controllerConfig::U_trim_pitch_acc)));
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.U_trim_yaw_acc = -10.0;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.U_trim_yaw_acc = 10.0;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.U_trim_yaw_acc = 0.0;
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("U_trim_yaw_acc", "double", 0, "U_trim_yaw_acc", "", &controllerConfig::U_trim_yaw_acc)));
+//#line 280 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(controllerConfig::AbstractParamDescriptionConstPtr(new controllerConfig::ParamDescription<double>("U_trim_yaw_acc", "double", 0, "U_trim_yaw_acc", "", &controllerConfig::U_trim_yaw_acc)));
 //#line 235 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
 //#line 235 "/opt/ros/indigo/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"

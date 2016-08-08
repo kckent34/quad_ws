@@ -60,99 +60,6 @@ int Xbee::open_port(std::string PATH2XBEE, int DATASIZE)
 
     return port;
 }
-int Xbee::get_xbee_data(void)
-{
-    // select returns the number of fd's ready
-    FD_ZERO(&read_fds);
-    FD_SET(port, &read_fds);
-    no_timeout.tv_sec  = 0;
-    no_timeout.tv_usec = 0;
-
-   int num_fds = select(port+1, &read_fds, NULL, NULL, &no_timeout);  
-   int returnVal= -10; 
-   if(num_fds == -1)      (this->num_fds_n1)++; 
-   else if (num_fds == 0) (this->num_fds_0)++; 
-   else if (num_fds == 1) (this->num_fds_1)++;  
-   else if (num_fds > 1)  (this->num_fds_p)++; 
-  //No data ready to read 
-    	if(num_fds == 0)   
-    	{	 
-		returnVal= -1; 
-		return -1; 
-    	} 
-    	//select returned an error 
-    	else if(num_fds ==-1) 
-    	{ 
-		returnVal= -2; 
-		return -2; 
-    	} 
-	else if(num_fds ==1)
-	{
-		lseek(port, -(this->DATASIZE), SEEK_END);
-
-		uint8_t  data_received[DATASIZE];
-		int result = read(port, &data_received[0], DATASIZE);
-		
-		int16_t checksum_calc = checksum(data_received, DATASIZE);
-		
-		//printf("result: %i\n", result);
-		//print_raw_bytes(data_received, DATASIZE);
-
-
-
-		//CHECK BYTES MAY BE DIFFERENT FOR VICON
-		bool check1_correct =  (  data_received[0] == 253);
- 		//bool check2_correct =  (  data_received[DATASIZE-2] == 173);
- 		bool checksum_correct = (checksum_calc > 0); 	
-
-
-
-
-		if(result == 0)
-		{
-			printf("read 0 bytes \n");
-		//	clean();
-			returnVal = -3;
-		}
-
-		if( (checksum_calc > 0) && ( check1_correct ) )
-		{
-
-			calcDt();
-			Vicon vicon = {0.0};
-			//unpack_vicon_data(vicon,data_received);UNCOMMENT AND FIX!!!
-
-			(this->new_vicon) 	   = vicon;
-			(this->new_filt_vicon) 	   = filter_vicon(vicon, this->weights);
-			
-			(this->new_vicon) 	   = vicon_velocity(this->new_vicon, this->old_vicon, this->getDt()); 
-			(this->new_filt_vicon_vel) = vicon_velocity(this->new_filt_vicon, this->old_filt_vicon, this->getDt());
-
-			pushback(this->new_vicon, this->old_vicon, this->old_old_vicon);
-			pushback(this->new_filt_vicon, this->old_filt_vicon, this->old_old_filt_vicon);
-			pushback(this->new_vicon_vel,this->old_vicon_vel, this->old_old_vicon_vel); 	
-			pushback(this->new_filt_vicon_vel, this->old_filt_vicon_vel,  this->old_old_filt_vicon_vel);
-
-					 
-			returnVal = 1;
-		}
-		 else
-		{
-			if (result == -1) printf("get_xbee_data: FAILED read from port \n");
-			 //printf("\n\n\x1b[31mFIRST BYTE OR CHECKSUM WRONG:FLUSHED PORT\x1b[0m\n\n");
-
-			tcflush(port, TCIFLUSH);
-
-			if(checksum_calc < 0) 		      returnVal = -4;
-			else if(!(  data_received[0] == 253)) returnVal = -5;  //check bytes??
-			else if(!(  data_received[6] == 173)) returnVal = -6;  //check bytes??
-			else 				      returnVal = -1;
-		}
-	}
-
-	return returnVal;
-
-}
 
 Vicon Xbee::filter_vicon(Vicon& new_vicon, Weights& weights)
 {
@@ -231,37 +138,14 @@ Vicon Xbee::getLastFiltViconVel(void)
 }
 int Xbee::get_xbee_data(Angles& joystick_des_angles, uint8_t& joystick_thrust, uint8_t& flight_mode)
 {
-    // select returns the number of fd's ready
-    FD_ZERO(&read_fds);
-    FD_SET(port, &read_fds);
-    no_timeout.tv_sec  = 0;
-    no_timeout.tv_usec = 0;
-
     return get_xbee_helper(joystick_des_angles, joystick_thrust, flight_mode);
 }
 int Xbee::get_xbee_helper(Angles& joystick_des_angles, uint8_t& joystick_thrust, uint8_t& flight_mode)
 {
-   int num_fds = select(port+1, &read_fds, NULL, NULL, &no_timeout);  
-   int returnVal= -10; 
-   if(num_fds == -1)      (this->num_fds_n1)++; 
-   else if (num_fds == 0) (this->num_fds_0)++; 
-   else if (num_fds == 1) (this->num_fds_1)++;  
-   else if (num_fds > 1)  (this->num_fds_p)++; 
-  //No data ready to read 
-    	if(num_fds == 0)   
-    	{	 
-		returnVal= -1; 
-		return -1; 
-    	} 
-    	//select returned an error 
-    	else if(num_fds ==-1) 
-    	{ 
-		returnVal= -2; 
-		return -2; 
-    	} 
-	else if(num_fds ==1)
-	{
-		lseek(port, -(this->DATASIZE), SEEK_END);
+    
+		int returnVal= -10; 
+
+		//	lseek(port, -(this->DATASIZE), SEEK_END);
 
 		uint8_t  data_received[DATASIZE];
 		int result = read(port, &data_received[0], DATASIZE);
@@ -301,14 +185,14 @@ int Xbee::get_xbee_helper(Angles& joystick_des_angles, uint8_t& joystick_thrust,
 			else if(!(  data_received[6] == 173)) returnVal = -6;
 			else 				      returnVal = -1;
 		}
-	}
+	
 
-	joystick_des_angles.succ_read = returnVal;
+	
 	return returnVal;
 }
 void Xbee::unpack_joystick_data(Angles& joystick_des_angles, uint8_t& joystick_thrust, uint8_t& flight_mode, uint8_t arr[])
 {
-	joystick_thrust             = (int8_t) arr[1] + 74; // thrust
+	joystick_thrust             = (int8_t) arr[1]; // thrust
 	joystick_des_angles.phi     = (int8_t) arr[2]; // roll
 	joystick_des_angles.theta   = (int8_t) arr[3]; // pitch 
 	joystick_des_angles.psi     = (int8_t) arr[4]; // yaw 
@@ -356,8 +240,8 @@ int Xbee::check_start_thrust(void)
 
 
 	timespec start_time, current_time;
-    	clock_gettime(CLOCK_REALTIME,&start_time);
-    	clock_gettime(CLOCK_REALTIME,&current_time);
+    clock_gettime(CLOCK_REALTIME,&start_time);
+    clock_gettime(CLOCK_REALTIME,&current_time);
 	float elapsed_time = 0;
 
 	Angles joystick_des_angles = {-10};
@@ -445,7 +329,7 @@ int main(int argc, char**argv)
 		ros::init(argc,argv,"xbee");
 		ros::NodeHandle nh;
 		ros::Publisher xbee_pub;
-		xbee_pub = nh.advertise<xbee::XbeeData>("xbee/xbee_cmds",1); 
+		xbee_pub = nh.advertise<quad_msgs::XbeeData>("xbee/xbee_cmds",1); 
 		int suc = 0;
 		while(ros::ok())
 		{
@@ -453,8 +337,10 @@ int main(int argc, char**argv)
 			//printf("suc: %i \n",suc);
 			if(suc > 0){
 				//xbee.printData(joystick_des_angles, joystick_thrust, flight_mode); 
-				xbee::XbeeData xb_msg;
+				quad_msgs::XbeeData xb_msg;
 				//printf("im in here");
+
+				xb_msg.header.stamp = ros::Time::now();
 				xb_msg.joy_des_angles[0] = joystick_des_angles.phi;
 				xb_msg.joy_des_angles[1] = joystick_des_angles.theta;
 				xb_msg.joy_des_angles[2] = joystick_des_angles.psi;

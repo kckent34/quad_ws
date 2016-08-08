@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/odroid/quad_ws/devel/include/imu/ImuData.h
+/home/odroid/quad_ws/devel/include/quad_msgs/ImuData.h
 string
 -
 vector
@@ -20,6 +20,8 @@ ros/serialization.h
 ros/builtin_message_traits.h
 -
 ros/message_operations.h
+-
+std_msgs/Header.h
 -
 
 /home/odroid/quad_ws/src/imu/include/imu/data_structs.h
@@ -61,7 +63,7 @@ string.h
 -
 ros/ros.h
 -
-imu/ImuData.h
+quad_msgs/ImuData.h
 -
 timer.h
 -
@@ -777,4 +779,20 @@ ros/forwards.h
 /opt/ros/indigo/include/ros/ros/forwards.h
 
 /opt/ros/indigo/include/rosconsole/macros_generated.h
+
+/opt/ros/indigo/include/std_msgs/Header.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
 

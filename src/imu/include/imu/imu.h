@@ -23,7 +23,7 @@
 #include <termios.h> /* POSIX terminal control definitions, Unix API for terminal I/O */
 #include <string.h>
 #include <ros/ros.h>
-#include <imu/ImuData.h>
+#include <quad_msgs/ImuData.h>
 #include <timer.h>
 
 #define BAUDRATE_IMU B230400

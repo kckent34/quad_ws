@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/odroid/quad_ws/install/lib;/opt/ros/indigo/lib)
+    foreach(path /home/odroid/quad_ws/install/lib;/home/odroid/quad_ws/devel/lib;/opt/ros/indigo/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -145,7 +145,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(sonar_EXPORTED_TARGETS "sonar_generate_messages_cpp;sonar_generate_messages_lisp;sonar_generate_messages_py")
+set(sonar_EXPORTED_TARGETS "")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${sonar_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -153,7 +153,7 @@ foreach(t ${sonar_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "roscpp;std_msgs;message_runtime")
+set(depends "roscpp;std_msgs;message_runtime;quad_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -182,7 +182,7 @@ foreach(depend ${depends})
   list(APPEND sonar_EXPORTED_TARGETS ${${sonar_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "sonar-msg-extras.cmake")
+set(pkg_cfg_extras "")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${sonar_DIR}/${extra})

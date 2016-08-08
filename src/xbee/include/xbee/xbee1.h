@@ -26,7 +26,7 @@
 #include <curses.h> //for getch()
 
 #include <ros/ros.h>
-#include "xbee/XbeeData.h"
+#include "quad_msgs/XbeeData.h"
 
 
 #define PI 3.14159265359

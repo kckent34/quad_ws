@@ -1,6 +1,7 @@
 #include "controller.h"
 //g++ controller.cpp imu.cpp sonar.cpp xbee1.cpp vicon.cpp motor.cpp logger.cpp utility.cpp -I ../include -lpthread -lncurses -lboost_system -std=c++11
 //initialize process-scoped data-structures
+
 Times times;
 Times time_m;
 Times times_display;
@@ -49,9 +50,9 @@ int maxDistUp = 1000;
 */
 
 
-int aa = 0;
-timespec s,f;
-timespec dd,tt;
+//int aa = 0;
+//timespec s,ff;
+//timespec dd,tt;
 int port;
 
 /*std::string log_filename = "file.log";
@@ -126,14 +127,16 @@ void gainsCallback(controller::controllerConfig &config, uint32_t level) {
   gains.kp_y = config.kp_y;
   gains.kd_y = config.kd_y;
   gains.ki_y = config.ki_y;
-
+  U_trim.roll_acc = config.U_trim_roll_acc;
+  U_trim.pitch_acc = config.U_trim_pitch_acc;
+  U_trim.yaw_acc = config.U_trim_yaw_acc;
   ROS_INFO("kp_phi: %f, kd_phi: %f, kp_theta: %f, kd_theta:%f, kp_psi:%f, kd_psi:%f \n",gains.kp_phi,gains.kd_phi,gains.kp_theta,gains.kd_theta,gains.kp_psi,gains.kd_psi);
 }
 
 
 
 
-void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg){
+void sonarCallback(const quad_msgs::SonarData::ConstPtr& sonarMsg){
 	new_sonar_data_x_pos = sonarMsg->x_pos;
 	new_sonar_data_x_neg = sonarMsg->x_neg;
 	new_sonar_data_y_pos = sonarMsg->y_pos;
@@ -144,7 +147,7 @@ void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg){
 	
 }
 
-void imuCallback(const controller::ImuData::ConstPtr& imuMsg){
+void imuCallback(const quad_msgs::ImuData::ConstPtr& imuMsg){
 	if(imuMsg->succ_read < 0) {
 		KILL_MOTORS = true; 
 		return;
@@ -161,20 +164,20 @@ void imuCallback(const controller::ImuData::ConstPtr& imuMsg){
 	//printf("imu theta: %f \n",new_imu_data.theta);
 	
 }
-void xbeeCallback(const controller::XbeeData::ConstPtr& xbeeMsg){
+void xbeeCallback(const quad_msgs::XbeeData::ConstPtr& xbeeMsg){
 	desired_angles.phi = xbeeMsg->joy_des_angles[0];
 	desired_angles.theta = xbeeMsg->joy_des_angles[1];
 	desired_angles.psi = xbeeMsg->joy_des_angles[2];
 	joystick_thrust = xbeeMsg->joy_thrust;
 	flight_mode = xbeeMsg->flight_mode;
-	if(flight_mode == 1) {KILL_MOTORS = true;}
+	if(flight_mode < 11) {KILL_MOTORS = true;}
 	return;
 }
 
 void control_stabilizer()
 {
 
-	
+ 
   printf("in control stabilizer \n");
   U_trim.thrust = 10;
   ros::NodeHandle nh;
@@ -182,10 +185,10 @@ void control_stabilizer()
   ros::Subscriber sonar_sub;
   ros::Subscriber imu_sub;
   ros::Subscriber xbee_sub;
-  cmd_pub = nh.advertise<controller::MotorCommands>("controller/cmd_motors",1); 
-  sonar_sub = nh.subscribe<controller::SonarData>("sonar/sonar_data",1,sonarCallback); 
-  imu_sub = nh.subscribe<controller::ImuData>("imu/imu_data",1,imuCallback);
-  xbee_sub = nh.subscribe<controller::XbeeData>("xbee/xbee_cmds",1,xbeeCallback); 
+  cmd_pub = nh.advertise<quad_msgs::MotorCommands>("controller/cmd_motors",3); 
+  sonar_sub = nh.subscribe<quad_msgs::SonarData>("sonar/sonar_data",1,sonarCallback); 
+  imu_sub = nh.subscribe<quad_msgs::ImuData>("imu/imu_data",1,imuCallback);
+  xbee_sub = nh.subscribe<quad_msgs::XbeeData>("xbee/xbee_cmds",1,xbeeCallback); 
   
   dynamic_reconfigure::Server<controller::controllerConfig> server;
   dynamic_reconfigure::Server<controller::controllerConfig>::CallbackType f;
@@ -193,6 +196,13 @@ void control_stabilizer()
   f = boost::bind(&gainsCallback, _1, _2);
   server.setCallback(f);
 
+  ros::Time start;
+  ros::Time end;
+  ros::Duration dur;
+  
+  //ros::AsyncSpinner spinner(6); // Use 4 threads
+  //spinner.start();
+  double freq;
 
 
 
@@ -219,8 +229,8 @@ void control_stabilizer()
   /*clock_gettime(CLOCK_REALTIME,&s);
   clock_gettime(CLOCK_REALTIME,&f);
   clock_gettime(CLOCK_REALTIME,&dd);
-  clock_gettime(CLOCK_REALTIME,&tt);
-  */
+  clock_gettime(CLOCK_REALTIME,&tt);*/
+  
 
   if(DEBUG){
     nh.setParam("m0_cmd",700);
@@ -233,8 +243,9 @@ void control_stabilizer()
 	
 while(ros::ok()) 
   {
+	start = ros::Time::now();
 	//calc new times and delta
-	float dt = UTILITY::calcDt(dd,tt);    
+	//float dt = UTILITY::calcDt(dd,tt);    
 	//time_calc(times_display);
 	//Uncomment after adding sonar 
 	
@@ -280,7 +291,7 @@ while(ros::ok())
 		ros::spinOnce();
 		
 		if(KILL_MOTORS){
-			controller::MotorCommands mcs;
+			quad_msgs::MotorCommands mcs;
 			mcs.m0 = 0;
 			mcs.m1 = 0;
 			mcs.m2 = 0;
@@ -314,12 +325,13 @@ while(ros::ok())
 
 	U = thrust(imu_error,vicon_error, U_trim, joystick_thrust, gains);
 	
-	controller::MotorCommands mcs;
+	quad_msgs::MotorCommands mcs;
 	//calculate the forces of each motor and change force on motor objects and send via i2c
 
 	if(!DEBUG) {
 	  double* motor_commands;
 	  motor_commands = set_forces(U,Ct,d);
+	  mcs.header.stamp = ros::Time::now();
 	  mcs.m0 = motor_commands[0];
 	  mcs.m1 = motor_commands[1];
 	  mcs.m2 = motor_commands[2];
@@ -332,6 +344,8 @@ while(ros::ok())
 	  nh.getParam("m2_cmd",m2c);
 	  nh.getParam("m3_cmd",m3c);
 
+	  mcs.header.stamp = ros::Time::now();
+
 	  mcs.m0 = m0c;
 	  mcs.m1 = m1c;
 	  mcs.m2 = m2c;
@@ -340,6 +354,11 @@ while(ros::ok())
 	}
         
 	cmd_pub.publish(mcs);
+	end = ros::Time::now();
+	dur = end - start;
+	freq = 1/(dur.toSec());
+	//ROS_INFO("%f", freq);
+	if(freq < 200) ROS_WARN("frequency below 200: %f \n ", freq);
 	
 	
 /*
@@ -362,6 +381,7 @@ while(ros::ok())
 
  }
     printf("EXIT CONTROL_STABILIZER\n");
+    //spinner.stop();
     //pthread_exit(NULL);
 
 }
@@ -511,6 +531,7 @@ Control_command thrust(const State& imu_error, const State_Error& vicon_error, c
         U.thrust -= repulsion_factor_up*UTILITY::dist2ScaleInv(sonar_up.returnLastDistance(), minDistUp, maxDistUp); 
     }
     */
+    //printf("kp_phi: %f \n", gains.kp_phi);
  	//printf("imu_error.psidot = %f\n", imu_error.psi_dot);
     U.roll_acc  =  (gains.kp_phi   * imu_error.phi  )  +  (gains.kd_phi   * imu_error.phi_dot  )  + U_trim.roll_acc;
     U.pitch_acc =  (gains.kp_theta * imu_error.theta)  +  (gains.kd_theta * imu_error.theta_dot)  + U_trim.pitch_acc;
@@ -1078,11 +1099,12 @@ int main(int argc, char** argv)
   //init ros
   ros::init(argc,argv,"controller");
     
-	
+  //ros::AsyncSpinner spinner(4); // Use 4 threads
+  //spinner.start();
   //if(ncurse)clear();
   //printf("in main \n"); //if(ncurse)refresh();
 	
-  start_motors();
+  //start_motors();
   
   control_stabilizer();
 	

@@ -244,17 +244,186 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
-# Target rules for targets named _imu_generate_messages_check_deps_ImuData
+# Target rules for targets named _quad_msgs_generate_messages_check_deps_ImuData
 
 # Build rule for target.
-_imu_generate_messages_check_deps_ImuData: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _imu_generate_messages_check_deps_ImuData
-.PHONY : _imu_generate_messages_check_deps_ImuData
+_quad_msgs_generate_messages_check_deps_ImuData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _quad_msgs_generate_messages_check_deps_ImuData
+.PHONY : _quad_msgs_generate_messages_check_deps_ImuData
 
 # fast build rule for target.
-_imu_generate_messages_check_deps_ImuData/fast:
-	$(MAKE) -f imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/build.make imu/CMakeFiles/_imu_generate_messages_check_deps_ImuData.dir/build
-.PHONY : _imu_generate_messages_check_deps_ImuData/fast
+_quad_msgs_generate_messages_check_deps_ImuData/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/_quad_msgs_generate_messages_check_deps_ImuData.dir/build.make quad_msgs/CMakeFiles/_quad_msgs_generate_messages_check_deps_ImuData.dir/build
+.PHONY : _quad_msgs_generate_messages_check_deps_ImuData/fast
+
+#=============================================================================
+# Target rules for targets named _quad_msgs_generate_messages_check_deps_MotorCommands
+
+# Build rule for target.
+_quad_msgs_generate_messages_check_deps_MotorCommands: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _quad_msgs_generate_messages_check_deps_MotorCommands
+.PHONY : _quad_msgs_generate_messages_check_deps_MotorCommands
+
+# fast build rule for target.
+_quad_msgs_generate_messages_check_deps_MotorCommands/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/_quad_msgs_generate_messages_check_deps_MotorCommands.dir/build.make quad_msgs/CMakeFiles/_quad_msgs_generate_messages_check_deps_MotorCommands.dir/build
+.PHONY : _quad_msgs_generate_messages_check_deps_MotorCommands/fast
+
+#=============================================================================
+# Target rules for targets named _quad_msgs_generate_messages_check_deps_SonarData
+
+# Build rule for target.
+_quad_msgs_generate_messages_check_deps_SonarData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _quad_msgs_generate_messages_check_deps_SonarData
+.PHONY : _quad_msgs_generate_messages_check_deps_SonarData
+
+# fast build rule for target.
+_quad_msgs_generate_messages_check_deps_SonarData/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/_quad_msgs_generate_messages_check_deps_SonarData.dir/build.make quad_msgs/CMakeFiles/_quad_msgs_generate_messages_check_deps_SonarData.dir/build
+.PHONY : _quad_msgs_generate_messages_check_deps_SonarData/fast
+
+#=============================================================================
+# Target rules for targets named _quad_msgs_generate_messages_check_deps_XbeeData
+
+# Build rule for target.
+_quad_msgs_generate_messages_check_deps_XbeeData: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _quad_msgs_generate_messages_check_deps_XbeeData
+.PHONY : _quad_msgs_generate_messages_check_deps_XbeeData
+
+# fast build rule for target.
+_quad_msgs_generate_messages_check_deps_XbeeData/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/_quad_msgs_generate_messages_check_deps_XbeeData.dir/build.make quad_msgs/CMakeFiles/_quad_msgs_generate_messages_check_deps_XbeeData.dir/build
+.PHONY : _quad_msgs_generate_messages_check_deps_XbeeData/fast
+
+#=============================================================================
+# Target rules for targets named quad_msgs_gencpp
+
+# Build rule for target.
+quad_msgs_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 quad_msgs_gencpp
+.PHONY : quad_msgs_gencpp
+
+# fast build rule for target.
+quad_msgs_gencpp/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/quad_msgs_gencpp.dir/build.make quad_msgs/CMakeFiles/quad_msgs_gencpp.dir/build
+.PHONY : quad_msgs_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named quad_msgs_generate_messages
+
+# Build rule for target.
+quad_msgs_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 quad_msgs_generate_messages
+.PHONY : quad_msgs_generate_messages
+
+# fast build rule for target.
+quad_msgs_generate_messages/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/quad_msgs_generate_messages.dir/build.make quad_msgs/CMakeFiles/quad_msgs_generate_messages.dir/build
+.PHONY : quad_msgs_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named quad_msgs_generate_messages_cpp
+
+# Build rule for target.
+quad_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 quad_msgs_generate_messages_cpp
+.PHONY : quad_msgs_generate_messages_cpp
+
+# fast build rule for target.
+quad_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/quad_msgs_generate_messages_cpp.dir/build.make quad_msgs/CMakeFiles/quad_msgs_generate_messages_cpp.dir/build
+.PHONY : quad_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named quad_msgs_generate_messages_lisp
+
+# Build rule for target.
+quad_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 quad_msgs_generate_messages_lisp
+.PHONY : quad_msgs_generate_messages_lisp
+
+# fast build rule for target.
+quad_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/quad_msgs_generate_messages_lisp.dir/build.make quad_msgs/CMakeFiles/quad_msgs_generate_messages_lisp.dir/build
+.PHONY : quad_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named quad_msgs_generate_messages_py
+
+# Build rule for target.
+quad_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 quad_msgs_generate_messages_py
+.PHONY : quad_msgs_generate_messages_py
+
+# fast build rule for target.
+quad_msgs_generate_messages_py/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/quad_msgs_generate_messages_py.dir/build.make quad_msgs/CMakeFiles/quad_msgs_generate_messages_py.dir/build
+.PHONY : quad_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named quad_msgs_genlisp
+
+# Build rule for target.
+quad_msgs_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 quad_msgs_genlisp
+.PHONY : quad_msgs_genlisp
+
+# fast build rule for target.
+quad_msgs_genlisp/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/quad_msgs_genlisp.dir/build.make quad_msgs/CMakeFiles/quad_msgs_genlisp.dir/build
+.PHONY : quad_msgs_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named quad_msgs_genpy
+
+# Build rule for target.
+quad_msgs_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 quad_msgs_genpy
+.PHONY : quad_msgs_genpy
+
+# fast build rule for target.
+quad_msgs_genpy/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/quad_msgs_genpy.dir/build.make quad_msgs/CMakeFiles/quad_msgs_genpy.dir/build
+.PHONY : quad_msgs_genpy/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_cpp
+
+# Build rule for target.
+std_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_cpp
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make quad_msgs/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_lisp
+
+# Build rule for target.
+std_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_lisp
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make quad_msgs/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_py
+
+# Build rule for target.
+std_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_py
+.PHONY : std_msgs_generate_messages_py
+
+# fast build rule for target.
+std_msgs_generate_messages_py/fast:
+	$(MAKE) -f quad_msgs/CMakeFiles/std_msgs_generate_messages_py.dir/build.make quad_msgs/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
 # Target rules for targets named imu
@@ -268,97 +437,6 @@ imu: cmake_check_build_system
 imu/fast:
 	$(MAKE) -f imu/CMakeFiles/imu.dir/build.make imu/CMakeFiles/imu.dir/build
 .PHONY : imu/fast
-
-#=============================================================================
-# Target rules for targets named imu_gencpp
-
-# Build rule for target.
-imu_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 imu_gencpp
-.PHONY : imu_gencpp
-
-# fast build rule for target.
-imu_gencpp/fast:
-	$(MAKE) -f imu/CMakeFiles/imu_gencpp.dir/build.make imu/CMakeFiles/imu_gencpp.dir/build
-.PHONY : imu_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named imu_generate_messages
-
-# Build rule for target.
-imu_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 imu_generate_messages
-.PHONY : imu_generate_messages
-
-# fast build rule for target.
-imu_generate_messages/fast:
-	$(MAKE) -f imu/CMakeFiles/imu_generate_messages.dir/build.make imu/CMakeFiles/imu_generate_messages.dir/build
-.PHONY : imu_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named imu_generate_messages_cpp
-
-# Build rule for target.
-imu_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 imu_generate_messages_cpp
-.PHONY : imu_generate_messages_cpp
-
-# fast build rule for target.
-imu_generate_messages_cpp/fast:
-	$(MAKE) -f imu/CMakeFiles/imu_generate_messages_cpp.dir/build.make imu/CMakeFiles/imu_generate_messages_cpp.dir/build
-.PHONY : imu_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named imu_generate_messages_lisp
-
-# Build rule for target.
-imu_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 imu_generate_messages_lisp
-.PHONY : imu_generate_messages_lisp
-
-# fast build rule for target.
-imu_generate_messages_lisp/fast:
-	$(MAKE) -f imu/CMakeFiles/imu_generate_messages_lisp.dir/build.make imu/CMakeFiles/imu_generate_messages_lisp.dir/build
-.PHONY : imu_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named imu_generate_messages_py
-
-# Build rule for target.
-imu_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 imu_generate_messages_py
-.PHONY : imu_generate_messages_py
-
-# fast build rule for target.
-imu_generate_messages_py/fast:
-	$(MAKE) -f imu/CMakeFiles/imu_generate_messages_py.dir/build.make imu/CMakeFiles/imu_generate_messages_py.dir/build
-.PHONY : imu_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named imu_genlisp
-
-# Build rule for target.
-imu_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 imu_genlisp
-.PHONY : imu_genlisp
-
-# fast build rule for target.
-imu_genlisp/fast:
-	$(MAKE) -f imu/CMakeFiles/imu_genlisp.dir/build.make imu/CMakeFiles/imu_genlisp.dir/build
-.PHONY : imu_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named imu_genpy
-
-# Build rule for target.
-imu_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 imu_genpy
-.PHONY : imu_genpy
-
-# fast build rule for target.
-imu_genpy/fast:
-	$(MAKE) -f imu/CMakeFiles/imu_genpy.dir/build.make imu/CMakeFiles/imu_genpy.dir/build
-.PHONY : imu_genpy/fast
 
 #=============================================================================
 # Target rules for targets named roscpp_generate_messages_cpp
@@ -439,58 +517,6 @@ rosgraph_msgs_generate_messages_py/fast:
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named std_msgs_generate_messages_cpp
-
-# Build rule for target.
-std_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_cpp
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f imu/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make imu/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named std_msgs_generate_messages_lisp
-
-# Build rule for target.
-std_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_lisp
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f imu/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make imu/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named std_msgs_generate_messages_py
-
-# Build rule for target.
-std_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_py
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	$(MAKE) -f imu/CMakeFiles/std_msgs_generate_messages_py.dir/build.make imu/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named _motors_generate_messages_check_deps_MotorCommands
-
-# Build rule for target.
-_motors_generate_messages_check_deps_MotorCommands: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _motors_generate_messages_check_deps_MotorCommands
-.PHONY : _motors_generate_messages_check_deps_MotorCommands
-
-# fast build rule for target.
-_motors_generate_messages_check_deps_MotorCommands/fast:
-	$(MAKE) -f motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir/build.make motors/CMakeFiles/_motors_generate_messages_check_deps_MotorCommands.dir/build
-.PHONY : _motors_generate_messages_check_deps_MotorCommands/fast
-
-#=============================================================================
 # Target rules for targets named motor_test_1
 
 # Build rule for target.
@@ -504,110 +530,6 @@ motor_test_1/fast:
 .PHONY : motor_test_1/fast
 
 #=============================================================================
-# Target rules for targets named motors_gencpp
-
-# Build rule for target.
-motors_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 motors_gencpp
-.PHONY : motors_gencpp
-
-# fast build rule for target.
-motors_gencpp/fast:
-	$(MAKE) -f motors/CMakeFiles/motors_gencpp.dir/build.make motors/CMakeFiles/motors_gencpp.dir/build
-.PHONY : motors_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named motors_generate_messages
-
-# Build rule for target.
-motors_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 motors_generate_messages
-.PHONY : motors_generate_messages
-
-# fast build rule for target.
-motors_generate_messages/fast:
-	$(MAKE) -f motors/CMakeFiles/motors_generate_messages.dir/build.make motors/CMakeFiles/motors_generate_messages.dir/build
-.PHONY : motors_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named motors_generate_messages_cpp
-
-# Build rule for target.
-motors_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 motors_generate_messages_cpp
-.PHONY : motors_generate_messages_cpp
-
-# fast build rule for target.
-motors_generate_messages_cpp/fast:
-	$(MAKE) -f motors/CMakeFiles/motors_generate_messages_cpp.dir/build.make motors/CMakeFiles/motors_generate_messages_cpp.dir/build
-.PHONY : motors_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named motors_generate_messages_lisp
-
-# Build rule for target.
-motors_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 motors_generate_messages_lisp
-.PHONY : motors_generate_messages_lisp
-
-# fast build rule for target.
-motors_generate_messages_lisp/fast:
-	$(MAKE) -f motors/CMakeFiles/motors_generate_messages_lisp.dir/build.make motors/CMakeFiles/motors_generate_messages_lisp.dir/build
-.PHONY : motors_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named motors_generate_messages_py
-
-# Build rule for target.
-motors_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 motors_generate_messages_py
-.PHONY : motors_generate_messages_py
-
-# fast build rule for target.
-motors_generate_messages_py/fast:
-	$(MAKE) -f motors/CMakeFiles/motors_generate_messages_py.dir/build.make motors/CMakeFiles/motors_generate_messages_py.dir/build
-.PHONY : motors_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named motors_genlisp
-
-# Build rule for target.
-motors_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 motors_genlisp
-.PHONY : motors_genlisp
-
-# fast build rule for target.
-motors_genlisp/fast:
-	$(MAKE) -f motors/CMakeFiles/motors_genlisp.dir/build.make motors/CMakeFiles/motors_genlisp.dir/build
-.PHONY : motors_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named motors_genpy
-
-# Build rule for target.
-motors_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 motors_genpy
-.PHONY : motors_genpy
-
-# fast build rule for target.
-motors_genpy/fast:
-	$(MAKE) -f motors/CMakeFiles/motors_genpy.dir/build.make motors/CMakeFiles/motors_genpy.dir/build
-.PHONY : motors_genpy/fast
-
-#=============================================================================
-# Target rules for targets named _sonar_generate_messages_check_deps_SonarData
-
-# Build rule for target.
-_sonar_generate_messages_check_deps_SonarData: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _sonar_generate_messages_check_deps_SonarData
-.PHONY : _sonar_generate_messages_check_deps_SonarData
-
-# fast build rule for target.
-_sonar_generate_messages_check_deps_SonarData/fast:
-	$(MAKE) -f sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir/build.make sonar/CMakeFiles/_sonar_generate_messages_check_deps_SonarData.dir/build
-.PHONY : _sonar_generate_messages_check_deps_SonarData/fast
-
-#=============================================================================
 # Target rules for targets named sonar
 
 # Build rule for target.
@@ -619,149 +541,6 @@ sonar: cmake_check_build_system
 sonar/fast:
 	$(MAKE) -f sonar/CMakeFiles/sonar.dir/build.make sonar/CMakeFiles/sonar.dir/build
 .PHONY : sonar/fast
-
-#=============================================================================
-# Target rules for targets named sonar_gencpp
-
-# Build rule for target.
-sonar_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sonar_gencpp
-.PHONY : sonar_gencpp
-
-# fast build rule for target.
-sonar_gencpp/fast:
-	$(MAKE) -f sonar/CMakeFiles/sonar_gencpp.dir/build.make sonar/CMakeFiles/sonar_gencpp.dir/build
-.PHONY : sonar_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named sonar_generate_messages
-
-# Build rule for target.
-sonar_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sonar_generate_messages
-.PHONY : sonar_generate_messages
-
-# fast build rule for target.
-sonar_generate_messages/fast:
-	$(MAKE) -f sonar/CMakeFiles/sonar_generate_messages.dir/build.make sonar/CMakeFiles/sonar_generate_messages.dir/build
-.PHONY : sonar_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named sonar_generate_messages_cpp
-
-# Build rule for target.
-sonar_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sonar_generate_messages_cpp
-.PHONY : sonar_generate_messages_cpp
-
-# fast build rule for target.
-sonar_generate_messages_cpp/fast:
-	$(MAKE) -f sonar/CMakeFiles/sonar_generate_messages_cpp.dir/build.make sonar/CMakeFiles/sonar_generate_messages_cpp.dir/build
-.PHONY : sonar_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named sonar_generate_messages_lisp
-
-# Build rule for target.
-sonar_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sonar_generate_messages_lisp
-.PHONY : sonar_generate_messages_lisp
-
-# fast build rule for target.
-sonar_generate_messages_lisp/fast:
-	$(MAKE) -f sonar/CMakeFiles/sonar_generate_messages_lisp.dir/build.make sonar/CMakeFiles/sonar_generate_messages_lisp.dir/build
-.PHONY : sonar_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named sonar_generate_messages_py
-
-# Build rule for target.
-sonar_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sonar_generate_messages_py
-.PHONY : sonar_generate_messages_py
-
-# fast build rule for target.
-sonar_generate_messages_py/fast:
-	$(MAKE) -f sonar/CMakeFiles/sonar_generate_messages_py.dir/build.make sonar/CMakeFiles/sonar_generate_messages_py.dir/build
-.PHONY : sonar_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named sonar_genlisp
-
-# Build rule for target.
-sonar_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sonar_genlisp
-.PHONY : sonar_genlisp
-
-# fast build rule for target.
-sonar_genlisp/fast:
-	$(MAKE) -f sonar/CMakeFiles/sonar_genlisp.dir/build.make sonar/CMakeFiles/sonar_genlisp.dir/build
-.PHONY : sonar_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named sonar_genpy
-
-# Build rule for target.
-sonar_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sonar_genpy
-.PHONY : sonar_genpy
-
-# fast build rule for target.
-sonar_genpy/fast:
-	$(MAKE) -f sonar/CMakeFiles/sonar_genpy.dir/build.make sonar/CMakeFiles/sonar_genpy.dir/build
-.PHONY : sonar_genpy/fast
-
-#=============================================================================
-# Target rules for targets named _controller_generate_messages_check_deps_ImuData
-
-# Build rule for target.
-_controller_generate_messages_check_deps_ImuData: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _controller_generate_messages_check_deps_ImuData
-.PHONY : _controller_generate_messages_check_deps_ImuData
-
-# fast build rule for target.
-_controller_generate_messages_check_deps_ImuData/fast:
-	$(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_ImuData.dir/build
-.PHONY : _controller_generate_messages_check_deps_ImuData/fast
-
-#=============================================================================
-# Target rules for targets named _controller_generate_messages_check_deps_MotorCommands
-
-# Build rule for target.
-_controller_generate_messages_check_deps_MotorCommands: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _controller_generate_messages_check_deps_MotorCommands
-.PHONY : _controller_generate_messages_check_deps_MotorCommands
-
-# fast build rule for target.
-_controller_generate_messages_check_deps_MotorCommands/fast:
-	$(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_MotorCommands.dir/build
-.PHONY : _controller_generate_messages_check_deps_MotorCommands/fast
-
-#=============================================================================
-# Target rules for targets named _controller_generate_messages_check_deps_SonarData
-
-# Build rule for target.
-_controller_generate_messages_check_deps_SonarData: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _controller_generate_messages_check_deps_SonarData
-.PHONY : _controller_generate_messages_check_deps_SonarData
-
-# fast build rule for target.
-_controller_generate_messages_check_deps_SonarData/fast:
-	$(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_SonarData.dir/build
-.PHONY : _controller_generate_messages_check_deps_SonarData/fast
-
-#=============================================================================
-# Target rules for targets named _controller_generate_messages_check_deps_XbeeData
-
-# Build rule for target.
-_controller_generate_messages_check_deps_XbeeData: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _controller_generate_messages_check_deps_XbeeData
-.PHONY : _controller_generate_messages_check_deps_XbeeData
-
-# fast build rule for target.
-_controller_generate_messages_check_deps_XbeeData/fast:
-	$(MAKE) -f controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/build.make controller/CMakeFiles/_controller_generate_messages_check_deps_XbeeData.dir/build
-.PHONY : _controller_generate_messages_check_deps_XbeeData/fast
 
 #=============================================================================
 # Target rules for targets named controller
@@ -788,97 +567,6 @@ controller_gencfg: cmake_check_build_system
 controller_gencfg/fast:
 	$(MAKE) -f controller/CMakeFiles/controller_gencfg.dir/build.make controller/CMakeFiles/controller_gencfg.dir/build
 .PHONY : controller_gencfg/fast
-
-#=============================================================================
-# Target rules for targets named controller_gencpp
-
-# Build rule for target.
-controller_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 controller_gencpp
-.PHONY : controller_gencpp
-
-# fast build rule for target.
-controller_gencpp/fast:
-	$(MAKE) -f controller/CMakeFiles/controller_gencpp.dir/build.make controller/CMakeFiles/controller_gencpp.dir/build
-.PHONY : controller_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named controller_generate_messages
-
-# Build rule for target.
-controller_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 controller_generate_messages
-.PHONY : controller_generate_messages
-
-# fast build rule for target.
-controller_generate_messages/fast:
-	$(MAKE) -f controller/CMakeFiles/controller_generate_messages.dir/build.make controller/CMakeFiles/controller_generate_messages.dir/build
-.PHONY : controller_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named controller_generate_messages_cpp
-
-# Build rule for target.
-controller_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 controller_generate_messages_cpp
-.PHONY : controller_generate_messages_cpp
-
-# fast build rule for target.
-controller_generate_messages_cpp/fast:
-	$(MAKE) -f controller/CMakeFiles/controller_generate_messages_cpp.dir/build.make controller/CMakeFiles/controller_generate_messages_cpp.dir/build
-.PHONY : controller_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named controller_generate_messages_lisp
-
-# Build rule for target.
-controller_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 controller_generate_messages_lisp
-.PHONY : controller_generate_messages_lisp
-
-# fast build rule for target.
-controller_generate_messages_lisp/fast:
-	$(MAKE) -f controller/CMakeFiles/controller_generate_messages_lisp.dir/build.make controller/CMakeFiles/controller_generate_messages_lisp.dir/build
-.PHONY : controller_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named controller_generate_messages_py
-
-# Build rule for target.
-controller_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 controller_generate_messages_py
-.PHONY : controller_generate_messages_py
-
-# fast build rule for target.
-controller_generate_messages_py/fast:
-	$(MAKE) -f controller/CMakeFiles/controller_generate_messages_py.dir/build.make controller/CMakeFiles/controller_generate_messages_py.dir/build
-.PHONY : controller_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named controller_genlisp
-
-# Build rule for target.
-controller_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 controller_genlisp
-.PHONY : controller_genlisp
-
-# fast build rule for target.
-controller_genlisp/fast:
-	$(MAKE) -f controller/CMakeFiles/controller_genlisp.dir/build.make controller/CMakeFiles/controller_genlisp.dir/build
-.PHONY : controller_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named controller_genpy
-
-# Build rule for target.
-controller_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 controller_genpy
-.PHONY : controller_genpy
-
-# fast build rule for target.
-controller_genpy/fast:
-	$(MAKE) -f controller/CMakeFiles/controller_genpy.dir/build.make controller/CMakeFiles/controller_genpy.dir/build
-.PHONY : controller_genpy/fast
 
 #=============================================================================
 # Target rules for targets named dynamic_reconfigure_gencfg
@@ -1037,19 +725,6 @@ vision_generate_messages/fast:
 .PHONY : vision_generate_messages/fast
 
 #=============================================================================
-# Target rules for targets named _xbee_generate_messages_check_deps_XbeeData
-
-# Build rule for target.
-_xbee_generate_messages_check_deps_XbeeData: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _xbee_generate_messages_check_deps_XbeeData
-.PHONY : _xbee_generate_messages_check_deps_XbeeData
-
-# fast build rule for target.
-_xbee_generate_messages_check_deps_XbeeData/fast:
-	$(MAKE) -f xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/build.make xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/build
-.PHONY : _xbee_generate_messages_check_deps_XbeeData/fast
-
-#=============================================================================
 # Target rules for targets named xbee
 
 # Build rule for target.
@@ -1061,97 +736,6 @@ xbee: cmake_check_build_system
 xbee/fast:
 	$(MAKE) -f xbee/CMakeFiles/xbee.dir/build.make xbee/CMakeFiles/xbee.dir/build
 .PHONY : xbee/fast
-
-#=============================================================================
-# Target rules for targets named xbee_gencpp
-
-# Build rule for target.
-xbee_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 xbee_gencpp
-.PHONY : xbee_gencpp
-
-# fast build rule for target.
-xbee_gencpp/fast:
-	$(MAKE) -f xbee/CMakeFiles/xbee_gencpp.dir/build.make xbee/CMakeFiles/xbee_gencpp.dir/build
-.PHONY : xbee_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named xbee_generate_messages
-
-# Build rule for target.
-xbee_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 xbee_generate_messages
-.PHONY : xbee_generate_messages
-
-# fast build rule for target.
-xbee_generate_messages/fast:
-	$(MAKE) -f xbee/CMakeFiles/xbee_generate_messages.dir/build.make xbee/CMakeFiles/xbee_generate_messages.dir/build
-.PHONY : xbee_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named xbee_generate_messages_cpp
-
-# Build rule for target.
-xbee_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 xbee_generate_messages_cpp
-.PHONY : xbee_generate_messages_cpp
-
-# fast build rule for target.
-xbee_generate_messages_cpp/fast:
-	$(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_cpp.dir/build.make xbee/CMakeFiles/xbee_generate_messages_cpp.dir/build
-.PHONY : xbee_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named xbee_generate_messages_lisp
-
-# Build rule for target.
-xbee_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 xbee_generate_messages_lisp
-.PHONY : xbee_generate_messages_lisp
-
-# fast build rule for target.
-xbee_generate_messages_lisp/fast:
-	$(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_lisp.dir/build.make xbee/CMakeFiles/xbee_generate_messages_lisp.dir/build
-.PHONY : xbee_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named xbee_generate_messages_py
-
-# Build rule for target.
-xbee_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 xbee_generate_messages_py
-.PHONY : xbee_generate_messages_py
-
-# fast build rule for target.
-xbee_generate_messages_py/fast:
-	$(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_py.dir/build.make xbee/CMakeFiles/xbee_generate_messages_py.dir/build
-.PHONY : xbee_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named xbee_genlisp
-
-# Build rule for target.
-xbee_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 xbee_genlisp
-.PHONY : xbee_genlisp
-
-# fast build rule for target.
-xbee_genlisp/fast:
-	$(MAKE) -f xbee/CMakeFiles/xbee_genlisp.dir/build.make xbee/CMakeFiles/xbee_genlisp.dir/build
-.PHONY : xbee_genlisp/fast
-
-#=============================================================================
-# Target rules for targets named xbee_genpy
-
-# Build rule for target.
-xbee_genpy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 xbee_genpy
-.PHONY : xbee_genpy
-
-# fast build rule for target.
-xbee_genpy/fast:
-	$(MAKE) -f xbee/CMakeFiles/xbee_genpy.dir/build.make xbee/CMakeFiles/xbee_genpy.dir/build
-.PHONY : xbee_genpy/fast
 
 # Help Target
 help:
@@ -1173,55 +757,31 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... _imu_generate_messages_check_deps_ImuData"
+	@echo "... _quad_msgs_generate_messages_check_deps_ImuData"
+	@echo "... _quad_msgs_generate_messages_check_deps_MotorCommands"
+	@echo "... _quad_msgs_generate_messages_check_deps_SonarData"
+	@echo "... _quad_msgs_generate_messages_check_deps_XbeeData"
+	@echo "... quad_msgs_gencpp"
+	@echo "... quad_msgs_generate_messages"
+	@echo "... quad_msgs_generate_messages_cpp"
+	@echo "... quad_msgs_generate_messages_lisp"
+	@echo "... quad_msgs_generate_messages_py"
+	@echo "... quad_msgs_genlisp"
+	@echo "... quad_msgs_genpy"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... std_msgs_generate_messages_py"
 	@echo "... imu"
-	@echo "... imu_gencpp"
-	@echo "... imu_generate_messages"
-	@echo "... imu_generate_messages_cpp"
-	@echo "... imu_generate_messages_lisp"
-	@echo "... imu_generate_messages_py"
-	@echo "... imu_genlisp"
-	@echo "... imu_genpy"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... _motors_generate_messages_check_deps_MotorCommands"
 	@echo "... motor_test_1"
-	@echo "... motors_gencpp"
-	@echo "... motors_generate_messages"
-	@echo "... motors_generate_messages_cpp"
-	@echo "... motors_generate_messages_lisp"
-	@echo "... motors_generate_messages_py"
-	@echo "... motors_genlisp"
-	@echo "... motors_genpy"
-	@echo "... _sonar_generate_messages_check_deps_SonarData"
 	@echo "... sonar"
-	@echo "... sonar_gencpp"
-	@echo "... sonar_generate_messages"
-	@echo "... sonar_generate_messages_cpp"
-	@echo "... sonar_generate_messages_lisp"
-	@echo "... sonar_generate_messages_py"
-	@echo "... sonar_genlisp"
-	@echo "... sonar_genpy"
-	@echo "... _controller_generate_messages_check_deps_ImuData"
-	@echo "... _controller_generate_messages_check_deps_MotorCommands"
-	@echo "... _controller_generate_messages_check_deps_SonarData"
-	@echo "... _controller_generate_messages_check_deps_XbeeData"
 	@echo "... controller"
 	@echo "... controller_gencfg"
-	@echo "... controller_gencpp"
-	@echo "... controller_generate_messages"
-	@echo "... controller_generate_messages_cpp"
-	@echo "... controller_generate_messages_lisp"
-	@echo "... controller_generate_messages_py"
-	@echo "... controller_genlisp"
-	@echo "... controller_genpy"
 	@echo "... dynamic_reconfigure_gencfg"
 	@echo "... dynamic_reconfigure_generate_messages_cpp"
 	@echo "... dynamic_reconfigure_generate_messages_lisp"
@@ -1234,15 +794,7 @@ help:
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... vision"
 	@echo "... vision_generate_messages"
-	@echo "... _xbee_generate_messages_check_deps_XbeeData"
 	@echo "... xbee"
-	@echo "... xbee_gencpp"
-	@echo "... xbee_generate_messages"
-	@echo "... xbee_generate_messages_cpp"
-	@echo "... xbee_generate_messages_lisp"
-	@echo "... xbee_generate_messages_py"
-	@echo "... xbee_genlisp"
-	@echo "... xbee_genpy"
 .PHONY : help
 
 

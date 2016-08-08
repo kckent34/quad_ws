@@ -153,20 +153,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/rule
-.PHONY : xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/rule
-
-# Convenience name for target.
-_xbee_generate_messages_check_deps_XbeeData: xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/rule
-.PHONY : _xbee_generate_messages_check_deps_XbeeData
-
-# fast build rule for target.
-_xbee_generate_messages_check_deps_XbeeData/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/build.make xbee/CMakeFiles/_xbee_generate_messages_check_deps_XbeeData.dir/build
-.PHONY : _xbee_generate_messages_check_deps_XbeeData/fast
-
-# Convenience name for target.
 xbee/CMakeFiles/xbee.dir/rule:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/xbee.dir/rule
 .PHONY : xbee/CMakeFiles/xbee.dir/rule
@@ -179,104 +165,6 @@ xbee: xbee/CMakeFiles/xbee.dir/rule
 xbee/fast:
 	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/xbee.dir/build.make xbee/CMakeFiles/xbee.dir/build
 .PHONY : xbee/fast
-
-# Convenience name for target.
-xbee/CMakeFiles/xbee_gencpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/xbee_gencpp.dir/rule
-.PHONY : xbee/CMakeFiles/xbee_gencpp.dir/rule
-
-# Convenience name for target.
-xbee_gencpp: xbee/CMakeFiles/xbee_gencpp.dir/rule
-.PHONY : xbee_gencpp
-
-# fast build rule for target.
-xbee_gencpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/xbee_gencpp.dir/build.make xbee/CMakeFiles/xbee_gencpp.dir/build
-.PHONY : xbee_gencpp/fast
-
-# Convenience name for target.
-xbee/CMakeFiles/xbee_generate_messages.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/xbee_generate_messages.dir/rule
-.PHONY : xbee/CMakeFiles/xbee_generate_messages.dir/rule
-
-# Convenience name for target.
-xbee_generate_messages: xbee/CMakeFiles/xbee_generate_messages.dir/rule
-.PHONY : xbee_generate_messages
-
-# fast build rule for target.
-xbee_generate_messages/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/xbee_generate_messages.dir/build.make xbee/CMakeFiles/xbee_generate_messages.dir/build
-.PHONY : xbee_generate_messages/fast
-
-# Convenience name for target.
-xbee/CMakeFiles/xbee_generate_messages_cpp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/xbee_generate_messages_cpp.dir/rule
-.PHONY : xbee/CMakeFiles/xbee_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-xbee_generate_messages_cpp: xbee/CMakeFiles/xbee_generate_messages_cpp.dir/rule
-.PHONY : xbee_generate_messages_cpp
-
-# fast build rule for target.
-xbee_generate_messages_cpp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_cpp.dir/build.make xbee/CMakeFiles/xbee_generate_messages_cpp.dir/build
-.PHONY : xbee_generate_messages_cpp/fast
-
-# Convenience name for target.
-xbee/CMakeFiles/xbee_generate_messages_lisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/xbee_generate_messages_lisp.dir/rule
-.PHONY : xbee/CMakeFiles/xbee_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-xbee_generate_messages_lisp: xbee/CMakeFiles/xbee_generate_messages_lisp.dir/rule
-.PHONY : xbee_generate_messages_lisp
-
-# fast build rule for target.
-xbee_generate_messages_lisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_lisp.dir/build.make xbee/CMakeFiles/xbee_generate_messages_lisp.dir/build
-.PHONY : xbee_generate_messages_lisp/fast
-
-# Convenience name for target.
-xbee/CMakeFiles/xbee_generate_messages_py.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/xbee_generate_messages_py.dir/rule
-.PHONY : xbee/CMakeFiles/xbee_generate_messages_py.dir/rule
-
-# Convenience name for target.
-xbee_generate_messages_py: xbee/CMakeFiles/xbee_generate_messages_py.dir/rule
-.PHONY : xbee_generate_messages_py
-
-# fast build rule for target.
-xbee_generate_messages_py/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/xbee_generate_messages_py.dir/build.make xbee/CMakeFiles/xbee_generate_messages_py.dir/build
-.PHONY : xbee_generate_messages_py/fast
-
-# Convenience name for target.
-xbee/CMakeFiles/xbee_genlisp.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/xbee_genlisp.dir/rule
-.PHONY : xbee/CMakeFiles/xbee_genlisp.dir/rule
-
-# Convenience name for target.
-xbee_genlisp: xbee/CMakeFiles/xbee_genlisp.dir/rule
-.PHONY : xbee_genlisp
-
-# fast build rule for target.
-xbee_genlisp/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/xbee_genlisp.dir/build.make xbee/CMakeFiles/xbee_genlisp.dir/build
-.PHONY : xbee_genlisp/fast
-
-# Convenience name for target.
-xbee/CMakeFiles/xbee_genpy.dir/rule:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xbee/CMakeFiles/xbee_genpy.dir/rule
-.PHONY : xbee/CMakeFiles/xbee_genpy.dir/rule
-
-# Convenience name for target.
-xbee_genpy: xbee/CMakeFiles/xbee_genpy.dir/rule
-.PHONY : xbee_genpy
-
-# fast build rule for target.
-xbee_genpy/fast:
-	cd /home/odroid/quad_ws/build && $(MAKE) -f xbee/CMakeFiles/xbee_genpy.dir/build.make xbee/CMakeFiles/xbee_genpy.dir/build
-.PHONY : xbee_genpy/fast
 
 src/xbee1.o: src/xbee1.cpp.o
 .PHONY : src/xbee1.o
@@ -308,7 +196,6 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... _xbee_generate_messages_check_deps_XbeeData"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
@@ -317,13 +204,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... xbee"
-	@echo "... xbee_gencpp"
-	@echo "... xbee_generate_messages"
-	@echo "... xbee_generate_messages_cpp"
-	@echo "... xbee_generate_messages_lisp"
-	@echo "... xbee_generate_messages_py"
-	@echo "... xbee_genlisp"
-	@echo "... xbee_genpy"
 	@echo "... src/xbee1.o"
 	@echo "... src/xbee1.i"
 	@echo "... src/xbee1.s"

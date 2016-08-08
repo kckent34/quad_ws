@@ -16,26 +16,11 @@ motor::motor(uint8_t motor_id, uint8_t i2c_handle, uint8_t i2c_address)
     i2cHandle_ = i2c_handle;
     i2cAddress_ = i2c_address;
     send_force_i2c(0,MOTORS_OFF);
-    //cmd_sub = n.subscribe<controller::MotorCommands>("/controller/cmd_motors",1,&motor::cmdCallBack,this);
+
     
 }
 
-/*void motor::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
-	if(motorId_ == 0){
-	  //ROS_INFO("I recieved %f\n",cmdMsg->m0);
-		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m0));
-	} else if(motorId_ == 1) {
-	  //ROS_INFO("I recieved %f\n",cmdMsg->m1);
-		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m1));
-	} else if(motorId_ == 2) {
-	  //	ROS_INFO("I recieved %f\n",cmdMsg->m2);
-		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m2));
-	} else if (motorId_ == 3){
-	  //	ROS_INFO("I recieved %f\n",cmdMsg->m3);
-		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m3));
-	} 
-	return;
-}*/
+
 void motor::write8(uint8_t addr, uint8_t d, uint8_t handle)
 {
 
@@ -148,14 +133,10 @@ int motor::send_motor_data(uint16_t on, uint16_t off)
         return returnval;
         */
 }
-void motor::set_force( int force_in, bool controller_run )
+void motor::set_force( int force_in)
 {
-        //when setting force, check that ...
-        //the motors are allowed to run (controllER_RUN flag is true)
-        //the force is within accvoideptable bounds
+	force_ = force_in;
 
-  if(controller_run) force_ = force_in; //ensure_valid_force(force_in) ;
-        else force_ = 0;
 }
 int motor::get_force( void )
 {
@@ -215,11 +196,12 @@ Motors::Motors(uint8_t i2c_handle, uint8_t i2c_address){
 	m1 = motor(1,i2c_handle,i2c_address);
 	m2 = motor(2,i2c_handle,i2c_address);
 	m3 = motor(3,i2c_handle,i2c_address);
-	cmdSub_ = n.subscribe<controller::MotorCommands>("/controller/cmd_motors",1,&Motors::cmdCallBack,this);
+	cmdSub_ = n.subscribe<quad_msgs::MotorCommands>("/controller/cmd_motors",3,&Motors::cmdCallBack,this);
 	ROS_INFO("successfully created Motors\n");
+	i2cHandle_ = i2c_handle;
 }
 
-void Motors::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
+void Motors::cmdCallBack(const quad_msgs::MotorCommands::ConstPtr& cmdMsg){
 	/*if(motorId_ == 0){
 	  //ROS_INFO("I recieved %f\n",cmdMsg->m0);
 		send_force_i2c(0,motor::map_values((uint16_t)cmdMsg->m0));
@@ -235,17 +217,50 @@ void Motors::cmdCallBack(const controller::MotorCommands::ConstPtr& cmdMsg){
 	} 
 	return; */
 	//ros::Time start = ros::Time::now();
-	m0.send_force_i2c(0,motor::map_values(cmdMsg->m0));
+	m0.set_force(motor::map_values(cmdMsg->m0));
+	m1.set_force(motor::map_values(cmdMsg->m1));
+	m2.set_force(motor::map_values(cmdMsg->m2));
+	m3.set_force(motor::map_values(cmdMsg->m3));
+	write_motors = true;
+	/*m0.send_force_i2c(0,motor::map_values(cmdMsg->m0));
 	m1.send_force_i2c(0,motor::map_values(cmdMsg->m1));
 	m2.send_force_i2c(0,motor::map_values(cmdMsg->m2));
-	m3.send_force_i2c(0,motor::map_values(cmdMsg->m3));
+	m3.send_force_i2c(0,motor::map_values(cmdMsg->m3));*/
+	
 	//ros::Time end = ros::Time::now();
 	//ros::Duration dur = end - start;
 	//double freq = 1/(dur.toSec());
 	//printf("freq: %f \n", freq);
 	return;
 }
-
+void Motors::send_motor_forces() {
+	uint8_t buf[20];
+	buf[0] = LED0_ON_L + 4*0;
+	buf[1] = 0;
+	buf[2] = 0;
+	buf[3] = m0.get_force();
+	buf[4] = m0.get_force() >> 8;
+	buf[5] = LED0_ON_L + 4*1;
+	buf[6] = 0;
+	buf[7] = 0;
+	buf[8] = m1.get_force();
+	buf[9] = m1.get_force() >> 8;
+	buf[10] = LED0_ON_L + 4*2;
+	buf[11] = 0;
+	buf[12] = 0;
+	buf[13] = m2.get_force();
+	buf[14] = m2.get_force() >> 8;
+	buf[15] = LED0_ON_L + 4*3;
+	buf[16] = 0;
+	buf[17] = 0;
+	buf[18] = m3.get_force();
+	buf[19] = m3.get_force() >> 8;
+	
+	
+	
+	write(i2cHandle_,buf,20);
+	
+}
 int main(int argc, char** argv)
 {
 
@@ -260,8 +275,9 @@ int main(int argc, char** argv)
   Motors motors = Motors(handle,0x40);
   
   int motors_off;
+  ros::Time start;
   //motors.n.setParam("all_off",0);
-  
+  double freq = 0;
   while(ros::ok())
   {
 	 /* motors.n.getParam("all_off",motors_off);
@@ -273,8 +289,26 @@ int main(int argc, char** argv)
 		  while(motors_off == 1){ motors.n.getParam("all_off",motors_off); }
   
 	  }*/
-	  
+	  if(write_motors == false) start = ros::Time::now();
 	  ros::spinOnce();
+	  
+	  if(write_motors == true)
+	  {
+		  
+		  motors.m0.send_force_i2c(0,motors.m0.get_force());
+		  motors.m1.send_force_i2c(0,motors.m1.get_force());
+		  motors.m2.send_force_i2c(0,motors.m2.get_force());
+		  motors.m3.send_force_i2c(0,motors.m3.get_force());
+		  //motors.send_motor_forces();
+		  write_motors = false;
+		  ros::Time end = ros::Time::now();
+		  ros::Duration dur = end - start;
+		  freq = 1/(dur.toSec());
+		  //ROS_INFO("freq: %f \n", freq);
+		  if(freq < 500) ROS_WARN("frequency below 500: %f \n ", freq);
+		  
+	  }
+	  
   }
   
   ROS_INFO("EXITING MOTOR NODE AND SHUTTING OFF MOTORS\n");

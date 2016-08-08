@@ -1,7 +1,5 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/controller.dir/src/controller.cpp.o"
-  "CMakeFiles/controller.dir/src/xbee1.cpp.o"
-  "CMakeFiles/controller.dir/src/vicon.cpp.o"
   "CMakeFiles/controller.dir/src/logger.cpp.o"
   "CMakeFiles/controller.dir/src/utility.cpp.o"
   "/home/odroid/quad_ws/devel/lib/controller/controller.pdb"

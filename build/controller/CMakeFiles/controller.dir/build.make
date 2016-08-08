@@ -75,55 +75,9 @@ controller/CMakeFiles/controller.dir/src/controller.cpp.o.provides: controller/C
 
 controller/CMakeFiles/controller.dir/src/controller.cpp.o.provides.build: controller/CMakeFiles/controller.dir/src/controller.cpp.o
 
-controller/CMakeFiles/controller.dir/src/xbee1.cpp.o: controller/CMakeFiles/controller.dir/flags.make
-controller/CMakeFiles/controller.dir/src/xbee1.cpp.o: /home/odroid/quad_ws/src/controller/src/xbee1.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object controller/CMakeFiles/controller.dir/src/xbee1.cpp.o"
-	cd /home/odroid/quad_ws/build/controller && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/controller.dir/src/xbee1.cpp.o -c /home/odroid/quad_ws/src/controller/src/xbee1.cpp
-
-controller/CMakeFiles/controller.dir/src/xbee1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/controller.dir/src/xbee1.cpp.i"
-	cd /home/odroid/quad_ws/build/controller && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/odroid/quad_ws/src/controller/src/xbee1.cpp > CMakeFiles/controller.dir/src/xbee1.cpp.i
-
-controller/CMakeFiles/controller.dir/src/xbee1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/controller.dir/src/xbee1.cpp.s"
-	cd /home/odroid/quad_ws/build/controller && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/odroid/quad_ws/src/controller/src/xbee1.cpp -o CMakeFiles/controller.dir/src/xbee1.cpp.s
-
-controller/CMakeFiles/controller.dir/src/xbee1.cpp.o.requires:
-.PHONY : controller/CMakeFiles/controller.dir/src/xbee1.cpp.o.requires
-
-controller/CMakeFiles/controller.dir/src/xbee1.cpp.o.provides: controller/CMakeFiles/controller.dir/src/xbee1.cpp.o.requires
-	$(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/xbee1.cpp.o.provides.build
-.PHONY : controller/CMakeFiles/controller.dir/src/xbee1.cpp.o.provides
-
-controller/CMakeFiles/controller.dir/src/xbee1.cpp.o.provides.build: controller/CMakeFiles/controller.dir/src/xbee1.cpp.o
-
-controller/CMakeFiles/controller.dir/src/vicon.cpp.o: controller/CMakeFiles/controller.dir/flags.make
-controller/CMakeFiles/controller.dir/src/vicon.cpp.o: /home/odroid/quad_ws/src/controller/src/vicon.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object controller/CMakeFiles/controller.dir/src/vicon.cpp.o"
-	cd /home/odroid/quad_ws/build/controller && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/controller.dir/src/vicon.cpp.o -c /home/odroid/quad_ws/src/controller/src/vicon.cpp
-
-controller/CMakeFiles/controller.dir/src/vicon.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/controller.dir/src/vicon.cpp.i"
-	cd /home/odroid/quad_ws/build/controller && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/odroid/quad_ws/src/controller/src/vicon.cpp > CMakeFiles/controller.dir/src/vicon.cpp.i
-
-controller/CMakeFiles/controller.dir/src/vicon.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/controller.dir/src/vicon.cpp.s"
-	cd /home/odroid/quad_ws/build/controller && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/odroid/quad_ws/src/controller/src/vicon.cpp -o CMakeFiles/controller.dir/src/vicon.cpp.s
-
-controller/CMakeFiles/controller.dir/src/vicon.cpp.o.requires:
-.PHONY : controller/CMakeFiles/controller.dir/src/vicon.cpp.o.requires
-
-controller/CMakeFiles/controller.dir/src/vicon.cpp.o.provides: controller/CMakeFiles/controller.dir/src/vicon.cpp.o.requires
-	$(MAKE) -f controller/CMakeFiles/controller.dir/build.make controller/CMakeFiles/controller.dir/src/vicon.cpp.o.provides.build
-.PHONY : controller/CMakeFiles/controller.dir/src/vicon.cpp.o.provides
-
-controller/CMakeFiles/controller.dir/src/vicon.cpp.o.provides.build: controller/CMakeFiles/controller.dir/src/vicon.cpp.o
-
 controller/CMakeFiles/controller.dir/src/logger.cpp.o: controller/CMakeFiles/controller.dir/flags.make
 controller/CMakeFiles/controller.dir/src/logger.cpp.o: /home/odroid/quad_ws/src/controller/src/logger.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object controller/CMakeFiles/controller.dir/src/logger.cpp.o"
 	cd /home/odroid/quad_ws/build/controller && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/controller.dir/src/logger.cpp.o -c /home/odroid/quad_ws/src/controller/src/logger.cpp
 
@@ -146,7 +100,7 @@ controller/CMakeFiles/controller.dir/src/logger.cpp.o.provides.build: controller
 
 controller/CMakeFiles/controller.dir/src/utility.cpp.o: controller/CMakeFiles/controller.dir/flags.make
 controller/CMakeFiles/controller.dir/src/utility.cpp.o: /home/odroid/quad_ws/src/controller/src/utility.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/odroid/quad_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object controller/CMakeFiles/controller.dir/src/utility.cpp.o"
 	cd /home/odroid/quad_ws/build/controller && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/controller.dir/src/utility.cpp.o -c /home/odroid/quad_ws/src/controller/src/utility.cpp
 
@@ -170,8 +124,6 @@ controller/CMakeFiles/controller.dir/src/utility.cpp.o.provides.build: controlle
 # Object files for target controller
 controller_OBJECTS = \
 "CMakeFiles/controller.dir/src/controller.cpp.o" \
-"CMakeFiles/controller.dir/src/xbee1.cpp.o" \
-"CMakeFiles/controller.dir/src/vicon.cpp.o" \
 "CMakeFiles/controller.dir/src/logger.cpp.o" \
 "CMakeFiles/controller.dir/src/utility.cpp.o"
 
@@ -179,8 +131,6 @@ controller_OBJECTS = \
 controller_EXTERNAL_OBJECTS =
 
 /home/odroid/quad_ws/devel/lib/controller/controller: controller/CMakeFiles/controller.dir/src/controller.cpp.o
-/home/odroid/quad_ws/devel/lib/controller/controller: controller/CMakeFiles/controller.dir/src/xbee1.cpp.o
-/home/odroid/quad_ws/devel/lib/controller/controller: controller/CMakeFiles/controller.dir/src/vicon.cpp.o
 /home/odroid/quad_ws/devel/lib/controller/controller: controller/CMakeFiles/controller.dir/src/logger.cpp.o
 /home/odroid/quad_ws/devel/lib/controller/controller: controller/CMakeFiles/controller.dir/src/utility.cpp.o
 /home/odroid/quad_ws/devel/lib/controller/controller: controller/CMakeFiles/controller.dir/build.make
@@ -211,8 +161,6 @@ controller/CMakeFiles/controller.dir/build: /home/odroid/quad_ws/devel/lib/contr
 .PHONY : controller/CMakeFiles/controller.dir/build
 
 controller/CMakeFiles/controller.dir/requires: controller/CMakeFiles/controller.dir/src/controller.cpp.o.requires
-controller/CMakeFiles/controller.dir/requires: controller/CMakeFiles/controller.dir/src/xbee1.cpp.o.requires
-controller/CMakeFiles/controller.dir/requires: controller/CMakeFiles/controller.dir/src/vicon.cpp.o.requires
 controller/CMakeFiles/controller.dir/requires: controller/CMakeFiles/controller.dir/src/logger.cpp.o.requires
 controller/CMakeFiles/controller.dir/requires: controller/CMakeFiles/controller.dir/src/utility.cpp.o.requires
 .PHONY : controller/CMakeFiles/controller.dir/requires

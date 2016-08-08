@@ -7,7 +7,7 @@ add_definitions(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
-  message_generation
+  quad_msgs
   dynamic_reconfigure
 )
 
@@ -45,13 +45,13 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
  #Generate messages in the 'msg' folder
- add_message_files(
-   FILES
-   MotorCommands.msg
-   SonarData.msg
-   ImuData.msg
-   XbeeData.msg
- )
+# add_message_files(
+ #  FILES
+  # MotorCommands.msg
+  # SonarData.msg
+  # ImuData.msg
+  # XbeeData.msg
+# )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -68,10 +68,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
- generate_messages(
-   DEPENDENCIES
-   std_msgs  
- )
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs  
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -102,7 +102,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES controller
-  CATKIN_DEPENDS roscpp std_msgs message_runtime
+  CATKIN_DEPENDS roscpp std_msgs quad_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -187,6 +187,6 @@ include_directories(include/controller ${catkin_INCLUDE_DIRS})
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 #file(GLOB SOURCES "src/*.cpp")
-add_executable(controller src/controller.cpp src/xbee1.cpp src/vicon.cpp src/logger.cpp src/utility.cpp)
+add_executable(controller src/controller.cpp src/logger.cpp src/utility.cpp)
 target_link_libraries(controller ${catkin_LIBRARIES})
-add_dependencies(controller controller_generate_messages_cpp controller_gencfg)
+add_dependencies(controller quad_msgs_generate_messages_cpp controller_gencfg)

@@ -5,11 +5,11 @@
 
 //=================================
 // included dependencies
-#include "motor_test_1.h"   //#include because controller contains a motor object
+//#include "motor_test_1.h"   //#include because controller contains a motor object
 //#include "imu_inv.h"
 #include "data_structs.h" // user defined structs (state, control_command,gains, desired_angles)
 
-#include "vicon.h" // change to xbee.h
+//#include "vicon.h" // change to xbee.h
 #include "logger.h"
 //#include "imu.h"
 #include "utility.h"
@@ -38,10 +38,10 @@
 #include <iostream>
 
 #include <ros/ros.h>
-#include "controller/MotorCommands.h"
-#include "controller/SonarData.h"
-#include "controller/ImuData.h"
-#include "controller/XbeeData.h"
+#include "quad_msgs/MotorCommands.h"
+#include "quad_msgs/SonarData.h"
+#include "quad_msgs/ImuData.h"
+#include "quad_msgs/XbeeData.h"
 //time utility change
 
 //dynamic reconfigure
@@ -93,9 +93,9 @@ Vicon vicon_velocity(Vicon& current, Vicon& old);
 void log_data(const Distances& sonar_distances, const float& dt, const State_Error& vicon_error, const State& imu_data, const State& imu_error, const Angles& desired_angles);
 void display_info(const Distances& sonar_distances, const int succ_read,  const State& imu_data,  const State& imu_error, const State_Error& vicon_error, const Control_command& U,  const Angles& desired_angles, const int joystick_thrust, const int flight_mode, const Times& times, const Times& time_m);
 void configure_threads(void);
-void sonarCallback(const controller::SonarData::ConstPtr& sonarMsg);
-void imuCallback(const controller::ImuData::ConstPtr& imuMsg);
-void xbeeCallback(const controller::XbeeData::ConstPtr& xbeeMsg);
+void sonarCallback(const quad_msgs::SonarData::ConstPtr& sonarMsg);
+void imuCallback(const quad_msgs::ImuData::ConstPtr& imuMsg);
+void xbeeCallback(const quad_msgs::XbeeData::ConstPtr& xbeeMsg);
 void gainsCallback(controller::controllerConfig &config, uint32_t level); // dynamic reconfigure callback
 
 void set_timespec(timespec& x, timespec& y){
