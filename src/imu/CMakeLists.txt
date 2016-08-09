@@ -12,6 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   
 )
 
+find_package(filters REQUIRED)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -115,7 +117,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(include/imu ${catkin_INCLUDE_DIRS})
+include_directories(include/imu ${catkin_INCLUDE_DIRS} ${filters_INCLUDE_DIRS})
 
 ## Declare a C++ library
 # add_library(imu
@@ -187,5 +189,5 @@ include_directories(include/imu ${catkin_INCLUDE_DIRS})
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 add_executable(imu src/imu.cpp src/utility.cpp)
-target_link_libraries(imu ${catkin_LIBRARIES})
+target_link_libraries(imu ${catkin_LIBRARIES} ${filters_LIBRARIES})
 add_dependencies(imu quad_msgs_generate_messages_cpp )

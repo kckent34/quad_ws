@@ -33,6 +33,7 @@ struct ImuData_
     , phi_dot(0.0)
     , psi_dot(0.0)
     , psi_gyro_integration(0.0)
+    , altitude(0.0)
     , dt(0.0)
     , succ_read(0)  {
     }
@@ -45,6 +46,7 @@ struct ImuData_
     , phi_dot(0.0)
     , psi_dot(0.0)
     , psi_gyro_integration(0.0)
+    , altitude(0.0)
     , dt(0.0)
     , succ_read(0)  {
   (void)_alloc;
@@ -75,6 +77,9 @@ struct ImuData_
 
    typedef float _psi_gyro_integration_type;
   _psi_gyro_integration_type psi_gyro_integration;
+
+   typedef float _altitude_type;
+  _altitude_type altitude;
 
    typedef float _dt_type;
   _dt_type dt;
@@ -159,12 +164,12 @@ struct MD5Sum< ::quad_msgs::ImuData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4bcffd395c379630a20bafde314d282e";
+    return "69e17a032f81455fc81af0ba54dafad9";
   }
 
   static const char* value(const ::quad_msgs::ImuData_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4bcffd395c379630ULL;
-  static const uint64_t static_value2 = 0xa20bafde314d282eULL;
+  static const uint64_t static_value1 = 0x69e17a032f81455fULL;
+  static const uint64_t static_value2 = 0xc81af0ba54dafad9ULL;
 };
 
 template<class ContainerAllocator>
@@ -191,6 +196,7 @@ float32 theta_dot\n\
 float32 phi_dot\n\
 float32 psi_dot\n\
 float32 psi_gyro_integration\n\
+float32 altitude\n\
 float32 dt\n\
 int32 succ_read\n\
 ================================================================================\n\
@@ -236,6 +242,7 @@ namespace serialization
       stream.next(m.phi_dot);
       stream.next(m.psi_dot);
       stream.next(m.psi_gyro_integration);
+      stream.next(m.altitude);
       stream.next(m.dt);
       stream.next(m.succ_read);
     }
@@ -273,6 +280,8 @@ struct Printer< ::quad_msgs::ImuData_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.psi_dot);
     s << indent << "psi_gyro_integration: ";
     Printer<float>::stream(s, indent + "  ", v.psi_gyro_integration);
+    s << indent << "altitude: ";
+    Printer<float>::stream(s, indent + "  ", v.altitude);
     s << indent << "dt: ";
     Printer<float>::stream(s, indent + "  ", v.dt);
     s << indent << "succ_read: ";

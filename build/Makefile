@@ -426,17 +426,30 @@ std_msgs_generate_messages_py/fast:
 .PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named imu
+# Target rules for targets named kalman
 
 # Build rule for target.
-imu: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 imu
-.PHONY : imu
+kalman: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 kalman
+.PHONY : kalman
 
 # fast build rule for target.
-imu/fast:
-	$(MAKE) -f imu/CMakeFiles/imu.dir/build.make imu/CMakeFiles/imu.dir/build
-.PHONY : imu/fast
+kalman/fast:
+	$(MAKE) -f filters/CMakeFiles/kalman.dir/build.make filters/CMakeFiles/kalman.dir/build
+.PHONY : kalman/fast
+
+#=============================================================================
+# Target rules for targets named kalman_test
+
+# Build rule for target.
+kalman_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 kalman_test
+.PHONY : kalman_test
+
+# fast build rule for target.
+kalman_test/fast:
+	$(MAKE) -f filters/CMakeFiles/kalman_test.dir/build.make filters/CMakeFiles/kalman_test.dir/build
+.PHONY : kalman_test/fast
 
 #=============================================================================
 # Target rules for targets named roscpp_generate_messages_cpp
@@ -448,7 +461,7 @@ roscpp_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_cpp/fast:
-	$(MAKE) -f imu/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make imu/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+	$(MAKE) -f filters/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make filters/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 .PHONY : roscpp_generate_messages_cpp/fast
 
 #=============================================================================
@@ -461,7 +474,7 @@ roscpp_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_lisp/fast:
-	$(MAKE) -f imu/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make imu/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+	$(MAKE) -f filters/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make filters/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 .PHONY : roscpp_generate_messages_lisp/fast
 
 #=============================================================================
@@ -474,7 +487,7 @@ roscpp_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 roscpp_generate_messages_py/fast:
-	$(MAKE) -f imu/CMakeFiles/roscpp_generate_messages_py.dir/build.make imu/CMakeFiles/roscpp_generate_messages_py.dir/build
+	$(MAKE) -f filters/CMakeFiles/roscpp_generate_messages_py.dir/build.make filters/CMakeFiles/roscpp_generate_messages_py.dir/build
 .PHONY : roscpp_generate_messages_py/fast
 
 #=============================================================================
@@ -487,7 +500,7 @@ rosgraph_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f imu/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make imu/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f filters/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make filters/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -500,7 +513,7 @@ rosgraph_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f imu/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make imu/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f filters/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make filters/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -513,8 +526,21 @@ rosgraph_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 rosgraph_msgs_generate_messages_py/fast:
-	$(MAKE) -f imu/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make imu/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+	$(MAKE) -f filters/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make filters/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named imu
+
+# Build rule for target.
+imu: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imu
+.PHONY : imu
+
+# fast build rule for target.
+imu/fast:
+	$(MAKE) -f imu/CMakeFiles/imu.dir/build.make imu/CMakeFiles/imu.dir/build
+.PHONY : imu/fast
 
 #=============================================================================
 # Target rules for targets named motor_test_1
@@ -771,13 +797,15 @@ help:
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
-	@echo "... imu"
+	@echo "... kalman"
+	@echo "... kalman_test"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... imu"
 	@echo "... motor_test_1"
 	@echo "... sonar"
 	@echo "... controller"

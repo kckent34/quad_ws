@@ -126,6 +126,24 @@ imu_EXTERNAL_OBJECTS =
 /home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libboost_thread.so
 /home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libpthread.so
 /home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /home/odroid/quad_ws/devel/lib/libkalman.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /opt/ros/indigo/lib/libroscpp.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libboost_signals.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /opt/ros/indigo/lib/librosconsole.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /opt/ros/indigo/lib/librosconsole_log4cxx.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /opt/ros/indigo/lib/librosconsole_backend_interface.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/liblog4cxx.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libboost_regex.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /opt/ros/indigo/lib/libroscpp_serialization.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /opt/ros/indigo/lib/librostime.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libboost_date_time.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /opt/ros/indigo/lib/libxmlrpcpp.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /opt/ros/indigo/lib/libcpp_common.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libboost_system.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libboost_thread.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libpthread.so
+/home/odroid/quad_ws/devel/lib/imu/imu: /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so
 /home/odroid/quad_ws/devel/lib/imu/imu: imu/CMakeFiles/imu.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/odroid/quad_ws/devel/lib/imu/imu"
 	cd /home/odroid/quad_ws/build/imu && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/imu.dir/link.txt --verbose=$(VERBOSE)

@@ -7,4 +7,7 @@
 # new environment variables
 
 # modified environment variables
+export LD_LIBRARY_PATH="/home/odroid/quad_ws/devel/lib:/opt/ros/indigo/lib:/home/odroid/catkin_ws/devel/lib:./../lib"
+export PATH="/opt/ros/indigo/bin:/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PKG_CONFIG_PATH="/home/odroid/quad_ws/devel/lib/pkgconfig:/opt/ros/indigo/lib/pkgconfig:/home/odroid/catkin_ws/devel/lib/pkgconfig"
 export PWD="/home/odroid/quad_ws/build"

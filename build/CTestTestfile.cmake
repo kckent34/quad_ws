@@ -6,6 +6,7 @@
 # testing this directory and lists subdirectories to be tested as well.
 SUBDIRS(gtest)
 SUBDIRS(quad_msgs)
+SUBDIRS(filters)
 SUBDIRS(imu)
 SUBDIRS(motors)
 SUBDIRS(sonar)

@@ -18,6 +18,7 @@ SET(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/odroid/quad_ws/build/filters/CMakeFiles/kalman.dir/DependInfo.cmake"
   )
 
 # The include file search paths:
@@ -25,6 +26,8 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/home/odroid/quad_ws/src/imu/include/imu"
   "/home/odroid/quad_ws/devel/include"
   "/opt/ros/indigo/include"
+  "/home/odroid/quad_ws/src/filters/include"
+  "/usr/include/eigen3"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

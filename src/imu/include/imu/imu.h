@@ -25,8 +25,12 @@
 #include <ros/ros.h>
 #include <quad_msgs/ImuData.h>
 #include <timer.h>
+#include <filters/kalman.h>
 
 #define BAUDRATE_IMU B230400
+#define P_SEA 101325.0f
+#define HEIGHT_SCALE 7000.0f
+#define PI 3.14159265f
 
 using namespace std;
 
@@ -134,6 +138,7 @@ class Imu {
     int disable_motors = 1;
     int i = 0;
     Timer calibrateTimer;
+    float p_sea_level = 101325.0;
 
     State cal_data = {0};
 
@@ -152,14 +157,14 @@ class Imu {
 	    bias.phi_dot   += cal_data.phi_dot;
 	    bias.psi_dot   += cal_data.psi_dot;
 	    bias.psi_magn_continuous  += cal_data.psi_magn_continuous;
-	    bias.altitude_raw  += cal_data.altitude_raw;
+	    bias.altitude_raw  += (cal_data.altitude_raw);
 	    //printf("bias (averaged) :  theta_dot: %5.3f  phi_dot: %5.3f  psi_dot: %5.3f psi_magn_contin: %5.3f altitude: %5.3f iterations: %i  \n\n", bias.theta_dot/i, bias.phi_dot/i, bias.psi_dot/i,bias.psi_magn_continuous/i, bias.altitude_raw/i, i);
 	    i++;
 	    //print_data(cal_data);
 	  }
       }
 
-    printf("bias (averaged) :  theta_dot: %5.3f  phi_dot: %5.3f  psi_dot: %5.3f psi_magn: %5.3f  iterations: %i  \n\n", bias.theta_dot/i, bias.phi_dot/i, bias.psi_dot/i,bias.psi_magn_continuous/i, i);
+    printf("bias (averaged) :  theta_dot: %5.3f  phi_dot: %5.3f  psi_dot: %5.3f psi_magn: %5.3f altitude:%5.3f iterations: %i  \n\n", bias.theta_dot/i, bias.phi_dot/i, bias.psi_dot/i,bias.psi_magn_continuous/i, bias.altitude_raw/i, i);
     bias.theta_dot   = bias.theta_dot/i;
     bias.phi_dot      = bias.phi_dot/i;
     bias.psi_dot      = bias.psi_dot/i;

@@ -1,5 +1,21 @@
 #include "imu.h"
 
+
+int nn = 3; // Number of states
+int mm = 2; // Number of measurements
+
+double dt_kalman = 1.0/420.0; // Time step
+
+Eigen::MatrixXd A(nn, nn); // System dynamics matrix
+Eigen::MatrixXd C(mm, nn); // Output matrix
+Eigen::MatrixXd Q(nn, nn); // Process noise covariance
+Eigen::MatrixXd R(mm, mm); // Measurement noise covariance
+Eigen::MatrixXd P(nn, nn); // Estimate error covariance
+KalmanFilter kf; 
+
+
+
+
 //g++ imu.cpp logger.cpp utility.cpp -I ../include -std=c++11
 
 int Imu::get_imu_calibrated_data(State& imu_data){
@@ -96,6 +112,7 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
      //RAW VALUES
 		float acc[3] = {0.0};
         float att_vel[3] = {0.0};
+        float x_corr, y_corr, z_corr, a_corr;
         /*att_vel[0]         = *(int32_t *)&arr[13]; //printf("att_vel 1: %i \n", att_vel[0]);
         att_vel[1]         = *(int32_t *)&arr[17]; //printf("att_vel 2: %i \n", att_vel[1]);
         att_vel[2]         = *(int32_t *)&arr[21]; //printf("att_vel 3: %i \n", att_vel[2]);*/
@@ -103,7 +120,14 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
         att_vel[1]         = *(float *)&arr[17]; //printf("att_vel 2: %i \n", att_vel[1]);
         att_vel[2]         = *(float *)&arr[21]; //printf("att_vel 3: %i \n", att_vel[2]);
         
+        uint32_t pressure_data = *(uint32_t * )&arr[25];
+        imu_data.altitude_raw = (float)pressure_data;
         
+        imu_data.acc_z = *(float *)&arr[29];
+        
+        //imu_data.acc_z = (imu_data.acc_z * -9.81) ;
+        
+        //printf("acc_z : %f \n",imu_data.acc_z);
 
         imu_data.phi_dot   = -att_vel[1];
         imu_data.theta_dot = -att_vel[0];
@@ -114,6 +138,24 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
         imu_data.psi_magn_raw     = *(float *)&arr[1]; //printf("psi 1: %f \n", imu_data.psi);
         imu_data.theta     = *(float *)&arr[5]; //printf("theta 1: %f \n", imu_data.theta)state2rawBytes(imu_data);
         imu_data.phi       = *(float *)&arr[9]; //printf("phi 1: %f \n", imu_data.phi);
+        
+        
+        //correction factor for accelerometer z reading based on tilt of quadrotor
+        x_corr = sin(imu_data.phi * PI / 180.0);
+        y_corr = sin(imu_data.theta * PI / 180.0);
+        z_corr = sqrt((x_corr*x_corr) + (y_corr*y_corr));
+        a_corr = sqrt(1 - (z_corr*z_corr));
+        //printf("acc_z : %f \n",imu_data.acc_z);
+        imu_data.acc_z = imu_data.acc_z - a_corr ;
+        
+       // printf("acc_corr: %f \n", a_corr);
+        imu_data.acc_z = imu_data.acc_z * 9.80665 -.36;
+        
+       
+        
+        
+        
+        
         
       /*  acc[0] = *(float *)&arr[1]; //x
         acc[1] = *(float *)&arr[5]; //y
@@ -154,16 +196,15 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
 	    imu_data.psi_magn_continuous_calibrated =  imu_data.psi_magn_continuous  - bias.psi_magn_continuous;
   	    gyroEstimate.updatePsi(imu_data.psi_dot_cal);
   	    imu_data.psi = imu_data.psi_magn_continuous_calibrated;
+  	    imu_data.altitude_calibrated = -HEIGHT_SCALE*log((imu_data.altitude_raw - bias.altitude_raw + P_SEA)/P_SEA); //relative height in meters from start point
+  	    Eigen::VectorXd y(mm);
+  	    y << imu_data.altitude_calibrated, imu_data.acc_z;
+  	    kf.update(y);
+  	    cout << " x_hat = " << kf.state().transpose() << endl; 
+  	    Eigen::VectorXd currState = kf.state();
+  	    imu_data.altitude_calibrated = currState(0);
   	    
-  	   /* imu_data.phi += imu_data.phi_dot_cal * imu_data.dt ;
-  	    imu_data.theta += imu_data.theta_dot_cal * imu_data.dt;
   	    
-  	    if((accMag > 1.0) && (accMag < 1.2)){
-  	    imu_data.phi = 0.98 * (imu_data.phi) + 0.02 * rollAcc;
-  	    imu_data.theta = 0.98 * (imu_data.theta) + 0.02 * pitchAcc;
-  	    }*/
-	    
-	    // imu_data.altitude_calibrated = imu_data.altitude_raw - bias.altitude_raw;
 
 	  }
 
@@ -174,29 +215,39 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
 int main(int argc, char** argv){
 
 std::string path = "/dev/ttyACM0";
-Imu imu = Imu(path, 26, .00112);
+Imu imu = Imu(path, 34, .00112);
 State new_data = {0.0};
 
-//int cal = imu.calibrate();
-//logging 
-/*std::string log_filename = "file.txt";
-logger logger(log_filename, 100, true);
-Data_log d;*/
 ros::init(argc,argv,"imu");
-ros::NodeHandle n;
+ros::NodeHandle nh;
 ros::Publisher imu_pub;
 
-imu_pub = n.advertise<quad_msgs::ImuData>("imu/imu_data",1); 
+imu_pub = nh.advertise<quad_msgs::ImuData>("imu/imu_data",1); 
 //int cal = imu.calibrate();
 float psi_t = 0;
 int suc = 0;
 int cal = imu.calibrate();
+
+A << 1, (dt_kalman*dt_kalman)/2, dt_kalman, 0, 1, 0, 0, dt_kalman, 1;
+C << 1, 0, 0, 0, 1, 0;
+
+Q << .0001, .0, .0, 0, 1000, .0, .0, .0, .001;
+R << 1000, 0, 0, .0001;
+P << 1, 0, 0, 0, 1, 0, 0, 0, 1;
+
+kf = KalmanFilter(dt_kalman,A, C, Q, R, P);
+
+Eigen::VectorXd x0(nn);
+x0 << 0, 0, 0;
+kf.init(dt_kalman,x0); 
+
 while(ros::ok())
 {
 	
 	//begin = ros::Time::now().toSec();
 	////int suc = imu.get_imu_calibrated_data(imu_data);
-	 suc = imu.get_imu_calibrated_data(new_data);
+	suc = imu.get_imu_calibrated_data(new_data);
+	
 	
 	/*psi_t = psi_t + new_data.dt * new_data.psi_dot_cal*.0065;
 	printf("test psi = %f \n",psi_t);*/
@@ -214,6 +265,7 @@ while(ros::ok())
 		imuMsg.psi_gyro_integration = new_data.psi_gyro_integration;
 		imuMsg.dt = new_data.dt;
 		imuMsg.succ_read = new_data.succ_read;
+		imuMsg.altitude = new_data.altitude_calibrated;
 		imu_pub.publish(imuMsg);
 		//end = ros::Time::now().toSec();
 		//printf("%f \n" , end-begin);

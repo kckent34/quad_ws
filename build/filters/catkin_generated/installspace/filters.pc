@@ -1,0 +1,8 @@
+prefix=/home/odroid/quad_ws/install
+
+Name: filters
+Description: Description of filters
+Version: 0.0.0
+Cflags: -I/home/odroid/quad_ws/install/include -I/usr/include/eigen3
+Libs: -L/home/odroid/quad_ws/install/lib -lkalman
+Requires: roscpp

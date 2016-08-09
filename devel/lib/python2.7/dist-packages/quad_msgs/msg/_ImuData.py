@@ -8,7 +8,7 @@ import struct
 import std_msgs.msg
 
 class ImuData(genpy.Message):
-  _md5sum = "4bcffd395c379630a20bafde314d282e"
+  _md5sum = "69e17a032f81455fc81af0ba54dafad9"
   _type = "quad_msgs/ImuData"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """Header header
@@ -19,6 +19,7 @@ float32 theta_dot
 float32 phi_dot
 float32 psi_dot
 float32 psi_gyro_integration
+float32 altitude
 float32 dt
 int32 succ_read
 ================================================================================
@@ -39,8 +40,8 @@ time stamp
 # 1: global frame
 string frame_id
 """
-  __slots__ = ['header','theta','phi','psi','theta_dot','phi_dot','psi_dot','psi_gyro_integration','dt','succ_read']
-  _slot_types = ['std_msgs/Header','float32','float32','float32','float32','float32','float32','float32','float32','int32']
+  __slots__ = ['header','theta','phi','psi','theta_dot','phi_dot','psi_dot','psi_gyro_integration','altitude','dt','succ_read']
+  _slot_types = ['std_msgs/Header','float32','float32','float32','float32','float32','float32','float32','float32','float32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -50,7 +51,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,theta,phi,psi,theta_dot,phi_dot,psi_dot,psi_gyro_integration,dt,succ_read
+       header,theta,phi,psi,theta_dot,phi_dot,psi_dot,psi_gyro_integration,altitude,dt,succ_read
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -75,6 +76,8 @@ string frame_id
         self.psi_dot = 0.
       if self.psi_gyro_integration is None:
         self.psi_gyro_integration = 0.
+      if self.altitude is None:
+        self.altitude = 0.
       if self.dt is None:
         self.dt = 0.
       if self.succ_read is None:
@@ -88,6 +91,7 @@ string frame_id
       self.phi_dot = 0.
       self.psi_dot = 0.
       self.psi_gyro_integration = 0.
+      self.altitude = 0.
       self.dt = 0.
       self.succ_read = 0
 
@@ -115,7 +119,7 @@ string frame_id
       else:
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_struct_8fi.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.dt, _x.succ_read))
+      buff.write(_struct_9fi.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.dt, _x.succ_read))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -143,8 +147,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 36
-      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.dt, _x.succ_read,) = _struct_8fi.unpack(str[start:end])
+      end += 40
+      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.dt, _x.succ_read,) = _struct_9fi.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -169,7 +173,7 @@ string frame_id
       else:
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_struct_8fi.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.dt, _x.succ_read))
+      buff.write(_struct_9fi.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.dt, _x.succ_read))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -198,12 +202,12 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 36
-      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.dt, _x.succ_read,) = _struct_8fi.unpack(str[start:end])
+      end += 40
+      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.dt, _x.succ_read,) = _struct_9fi.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_8fi = struct.Struct("<8fi")
 _struct_3I = struct.Struct("<3I")
+_struct_9fi = struct.Struct("<9fi")

@@ -118,6 +118,7 @@ IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/odroid/quad_ws/build/gtest/cmake_install.cmake")
   INCLUDE("/home/odroid/quad_ws/build/quad_msgs/cmake_install.cmake")
+  INCLUDE("/home/odroid/quad_ws/build/filters/cmake_install.cmake")
   INCLUDE("/home/odroid/quad_ws/build/imu/cmake_install.cmake")
   INCLUDE("/home/odroid/quad_ws/build/motors/cmake_install.cmake")
   INCLUDE("/home/odroid/quad_ws/build/sonar/cmake_install.cmake")
