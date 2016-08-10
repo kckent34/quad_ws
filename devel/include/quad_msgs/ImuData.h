@@ -34,6 +34,8 @@ struct ImuData_
     , psi_dot(0.0)
     , psi_gyro_integration(0.0)
     , altitude(0.0)
+    , barometer(0.0)
+    , acc_z(0.0)
     , dt(0.0)
     , succ_read(0)  {
     }
@@ -47,6 +49,8 @@ struct ImuData_
     , psi_dot(0.0)
     , psi_gyro_integration(0.0)
     , altitude(0.0)
+    , barometer(0.0)
+    , acc_z(0.0)
     , dt(0.0)
     , succ_read(0)  {
   (void)_alloc;
@@ -80,6 +84,12 @@ struct ImuData_
 
    typedef float _altitude_type;
   _altitude_type altitude;
+
+   typedef float _barometer_type;
+  _barometer_type barometer;
+
+   typedef float _acc_z_type;
+  _acc_z_type acc_z;
 
    typedef float _dt_type;
   _dt_type dt;
@@ -164,12 +174,12 @@ struct MD5Sum< ::quad_msgs::ImuData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "69e17a032f81455fc81af0ba54dafad9";
+    return "d8c4042e091cbd8704d3e8ffe961ec81";
   }
 
   static const char* value(const ::quad_msgs::ImuData_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x69e17a032f81455fULL;
-  static const uint64_t static_value2 = 0xc81af0ba54dafad9ULL;
+  static const uint64_t static_value1 = 0xd8c4042e091cbd87ULL;
+  static const uint64_t static_value2 = 0x04d3e8ffe961ec81ULL;
 };
 
 template<class ContainerAllocator>
@@ -197,6 +207,8 @@ float32 phi_dot\n\
 float32 psi_dot\n\
 float32 psi_gyro_integration\n\
 float32 altitude\n\
+float32 barometer\n\
+float32 acc_z\n\
 float32 dt\n\
 int32 succ_read\n\
 ================================================================================\n\
@@ -243,6 +255,8 @@ namespace serialization
       stream.next(m.psi_dot);
       stream.next(m.psi_gyro_integration);
       stream.next(m.altitude);
+      stream.next(m.barometer);
+      stream.next(m.acc_z);
       stream.next(m.dt);
       stream.next(m.succ_read);
     }
@@ -282,6 +296,10 @@ struct Printer< ::quad_msgs::ImuData_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.psi_gyro_integration);
     s << indent << "altitude: ";
     Printer<float>::stream(s, indent + "  ", v.altitude);
+    s << indent << "barometer: ";
+    Printer<float>::stream(s, indent + "  ", v.barometer);
+    s << indent << "acc_z: ";
+    Printer<float>::stream(s, indent + "  ", v.acc_z);
     s << indent << "dt: ";
     Printer<float>::stream(s, indent + "  ", v.dt);
     s << indent << "succ_read: ";

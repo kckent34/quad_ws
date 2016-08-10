@@ -1,10 +1,10 @@
 #include "imu.h"
 
 
-int nn = 3; // Number of states
+int nn = 4; // Number of states
 int mm = 2; // Number of measurements
 
-double dt_kalman = 1.0/420.0; // Time step
+double dt_kalman = 1.0/480.0; // Time step
 
 Eigen::MatrixXd A(nn, nn); // System dynamics matrix
 Eigen::MatrixXd C(mm, nn); // Output matrix
@@ -123,6 +123,7 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
         uint32_t pressure_data = *(uint32_t * )&arr[25];
         imu_data.altitude_raw = (float)pressure_data;
         
+        
         imu_data.acc_z = *(float *)&arr[29];
         
         //imu_data.acc_z = (imu_data.acc_z * -9.81) ;
@@ -197,6 +198,7 @@ void Imu::unpack_data(State& imu_data, const unsigned char arr[])
   	    gyroEstimate.updatePsi(imu_data.psi_dot_cal);
   	    imu_data.psi = imu_data.psi_magn_continuous_calibrated;
   	    imu_data.altitude_calibrated = -HEIGHT_SCALE*log((imu_data.altitude_raw - bias.altitude_raw + P_SEA)/P_SEA); //relative height in meters from start point
+  	    imu_data.barometer = imu_data.altitude_calibrated;
   	    Eigen::VectorXd y(mm);
   	    y << imu_data.altitude_calibrated, imu_data.acc_z;
   	    kf.update(y);
@@ -228,17 +230,21 @@ float psi_t = 0;
 int suc = 0;
 int cal = imu.calibrate();
 
-A << 1, (dt_kalman*dt_kalman)/2, dt_kalman, 0, 1, 0, 0, dt_kalman, 1;
-C << 1, 0, 0, 0, 1, 0;
+A << 1, (dt_kalman*dt_kalman)/2, dt_kalman, 0, 0, 1, 0, 0,  0, dt_kalman, 1 , 1, 0, 0, 0, 1;
+C << 1, 0, 0, 0, 0, 1, 0, 0;
 
-Q << .0001, .0, .0, 0, 1000, .0, .0, .0, .001;
-R << 1000, 0, 0, .0001;
-P << 1, 0, 0, 0, 1, 0, 0, 0, 1;
+/*Q << .0001, .0, .0, 0, 1000, .0, .0, .0, .001;
+R << 1000, 0, 0, .0001; 
+P << 1, 0, 0, 0, 1, 0, 0, 0, 1; */
+
+Q << .1, .0, .0, .0, .0, 100, .0, .0, .0, .0, 100, 0, 0, 0, 0 ,.0000000001;
+R << 5000000, 0, 0, 0.00001; 
+P << 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0 , 0, 0, .000000001; 
 
 kf = KalmanFilter(dt_kalman,A, C, Q, R, P);
 
 Eigen::VectorXd x0(nn);
-x0 << 0, 0, 0;
+x0 << 0, 0, 0 , .000025;
 kf.init(dt_kalman,x0); 
 
 while(ros::ok())
@@ -266,6 +272,10 @@ while(ros::ok())
 		imuMsg.dt = new_data.dt;
 		imuMsg.succ_read = new_data.succ_read;
 		imuMsg.altitude = new_data.altitude_calibrated;
+		imuMsg.barometer = new_data.barometer;
+		imuMsg.acc_z = new_data.acc_z;
+		
+			
 		imu_pub.publish(imuMsg);
 		//end = ros::Time::now().toSec();
 		//printf("%f \n" , end-begin);

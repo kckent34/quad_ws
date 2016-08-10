@@ -17,6 +17,10 @@
           PSI_GYRO_INTEGRATION
           ALTITUDE-VAL
           ALTITUDE
+          BAROMETER-VAL
+          BAROMETER
+          ACC_Z-VAL
+          ACC_Z
           DT-VAL
           DT
           SUCC_READ-VAL

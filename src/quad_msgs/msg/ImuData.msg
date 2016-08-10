@@ -7,5 +7,7 @@ float32 phi_dot
 float32 psi_dot
 float32 psi_gyro_integration
 float32 altitude
+float32 barometer
+float32 acc_z
 float32 dt
 int32 succ_read

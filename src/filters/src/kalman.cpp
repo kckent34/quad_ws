@@ -36,10 +36,9 @@ void KalmanFilter::init() {
 }
 
 void KalmanFilter::update(const Eigen::VectorXd& y) {
-
+	
   if(!initialized)
     throw std::runtime_error("Filter is not initialized!");
-
   x_hat_new = A * x_hat;
   P = A*P*A.transpose() + Q;
   K = P*C.transpose()*(C*P*C.transpose() + R).inverse();
