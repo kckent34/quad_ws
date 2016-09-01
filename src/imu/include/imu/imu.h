@@ -44,7 +44,7 @@ class Imu {
 
   //for bias
   bool calibrated = false;
-  State bias= {0.0};
+ 
 
   //for Psi
   Psi p;
@@ -60,6 +60,7 @@ class Imu {
   //float scale_factor = 0.2428;
 
  public:
+  State bias= {0.0};
   int get_imu_data(State&);
   int get_imu_calibrated_data(State&);
   void unpack_data(State&, const unsigned char[]);
@@ -158,18 +159,21 @@ class Imu {
 	    bias.psi_dot   += cal_data.psi_dot;
 	    bias.psi_magn_continuous  += cal_data.psi_magn_continuous;
 	    bias.altitude_raw  += (cal_data.altitude_raw);
+	    bias.acc_z  += (cal_data.acc_z) ;
+	    
 	    //printf("bias (averaged) :  theta_dot: %5.3f  phi_dot: %5.3f  psi_dot: %5.3f psi_magn_contin: %5.3f altitude: %5.3f iterations: %i  \n\n", bias.theta_dot/i, bias.phi_dot/i, bias.psi_dot/i,bias.psi_magn_continuous/i, bias.altitude_raw/i, i);
 	    i++;
 	    //print_data(cal_data);
 	  }
       }
 
-    printf("bias (averaged) :  theta_dot: %5.3f  phi_dot: %5.3f  psi_dot: %5.3f psi_magn: %5.3f altitude:%5.3f iterations: %i  \n\n", bias.theta_dot/i, bias.phi_dot/i, bias.psi_dot/i,bias.psi_magn_continuous/i, bias.altitude_raw/i, i);
+    printf("bias (averaged) :  theta_dot: %5.3f  phi_dot: %5.3f  psi_dot: %5.3f psi_magn: %5.3f altitude:%5.3f vel_z = %5.3f iterations: %i  \n\n", bias.theta_dot/i, bias.phi_dot/i, bias.psi_dot/i,bias.psi_magn_continuous/i, bias.altitude_raw/i, bias.acc_z/i, i);
     bias.theta_dot   = bias.theta_dot/i;
     bias.phi_dot      = bias.phi_dot/i;
     bias.psi_dot      = bias.psi_dot/i;
     bias.altitude_raw = bias.altitude_raw/i;
     bias.psi_magn_continuous   = bias.psi_magn_continuous/i;
+    bias.acc_z = bias.acc_z / i;
     printf("right here\n");
     this->calibrated = true;
     //(this->bias) = bias;

@@ -8,13 +8,14 @@ import struct
 import std_msgs.msg
 
 class ImuData(genpy.Message):
-  _md5sum = "d8c4042e091cbd8704d3e8ffe961ec81"
+  _md5sum = "b4cb0757a32bc7fb5f4a695374eb506c"
   _type = "quad_msgs/ImuData"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """Header header
 float32 theta
 float32 phi
 float32 psi
+float32[4] quat
 float32 theta_dot
 float32 phi_dot
 float32 psi_dot
@@ -42,8 +43,8 @@ time stamp
 # 1: global frame
 string frame_id
 """
-  __slots__ = ['header','theta','phi','psi','theta_dot','phi_dot','psi_dot','psi_gyro_integration','altitude','barometer','acc_z','dt','succ_read']
-  _slot_types = ['std_msgs/Header','float32','float32','float32','float32','float32','float32','float32','float32','float32','float32','float32','int32']
+  __slots__ = ['header','theta','phi','psi','quat','theta_dot','phi_dot','psi_dot','psi_gyro_integration','altitude','barometer','acc_z','dt','succ_read']
+  _slot_types = ['std_msgs/Header','float32','float32','float32','float32[4]','float32','float32','float32','float32','float32','float32','float32','float32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -53,7 +54,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,theta,phi,psi,theta_dot,phi_dot,psi_dot,psi_gyro_integration,altitude,barometer,acc_z,dt,succ_read
+       header,theta,phi,psi,quat,theta_dot,phi_dot,psi_dot,psi_gyro_integration,altitude,barometer,acc_z,dt,succ_read
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -70,6 +71,8 @@ string frame_id
         self.phi = 0.
       if self.psi is None:
         self.psi = 0.
+      if self.quat is None:
+        self.quat = [0.,0.,0.,0.]
       if self.theta_dot is None:
         self.theta_dot = 0.
       if self.phi_dot is None:
@@ -93,6 +96,7 @@ string frame_id
       self.theta = 0.
       self.phi = 0.
       self.psi = 0.
+      self.quat = [0.,0.,0.,0.]
       self.theta_dot = 0.
       self.phi_dot = 0.
       self.psi_dot = 0.
@@ -127,7 +131,10 @@ string frame_id
       else:
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_struct_11fi.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.barometer, _x.acc_z, _x.dt, _x.succ_read))
+      buff.write(_struct_3f.pack(_x.theta, _x.phi, _x.psi))
+      buff.write(_struct_4f.pack(*self.quat))
+      _x = self
+      buff.write(_struct_8fi.pack(_x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.barometer, _x.acc_z, _x.dt, _x.succ_read))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -155,8 +162,15 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 48
-      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.barometer, _x.acc_z, _x.dt, _x.succ_read,) = _struct_11fi.unpack(str[start:end])
+      end += 12
+      (_x.theta, _x.phi, _x.psi,) = _struct_3f.unpack(str[start:end])
+      start = end
+      end += 16
+      self.quat = _struct_4f.unpack(str[start:end])
+      _x = self
+      start = end
+      end += 36
+      (_x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.barometer, _x.acc_z, _x.dt, _x.succ_read,) = _struct_8fi.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -181,7 +195,10 @@ string frame_id
       else:
         buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_struct_11fi.pack(_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.barometer, _x.acc_z, _x.dt, _x.succ_read))
+      buff.write(_struct_3f.pack(_x.theta, _x.phi, _x.psi))
+      buff.write(self.quat.tostring())
+      _x = self
+      buff.write(_struct_8fi.pack(_x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.barometer, _x.acc_z, _x.dt, _x.succ_read))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -210,12 +227,21 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 48
-      (_x.theta, _x.phi, _x.psi, _x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.barometer, _x.acc_z, _x.dt, _x.succ_read,) = _struct_11fi.unpack(str[start:end])
+      end += 12
+      (_x.theta, _x.phi, _x.psi,) = _struct_3f.unpack(str[start:end])
+      start = end
+      end += 16
+      self.quat = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=4)
+      _x = self
+      start = end
+      end += 36
+      (_x.theta_dot, _x.phi_dot, _x.psi_dot, _x.psi_gyro_integration, _x.altitude, _x.barometer, _x.acc_z, _x.dt, _x.succ_read,) = _struct_8fi.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
+_struct_4f = struct.Struct("<4f")
+_struct_8fi = struct.Struct("<8fi")
 _struct_3I = struct.Struct("<3I")
-_struct_11fi = struct.Struct("<11fi")
+_struct_3f = struct.Struct("<3f")

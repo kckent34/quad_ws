@@ -19,6 +19,7 @@ Angles desired_angles = {0};
 uint8_t joystick_thrust = 0;
 uint8_t flight_mode = 0;
 
+double* motor_commands;
 
 bool MAGN = false;
 bool SYSTEM_RUN = true;
@@ -112,18 +113,18 @@ void xbeeCallback(const quad_msgs::XbeeData::ConstPtr& xbeeMsg){
 	return;
 }
 
-void control_stabilizer()
+void *control_stabilizer(void *thread_id)
 {
 
  
   printf("in control stabilizer \n");
   U_trim.thrust = 10;
   ros::NodeHandle nh;
-  ros::Publisher cmd_pub;
+  //ros::Publisher cmd_pub;
   ros::Subscriber sonar_sub;
   ros::Subscriber imu_sub;
   ros::Subscriber xbee_sub;
-  cmd_pub = nh.advertise<quad_msgs::MotorCommands>("controller/cmd_motors",3); 
+  //cmd_pub = nh.advertise<quad_msgs::MotorCommands>("controller/cmd_motors",1); 
   sonar_sub = nh.subscribe<quad_msgs::SonarData>("sonar/sonar_data",1,sonarCallback); 
   imu_sub = nh.subscribe<quad_msgs::ImuData>("imu/imu_data",1,imuCallback);
   xbee_sub = nh.subscribe<quad_msgs::XbeeData>("xbee/xbee_cmds",1,xbeeCallback); 
@@ -187,16 +188,16 @@ while(ros::ok())
 
 		ros::spinOnce();
 		
-		if(KILL_MOTORS){
+		/*if(KILL_MOTORS){
 			quad_msgs::MotorCommands mcs;
-			mcs.m0 = 700;
-			mcs.m1 = 700;
-			mcs.m2 = 700;
-			mcs.m3 = 700;
+			mcs.m0 = 0;
+			mcs.m1 = 0;
+			mcs.m2 = 0;
+			mcs.m3 = 0;
 			cmd_pub.publish(mcs);
 			ROS_INFO("KILLING MOTORS: KILL_MOTORS = true\n");
 			
-		}
+		}*/
 		
 		/*if(new_xbee_data < 0) ; //printf("joystick not ready to read: old data");
 		//check flight mode
@@ -219,7 +220,10 @@ while(ros::ok())
 	//calculate thrust and desired acceleration
 	U = thrust(imu_error,vicon_error, U_trim, joystick_thrust, gains);
 	
-	quad_msgs::MotorCommands mcs;
+	
+	motor_commands = set_forces(U,Ct,d);
+	
+	/*quad_msgs::MotorCommands mcs;
 	//calculate the forces of each motor and change force on motor objects and send via i2c
 
 	if(!DEBUG) {
@@ -245,9 +249,9 @@ while(ros::ok())
 	  mcs.m2 = m2c;
 	  mcs.m3 = m3c;
 
-	}
+	} */
         
-	cmd_pub.publish(mcs);
+	//cmd_pub.publish(mcs);
 	end = ros::Time::now();
 	dur = end - start;
 	freq = 1/(dur.toSec());
@@ -289,19 +293,32 @@ State_Error error_vicon(State_Error& error, const Vicon& pos_filt, const Vicon& 
 }
 */
 void *motor_signal(void *thread_id){
-
-  /* //printf("INSIDE MOTOR_SIGNAL\n");
+   ros::NodeHandle nh2;
+   ros::Publisher cmd_pub = nh2.advertise<quad_msgs::MotorCommands>("controller/cmd_motors",1); 
+   //printf("INSIDE MOTOR_SIGNAL\n");
    set_initial_times(time_m);
-
-      while(SYSTEM_RUN){
-	//printf("in motor loop");
-	motor_1.send_force_i2c();
-	motor_2.send_force_i2c();
-	motor_3.send_force_i2c();
-	motor_4.send_force_i2c();
-
-    	time_calc(time_m);
+   quad_msgs::MotorCommands mcs;
+   
+   while(ros::ok()){
+    	
+    	if(KILL_MOTORS)
+    	{
+    			mcs.header.stamp = ros::Time::now();
+    			mcs.m0 = 0;
+    			mcs.m1 = 0;
+    			mcs.m2 = 0;
+    			mcs.m3 = 0;
+    			ROS_INFO("KILLING MOTORS: KILL_MOTORS = true\n");
+    			
+    	}  else {
+    		mcs.header.stamp = ros::Time::now();
+    		mcs.m0 = motor_commands[0];
+    		mcs.m1 = motor_commands[1];
+    		mcs.m2 = motor_commands[2];
+    		mcs.m3 = motor_commands[3];
+    	}
 	
+    cmd_pub.publish(mcs);
 	//sets frequency of motor_signal
 	usleep(10);
 	}
@@ -309,7 +326,7 @@ void *motor_signal(void *thread_id){
    printf("EXIT MOTOR_SIGNAL\n");
 
    pthread_exit(NULL);
-   */
+   
 }
 
 
@@ -775,7 +792,7 @@ void* command_input(void *thread_id){
     */
 }
 void configure_threads(void){
-  /*    //pthread_t - is an abstract datatype that is used as a handle to reference the thread
+      //pthread_t - is an abstract datatype that is used as a handle to reference the thread
      //threads[0] = control_stabilizer
      //threads[1] = motor_signal
      //threads[2] = command_input
@@ -818,12 +835,12 @@ void configure_threads(void){
 //	usleep(onesecond);
 //	printf("final usleep done");
 
-     printf("=> creating command_input thread\n");
+    /* printf("=> creating command_input thread\n");
 	//if(ncurse)refresh();
      // Lower priority for commmand input
      param.sched_priority = (fifo_max_prio+fifo_min_prio)/2;
      pthread_attr_setschedparam(&attr, &param);
-     pthread_create(&threads[2], &attr, command_input, (void *) 2);
+     pthread_create(&threads[2], &attr, command_input, (void *) 2); */
     
 
      // Wait for all threads to complete
@@ -833,10 +850,10 @@ void configure_threads(void){
         }
 
      printf("EXITING CONFIGURE_THREADS\n");
-     close(usb_imu_ivn);
+     //close(usb_imu_ivn);
     
      pthread_attr_destroy(&attr);
-  */
+  
 }
 
 
@@ -870,6 +887,8 @@ void init(void)
 
 }
 
+
+
 int main(int argc, char** argv)
 {
   
@@ -886,8 +905,12 @@ int main(int argc, char** argv)
 	
   //start_motors();
   
-  control_stabilizer();
-	
+  //control_stabilizer();
+  usleep(onesecond*2);
+	//if(ncurse)clear();
+
+  configure_threads();
+  usleep(onesecond*2);
 	
   //configure_threads();
 

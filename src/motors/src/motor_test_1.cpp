@@ -196,7 +196,7 @@ Motors::Motors(uint8_t i2c_handle, uint8_t i2c_address){
 	m1 = motor(1,i2c_handle,i2c_address);
 	m2 = motor(2,i2c_handle,i2c_address);
 	m3 = motor(3,i2c_handle,i2c_address);
-	cmdSub_ = n.subscribe<quad_msgs::MotorCommands>("/controller/cmd_motors",3,&Motors::cmdCallBack,this);
+	cmdSub_ = n.subscribe<quad_msgs::MotorCommands>("/controller/cmd_motors",1,&Motors::cmdCallBack,this);
 	ROS_INFO("successfully created Motors\n");
 	i2cHandle_ = i2c_handle;
 }

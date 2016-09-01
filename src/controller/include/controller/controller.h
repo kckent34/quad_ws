@@ -53,7 +53,7 @@
 #define diff time_diff
 #define tv2float timespec2float
 
-#define NUM_THREADS 3
+#define NUM_THREADS 2
 #define PI 3.14159265359
 
 //To comply with NCURSES create macro to go back and forth between printf and required printw 
@@ -77,7 +77,7 @@ State new_imu_data = {0};
 
 //function prototypes
 void *command_input(void *thread_id);
-void control_stabilizer();
+void *control_stabilizer(void *thread_id);
 void *motor_signals(void *thread_id);
 void init(void);
 void start_motors(void);

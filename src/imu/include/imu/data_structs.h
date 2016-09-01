@@ -28,8 +28,9 @@ typedef struct state {
 float theta, phi, psi, psi_contin, psi_magn_raw, psi_magn_continuous, psi_magn_continuous_calibrated, theta_dot, phi_dot, psi_dot;
 float psi_cal, psi_contin_cal, theta_dot_cal, phi_dot_cal, psi_dot_cal;
 float psi_gyro_integration, psi_gyro_integration_cal;
-float acc_z,barometer; //for kalamn filtering
+float acc_x,acc_y,acc_z,barometer; //for kalamn filtering
 float altitude_raw_old, altitude_raw, altitude_calibrated, altitude_deriv;
+float quat[4];
 int succ_read;
 float dt;
 float numPsiRot;

@@ -29,6 +29,7 @@ struct ImuData_
     , theta(0.0)
     , phi(0.0)
     , psi(0.0)
+    , quat()
     , theta_dot(0.0)
     , phi_dot(0.0)
     , psi_dot(0.0)
@@ -38,12 +39,14 @@ struct ImuData_
     , acc_z(0.0)
     , dt(0.0)
     , succ_read(0)  {
-    }
+      quat.assign(0.0);
+  }
   ImuData_(const ContainerAllocator& _alloc)
     : header(_alloc)
     , theta(0.0)
     , phi(0.0)
     , psi(0.0)
+    , quat()
     , theta_dot(0.0)
     , phi_dot(0.0)
     , psi_dot(0.0)
@@ -54,7 +57,8 @@ struct ImuData_
     , dt(0.0)
     , succ_read(0)  {
   (void)_alloc;
-    }
+      quat.assign(0.0);
+  }
 
 
 
@@ -69,6 +73,9 @@ struct ImuData_
 
    typedef float _psi_type;
   _psi_type psi;
+
+   typedef boost::array<float, 4>  _quat_type;
+  _quat_type quat;
 
    typedef float _theta_dot_type;
   _theta_dot_type theta_dot;
@@ -174,12 +181,12 @@ struct MD5Sum< ::quad_msgs::ImuData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "d8c4042e091cbd8704d3e8ffe961ec81";
+    return "b4cb0757a32bc7fb5f4a695374eb506c";
   }
 
   static const char* value(const ::quad_msgs::ImuData_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd8c4042e091cbd87ULL;
-  static const uint64_t static_value2 = 0x04d3e8ffe961ec81ULL;
+  static const uint64_t static_value1 = 0xb4cb0757a32bc7fbULL;
+  static const uint64_t static_value2 = 0x5f4a695374eb506cULL;
 };
 
 template<class ContainerAllocator>
@@ -202,6 +209,7 @@ struct Definition< ::quad_msgs::ImuData_<ContainerAllocator> >
 float32 theta\n\
 float32 phi\n\
 float32 psi\n\
+float32[4] quat\n\
 float32 theta_dot\n\
 float32 phi_dot\n\
 float32 psi_dot\n\
@@ -250,6 +258,7 @@ namespace serialization
       stream.next(m.theta);
       stream.next(m.phi);
       stream.next(m.psi);
+      stream.next(m.quat);
       stream.next(m.theta_dot);
       stream.next(m.phi_dot);
       stream.next(m.psi_dot);
@@ -286,6 +295,12 @@ struct Printer< ::quad_msgs::ImuData_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.phi);
     s << indent << "psi: ";
     Printer<float>::stream(s, indent + "  ", v.psi);
+    s << indent << "quat[]" << std::endl;
+    for (size_t i = 0; i < v.quat.size(); ++i)
+    {
+      s << indent << "  quat[" << i << "]: ";
+      Printer<float>::stream(s, indent + "  ", v.quat[i]);
+    }
     s << indent << "theta_dot: ";
     Printer<float>::stream(s, indent + "  ", v.theta_dot);
     s << indent << "phi_dot: ";

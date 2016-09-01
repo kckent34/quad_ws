@@ -7,6 +7,8 @@
           PHI
           PSI-VAL
           PSI
+          QUAT-VAL
+          QUAT
           THETA_DOT-VAL
           THETA_DOT
           PHI_DOT-VAL

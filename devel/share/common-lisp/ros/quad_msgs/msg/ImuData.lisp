@@ -27,6 +27,11 @@
     :initarg :psi
     :type cl:float
     :initform 0.0)
+   (quat
+    :reader quat
+    :initarg :quat
+    :type (cl:vector cl:float)
+   :initform (cl:make-array 4 :element-type 'cl:float :initial-element 0.0))
    (theta_dot
     :reader theta_dot
     :initarg :theta_dot
@@ -102,6 +107,11 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader quad_msgs-msg:psi-val is deprecated.  Use quad_msgs-msg:psi instead.")
   (psi m))
 
+(cl:ensure-generic-function 'quat-val :lambda-list '(m))
+(cl:defmethod quat-val ((m <ImuData>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader quad_msgs-msg:quat-val is deprecated.  Use quad_msgs-msg:quat instead.")
+  (quat m))
+
 (cl:ensure-generic-function 'theta_dot-val :lambda-list '(m))
 (cl:defmethod theta_dot-val ((m <ImuData>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader quad_msgs-msg:theta_dot-val is deprecated.  Use quad_msgs-msg:theta_dot instead.")
@@ -164,6 +174,12 @@
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
+  (cl:map cl:nil #'(cl:lambda (ele) (cl:let ((bits (roslisp-utils:encode-single-float-bits ele)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)))
+   (cl:slot-value msg 'quat))
   (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'theta_dot))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
@@ -232,6 +248,15 @@
       (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'psi) (roslisp-utils:decode-single-float-bits bits)))
+  (cl:setf (cl:slot-value msg 'quat) (cl:make-array 4))
+  (cl:let ((vals (cl:slot-value msg 'quat)))
+    (cl:dotimes (i 4)
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:aref vals i) (roslisp-utils:decode-single-float-bits bits)))))
     (cl:let ((bits 0))
       (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
@@ -296,22 +321,23 @@
   "quad_msgs/ImuData")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<ImuData>)))
   "Returns md5sum for a message object of type '<ImuData>"
-  "d8c4042e091cbd8704d3e8ffe961ec81")
+  "b4cb0757a32bc7fb5f4a695374eb506c")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'ImuData)))
   "Returns md5sum for a message object of type 'ImuData"
-  "d8c4042e091cbd8704d3e8ffe961ec81")
+  "b4cb0757a32bc7fb5f4a695374eb506c")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<ImuData>)))
   "Returns full string definition for message of type '<ImuData>"
-  (cl:format cl:nil "Header header~%float32 theta~%float32 phi~%float32 psi~%float32 theta_dot~%float32 phi_dot~%float32 psi_dot~%float32 psi_gyro_integration~%float32 altitude~%float32 barometer~%float32 acc_z~%float32 dt~%int32 succ_read~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%~%"))
+  (cl:format cl:nil "Header header~%float32 theta~%float32 phi~%float32 psi~%float32[4] quat~%float32 theta_dot~%float32 phi_dot~%float32 psi_dot~%float32 psi_gyro_integration~%float32 altitude~%float32 barometer~%float32 acc_z~%float32 dt~%int32 succ_read~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'ImuData)))
   "Returns full string definition for message of type 'ImuData"
-  (cl:format cl:nil "Header header~%float32 theta~%float32 phi~%float32 psi~%float32 theta_dot~%float32 phi_dot~%float32 psi_dot~%float32 psi_gyro_integration~%float32 altitude~%float32 barometer~%float32 acc_z~%float32 dt~%int32 succ_read~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%~%"))
+  (cl:format cl:nil "Header header~%float32 theta~%float32 phi~%float32 psi~%float32[4] quat~%float32 theta_dot~%float32 phi_dot~%float32 psi_dot~%float32 psi_gyro_integration~%float32 altitude~%float32 barometer~%float32 acc_z~%float32 dt~%int32 succ_read~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <ImuData>))
   (cl:+ 0
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'header))
      4
      4
      4
+     0 (cl:reduce #'cl:+ (cl:slot-value msg 'quat) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))
      4
      4
      4
@@ -329,6 +355,7 @@
     (cl:cons ':theta (theta msg))
     (cl:cons ':phi (phi msg))
     (cl:cons ':psi (psi msg))
+    (cl:cons ':quat (quat msg))
     (cl:cons ':theta_dot (theta_dot msg))
     (cl:cons ':phi_dot (phi_dot msg))
     (cl:cons ':psi_dot (psi_dot msg))
