@@ -56,10 +56,13 @@
 float gyro_data[3];
 float acc_data[3];
 float eul_data[3];
+float quat_data[4];
+float acc_z;
 uint8_t send_byte[255];
 float t, t_, del_t;
 float psi = 0;
 float psi_scaled = 0;
+uint32_t pressure_data;
 
 
 /**
@@ -318,91 +321,53 @@ void sensor_event_cb(const inv_sensor_event_t * event, void * arg)
 
 	switch(event->sensor) 
 	{
-		case INV_SENSOR_TYPE_GAME_ROTATION_VECTOR:
+
+    case INV_SENSOR_TYPE_GAME_ROTATION_VECTOR:
+      if(event->status == INV_SENSOR_STATUS_DATA_UPDATED)
+      {
+        quat_data[0] = (float) (event->data.gyr.vect[0]);
+        quat_data[1] = (float) (event->data.gyr.vect[1]);
+        quat_data[2] = (float) (event->data.gyr.vect[2]);
+        quat_data[3] = (float) (event->data.gyr.vect[3]);
+      }
+      break;
+		case INV_SENSOR_TYPE_ACCELEROMETER:
 			if(event->status == INV_SENSOR_STATUS_DATA_UPDATED)
 			{
-				// Increase event counter
-				event_count++;
-				
-				conv_timestamp_to_time(event->timestamp, &day, &hr, &min, &sec, &ms, &us);
-				
-				//
-				// Display sensor info. printf in Arduino doesn't support %f so we can not use trace function
-				//
-				SERIAL_TRACES.print("[SKETCH] ");
-				snprintf(string, MAX_TRACES_STRING_SIZE, "%lud %02dh%02dm%02ds.%03hums.%03huus : evt cnt : %10u" , day, hr, min, sec, ms, us, event_count);
-				string[MAX_TRACES_STRING_SIZE-1] = '\0';
-				SERIAL_TRACES.print(string);
-				
-				SERIAL_TRACES.print(" : W = ");
-				SERIAL_TRACES.print(event->data.quaternion.quat[0], 6);
-				SERIAL_TRACES.print(" : X = ");
-				SERIAL_TRACES.print(event->data.quaternion.quat[1], 6);
-				SERIAL_TRACES.print(" : Y = ");
-				SERIAL_TRACES.print(event->data.quaternion.quat[2], 6);
-				SERIAL_TRACES.print(" : Z = ");
-				SERIAL_TRACES.print(event->data.quaternion.quat[3], 6);
-				SERIAL_TRACES.println("");
+        acc_data[0] = -event->data.acc.vect[0];
+        acc_data[1] = -event->data.acc.vect[1];
+        acc_data[2] = -event->data.acc.vect[2]; 
+        //acc_z = (event->data.acc.vect[2]);
 			}
 			break;
 
     case INV_SENSOR_TYPE_UNCAL_GYROSCOPE:
       if(event->status == INV_SENSOR_STATUS_DATA_UPDATED)
       {
-      //gyro_data[0] = (double)(event->data.gyr.vect[0]*1000);
-      //gyro_data[1] = (double)(event->data.gyr.vect[1]*1000);
-      //gyro_data[2] = (double)(event->data.gyr.vect[2]*1000);
-      gyro_data[0] = (event->data.gyr.vect[0]);
-      gyro_data[1] = (event->data.gyr.vect[1]);
-      gyro_data[2] = (event->data.gyr.vect[2]);
-
-      /* t = ((float)millis())*.001;
-       del_t = t-t_;
-       t_ = t;
-       psi = psi + (gyro_data[2]-.45)*del_t;
-  //psi_scaled = psi*(-0.065)*1.5/100;
-  
-       SERIAL_TRACES.print("psi_int:  ");
-       SERIAL_TRACES.print(psi);
-       SERIAL_TRACES.print("  dt:  ");
-       SERIAL_TRACES.print(del_t,6);
-       SERIAL_TRACES.print("  GYRO:  ");
-       SERIAL_TRACES.println(gyro_data[2],6);*/
-      
-      
-  
+        gyro_data[0] = (event->data.gyr.vect[0]);
+        gyro_data[1] = (event->data.gyr.vect[1]);
+        gyro_data[2] = (event->data.gyr.vect[2]);
       }
       break; 
       
-     
 
-
-   /* case INV_SENSOR_TYPE_RAW_GYROSCOPE:
-      if(event->status == INV_SENSOR_STATUS_DATA_UPDATED)
-      {
-      gyro_data[0] = (double)(event->data.gyr.vect[0]);
-      gyro_data[1] = (double)(event->data.gyr.vect[1]);
-      gyro_data[2] = (double)(event->data.gyr.vect[2]);
-      
-      t = ((double)millis())*.001;
-      del_t = t-t_;
-      t_ = t;
-  
-      }
-      break;*/
-
-    case INV_SENSOR_TYPE_ORIENTATION:
+   /* case INV_SENSOR_TYPE_ORIENTATION:
       if(event->status == INV_SENSOR_STATUS_DATA_UPDATED)
       { 
         eul_data[0] = event->data.orientation.x; 
         eul_data[1] = event->data.orientation.y;
-        eul_data[2] = event->data.orientation.z;
-        
-        //SERIAL_TRACES.println(eul_data[0]);
-        
+        eul_data[2] = event->data.orientation.z;  
+      }
+      break;*/
+
+
+    case INV_SENSOR_TYPE_PRESSURE:
+      if(event->status == INV_SENSOR_STATUS_DATA_UPDATED)
+      {
+        pressure_data = (event->data.pressure.pressure);
       }
       break;
-			
+      
 		default:
 		    printTraces("UNEXPECTED SENSOR EVENT %d", event->sensor);
 			break;
@@ -496,12 +461,16 @@ int start_sensor(void)
 	int rc;
 	
 	// Start sensor at 20 Hz and data are bufferized for a maximum of 500 ms
-	rc = inv_easy_device_start_sensor(&device_settings, INV_SENSOR_TYPE_UNCAL_GYROSCOPE, 1, 0);
+	rc = inv_easy_device_start_sensor(&device_settings, INV_SENSOR_TYPE_UNCAL_GYROSCOPE, 2, 0);
 	TEST_RC(rc);
+
+  rc = inv_easy_device_start_sensor(&device_settings, INV_SENSOR_TYPE_ACCELEROMETER, 2, 0);
+  TEST_RC(rc);
   
-  //rc = inv_easy_device_start_sensor(&device_settings, INV_SENSOR_TYPE_RAW_GYROSCOPE, 1, 0);
-  //TEST_RC(rc);
-  rc = inv_easy_device_start_sensor(&device_settings, INV_SENSOR_TYPE_ORIENTATION, 2, 0);
+  rc = inv_easy_device_start_sensor(&device_settings, INV_SENSOR_TYPE_GAME_ROTATION_VECTOR, 2, 0);
+  TEST_RC(rc);
+
+  rc = inv_easy_device_start_sensor(&device_settings, INV_SENSOR_TYPE_PRESSURE, 2, 0);
   TEST_RC(rc);
 	
 	return(rc);
@@ -519,10 +488,14 @@ int stop_sensor(void)
 	// Stop sensor
 	rc = inv_easy_device_stop_sensor(&device_settings, INV_SENSOR_TYPE_UNCAL_GYROSCOPE);
 	TEST_RC(rc);
-  //rc = inv_easy_device_stop_sensor(&device_settings, INV_SENSOR_TYPE_RAW_GYROSCOPE);
-  //TEST_RC(rc);
+
+  rc = inv_easy_device_stop_sensor(&device_settings, INV_SENSOR_TYPE_ACCELEROMETER);
+  TEST_RC(rc);
+  
+  rc = inv_easy_device_stop_sensor(&device_settings, INV_SENSOR_TYPE_PRESSURE);
+  TEST_RC(rc);
   // Stop sensor
-  rc = inv_easy_device_stop_sensor(&device_settings, INV_SENSOR_TYPE_ORIENTATION);
+  rc = inv_easy_device_stop_sensor(&device_settings, INV_SENSOR_TYPE_GAME_ROTATION_VECTOR);
   TEST_RC(rc);
 	
 	// wait 500 ms for all data to be outputed
@@ -571,8 +544,8 @@ int initSketch(void)
 	} 
 	
 	// Set accel and gyro bias
-	//rc = inv_device_set_sensor_bias(device_settings.device, INV_SENSOR_TYPE_ACCELEROMETER, acc_bias);
-	//TEST_RC(rc);
+	rc = inv_device_set_sensor_bias(device_settings.device, INV_SENSOR_TYPE_ACCELEROMETER, acc_bias);
+	TEST_RC(rc);
 	
 	//rc = inv_device_set_sensor_bias(device_settings.device, INV_SENSOR_TYPE_GYROSCOPE, gyr_bias);
 	//TEST_RC(rc);
@@ -637,22 +610,24 @@ void loop()
   //del_t = 0.003;
   //del_t = 0.001;
   //psi = psi + (-0.065*(gyro_data[2]-.457)*1.5/100)*del_t;
-/*  psi = psi + ((double)(gyro_data[2]))*del_t;
+ // psi = psi + ((double)(gyro_data[2]))*del_t;
   //psi_scaled = psi*(-0.065)*1.5/100;
   
-  SERIAL_TRACES.print("psi_int:  ");
-  SERIAL_TRACES.print(psi);
-  SERIAL_TRACES.print("  dt:  ");
-  SERIAL_TRACES.print(del_t,6);
+  /*SERIAL_TRACES.print("phi:  ");
+  SERIAL_TRACES.print(eul_data[0],6);
+  SERIAL_TRACES.print("    theta:  ");
+  SERIAL_TRACES.println(eul_data[1],6);*/
   
-  SERIAL_TRACES.print("  GYRO:  ");
-  SERIAL_TRACES.println(gyro_data[2],6);*/
+  //SERIAL_TRACES.print("  GYRO:  ");
+  //SERIAL_TRACES.println(gyro_data[2],6);
   
   send_byte[0] = 0xbd; //start byte
-  memcpy(&send_byte[1], eul_data, 12);
-  memcpy(&send_byte[13],gyro_data,12);
-  send_byte[25] = 0xff; //last byte */
-  Serial.write(send_byte, 26); //send data over serial
+  memcpy(&send_byte[1], quat_data, 16);
+  memcpy(&send_byte[17],gyro_data,12);
+  memcpy(&send_byte[29], &pressure_data, 4);
+  memcpy(&send_byte[33], acc_data, 12);
+  send_byte[45] = 0xff; //last byte 
+  Serial.write(send_byte, 46); 
 	// Test if there is any char in buffer
 
 
